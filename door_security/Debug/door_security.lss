@@ -1,0 +1,4909 @@
+
+door_security.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001e98  00000000  00000000  000000b4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000190  00800060  00001e98  00001f4c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000037  008001f0  008001f0  000020dc  2**0
+                  ALLOC
+  3 .eeprom       00000006  00810000  00810000  000020dc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .comment      0000005c  00000000  00000000  000020e2  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00002140  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 000002e0  00000000  00000000  00002180  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00003cae  00000000  00000000  00002460  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000eae  00000000  00000000  0000610e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000020a1  00000000  00000000  00006fbc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000634  00000000  00000000  00009060  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000008da  00000000  00000000  00009694  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00002aa9  00000000  00000000  00009f6e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000240  00000000  00000000  0000ca17  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 39 05 	jmp	0xa72	; 0xa72 <__vector_1>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 ed 03 	jmp	0x7da	; 0x7da <__vector_11>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d4 e0       	ldi	r29, 0x04	; 4
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	11 e0       	ldi	r17, 0x01	; 1
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e8 e9       	ldi	r30, 0x98	; 152
+      68:	fe e1       	ldi	r31, 0x1E	; 30
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a0 3f       	cpi	r26, 0xF0	; 240
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	22 e0       	ldi	r18, 0x02	; 2
+      78:	a0 ef       	ldi	r26, 0xF0	; 240
+      7a:	b1 e0       	ldi	r27, 0x01	; 1
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a7 32       	cpi	r26, 0x27	; 39
+      82:	b2 07       	cpc	r27, r18
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 2c 0b 	call	0x1658	; 0x1658 <main>
+      8a:	0c 94 4a 0f 	jmp	0x1e94	; 0x1e94 <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <SPI_MasterTransmit>:
+    else {
+        sak = 0;  // C� l?i
+    }
+
+    return sak;
+}
+      92:	8f b9       	out	0x0f, r24	; 15
+      94:	77 9b       	sbis	0x0e, 7	; 14
+      96:	fe cf       	rjmp	.-4      	; 0x94 <SPI_MasterTransmit+0x2>
+      98:	8f b1       	in	r24, 0x0f	; 15
+      9a:	08 95       	ret
+
+0000009c <MFRC522_Init>:
+      9c:	fc 01       	movw	r30, r24
+      9e:	60 83       	st	Z, r22
+      a0:	71 83       	std	Z+1, r23	; 0x01
+      a2:	77 b3       	in	r23, 0x17	; 23
+      a4:	21 e0       	ldi	r18, 0x01	; 1
+      a6:	30 e0       	ldi	r19, 0x00	; 0
+      a8:	c9 01       	movw	r24, r18
+      aa:	02 c0       	rjmp	.+4      	; 0xb0 <MFRC522_Init+0x14>
+      ac:	88 0f       	add	r24, r24
+      ae:	99 1f       	adc	r25, r25
+      b0:	6a 95       	dec	r22
+      b2:	e2 f7       	brpl	.-8      	; 0xac <MFRC522_Init+0x10>
+      b4:	87 2b       	or	r24, r23
+      b6:	87 bb       	out	0x17, r24	; 23
+      b8:	68 b3       	in	r22, 0x18	; 24
+      ba:	c9 01       	movw	r24, r18
+      bc:	00 80       	ld	r0, Z
+      be:	02 c0       	rjmp	.+4      	; 0xc4 <MFRC522_Init+0x28>
+      c0:	88 0f       	add	r24, r24
+      c2:	99 1f       	adc	r25, r25
+      c4:	0a 94       	dec	r0
+      c6:	e2 f7       	brpl	.-8      	; 0xc0 <MFRC522_Init+0x24>
+      c8:	86 2b       	or	r24, r22
+      ca:	88 bb       	out	0x18, r24	; 24
+      cc:	42 83       	std	Z+2, r20	; 0x02
+      ce:	53 83       	std	Z+3, r21	; 0x03
+      d0:	57 b3       	in	r21, 0x17	; 23
+      d2:	c9 01       	movw	r24, r18
+      d4:	02 c0       	rjmp	.+4      	; 0xda <MFRC522_Init+0x3e>
+      d6:	88 0f       	add	r24, r24
+      d8:	99 1f       	adc	r25, r25
+      da:	4a 95       	dec	r20
+      dc:	e2 f7       	brpl	.-8      	; 0xd6 <MFRC522_Init+0x3a>
+      de:	85 2b       	or	r24, r21
+      e0:	87 bb       	out	0x17, r24	; 23
+      e2:	88 b3       	in	r24, 0x18	; 24
+      e4:	02 80       	ldd	r0, Z+2	; 0x02
+      e6:	02 c0       	rjmp	.+4      	; 0xec <MFRC522_Init+0x50>
+      e8:	22 0f       	add	r18, r18
+      ea:	33 1f       	adc	r19, r19
+      ec:	0a 94       	dec	r0
+      ee:	e2 f7       	brpl	.-8      	; 0xe8 <MFRC522_Init+0x4c>
+      f0:	28 2b       	or	r18, r24
+      f2:	28 bb       	out	0x18, r18	; 24
+      f4:	08 95       	ret
+
+000000f6 <MFRC522_WriteRegister>:
+      f6:	ff 92       	push	r15
+      f8:	0f 93       	push	r16
+      fa:	1f 93       	push	r17
+      fc:	cf 93       	push	r28
+      fe:	df 93       	push	r29
+     100:	8c 01       	movw	r16, r24
+     102:	f4 2e       	mov	r15, r20
+     104:	98 b3       	in	r25, 0x18	; 24
+     106:	c1 e0       	ldi	r28, 0x01	; 1
+     108:	d0 e0       	ldi	r29, 0x00	; 0
+     10a:	9e 01       	movw	r18, r28
+     10c:	f8 01       	movw	r30, r16
+     10e:	00 80       	ld	r0, Z
+     110:	02 c0       	rjmp	.+4      	; 0x116 <MFRC522_WriteRegister+0x20>
+     112:	22 0f       	add	r18, r18
+     114:	33 1f       	adc	r19, r19
+     116:	0a 94       	dec	r0
+     118:	e2 f7       	brpl	.-8      	; 0x112 <MFRC522_WriteRegister+0x1c>
+     11a:	82 2f       	mov	r24, r18
+     11c:	80 95       	com	r24
+     11e:	89 23       	and	r24, r25
+     120:	88 bb       	out	0x18, r24	; 24
+     122:	86 2f       	mov	r24, r22
+     124:	90 e0       	ldi	r25, 0x00	; 0
+     126:	88 0f       	add	r24, r24
+     128:	99 1f       	adc	r25, r25
+     12a:	8e 77       	andi	r24, 0x7E	; 126
+     12c:	0e 94 49 00 	call	0x92	; 0x92 <SPI_MasterTransmit>
+     130:	8f 2d       	mov	r24, r15
+     132:	0e 94 49 00 	call	0x92	; 0x92 <SPI_MasterTransmit>
+     136:	88 b3       	in	r24, 0x18	; 24
+     138:	f8 01       	movw	r30, r16
+     13a:	00 80       	ld	r0, Z
+     13c:	02 c0       	rjmp	.+4      	; 0x142 <MFRC522_WriteRegister+0x4c>
+     13e:	cc 0f       	add	r28, r28
+     140:	dd 1f       	adc	r29, r29
+     142:	0a 94       	dec	r0
+     144:	e2 f7       	brpl	.-8      	; 0x13e <MFRC522_WriteRegister+0x48>
+     146:	c8 2b       	or	r28, r24
+     148:	c8 bb       	out	0x18, r28	; 24
+     14a:	df 91       	pop	r29
+     14c:	cf 91       	pop	r28
+     14e:	1f 91       	pop	r17
+     150:	0f 91       	pop	r16
+     152:	ff 90       	pop	r15
+     154:	08 95       	ret
+
+00000156 <MFRC522_ReadRegister>:
+     156:	0f 93       	push	r16
+     158:	1f 93       	push	r17
+     15a:	cf 93       	push	r28
+     15c:	df 93       	push	r29
+     15e:	8c 01       	movw	r16, r24
+     160:	98 b3       	in	r25, 0x18	; 24
+     162:	c1 e0       	ldi	r28, 0x01	; 1
+     164:	d0 e0       	ldi	r29, 0x00	; 0
+     166:	9e 01       	movw	r18, r28
+     168:	f8 01       	movw	r30, r16
+     16a:	00 80       	ld	r0, Z
+     16c:	02 c0       	rjmp	.+4      	; 0x172 <MFRC522_ReadRegister+0x1c>
+     16e:	22 0f       	add	r18, r18
+     170:	33 1f       	adc	r19, r19
+     172:	0a 94       	dec	r0
+     174:	e2 f7       	brpl	.-8      	; 0x16e <MFRC522_ReadRegister+0x18>
+     176:	82 2f       	mov	r24, r18
+     178:	80 95       	com	r24
+     17a:	89 23       	and	r24, r25
+     17c:	88 bb       	out	0x18, r24	; 24
+     17e:	86 2f       	mov	r24, r22
+     180:	90 e0       	ldi	r25, 0x00	; 0
+     182:	88 0f       	add	r24, r24
+     184:	99 1f       	adc	r25, r25
+     186:	8e 77       	andi	r24, 0x7E	; 126
+     188:	80 68       	ori	r24, 0x80	; 128
+     18a:	0e 94 49 00 	call	0x92	; 0x92 <SPI_MasterTransmit>
+     18e:	80 e0       	ldi	r24, 0x00	; 0
+     190:	0e 94 49 00 	call	0x92	; 0x92 <SPI_MasterTransmit>
+     194:	98 b3       	in	r25, 0x18	; 24
+     196:	f8 01       	movw	r30, r16
+     198:	00 80       	ld	r0, Z
+     19a:	02 c0       	rjmp	.+4      	; 0x1a0 <MFRC522_ReadRegister+0x4a>
+     19c:	cc 0f       	add	r28, r28
+     19e:	dd 1f       	adc	r29, r29
+     1a0:	0a 94       	dec	r0
+     1a2:	e2 f7       	brpl	.-8      	; 0x19c <MFRC522_ReadRegister+0x46>
+     1a4:	c9 2b       	or	r28, r25
+     1a6:	c8 bb       	out	0x18, r28	; 24
+     1a8:	df 91       	pop	r29
+     1aa:	cf 91       	pop	r28
+     1ac:	1f 91       	pop	r17
+     1ae:	0f 91       	pop	r16
+     1b0:	08 95       	ret
+
+000001b2 <MFRC522_Reset>:
+     1b2:	4f e0       	ldi	r20, 0x0F	; 15
+     1b4:	61 e0       	ldi	r22, 0x01	; 1
+     1b6:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     1ba:	08 95       	ret
+
+000001bc <MFRC522_SetBitMask>:
+     1bc:	0f 93       	push	r16
+     1be:	1f 93       	push	r17
+     1c0:	cf 93       	push	r28
+     1c2:	df 93       	push	r29
+     1c4:	8c 01       	movw	r16, r24
+     1c6:	d6 2f       	mov	r29, r22
+     1c8:	c4 2f       	mov	r28, r20
+     1ca:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     1ce:	48 2f       	mov	r20, r24
+     1d0:	4c 2b       	or	r20, r28
+     1d2:	6d 2f       	mov	r22, r29
+     1d4:	c8 01       	movw	r24, r16
+     1d6:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     1da:	df 91       	pop	r29
+     1dc:	cf 91       	pop	r28
+     1de:	1f 91       	pop	r17
+     1e0:	0f 91       	pop	r16
+     1e2:	08 95       	ret
+
+000001e4 <MFRC522_ClearBitMask>:
+     1e4:	0f 93       	push	r16
+     1e6:	1f 93       	push	r17
+     1e8:	cf 93       	push	r28
+     1ea:	df 93       	push	r29
+     1ec:	8c 01       	movw	r16, r24
+     1ee:	d6 2f       	mov	r29, r22
+     1f0:	c4 2f       	mov	r28, r20
+     1f2:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     1f6:	c0 95       	com	r28
+     1f8:	4c 2f       	mov	r20, r28
+     1fa:	48 23       	and	r20, r24
+     1fc:	6d 2f       	mov	r22, r29
+     1fe:	c8 01       	movw	r24, r16
+     200:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     204:	df 91       	pop	r29
+     206:	cf 91       	pop	r28
+     208:	1f 91       	pop	r17
+     20a:	0f 91       	pop	r16
+     20c:	08 95       	ret
+
+0000020e <MFRC522_Begin>:
+     20e:	cf 93       	push	r28
+     210:	df 93       	push	r29
+     212:	ec 01       	movw	r28, r24
+     214:	28 b3       	in	r18, 0x18	; 24
+     216:	81 e0       	ldi	r24, 0x01	; 1
+     218:	90 e0       	ldi	r25, 0x00	; 0
+     21a:	08 80       	ld	r0, Y
+     21c:	02 c0       	rjmp	.+4      	; 0x222 <MFRC522_Begin+0x14>
+     21e:	88 0f       	add	r24, r24
+     220:	99 1f       	adc	r25, r25
+     222:	0a 94       	dec	r0
+     224:	e2 f7       	brpl	.-8      	; 0x21e <MFRC522_Begin+0x10>
+     226:	82 2b       	or	r24, r18
+     228:	88 bb       	out	0x18, r24	; 24
+     22a:	ce 01       	movw	r24, r28
+     22c:	0e 94 d9 00 	call	0x1b2	; 0x1b2 <MFRC522_Reset>
+     230:	4d e8       	ldi	r20, 0x8D	; 141
+     232:	6a e2       	ldi	r22, 0x2A	; 42
+     234:	ce 01       	movw	r24, r28
+     236:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     23a:	4e e3       	ldi	r20, 0x3E	; 62
+     23c:	6b e2       	ldi	r22, 0x2B	; 43
+     23e:	ce 01       	movw	r24, r28
+     240:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     244:	4e e1       	ldi	r20, 0x1E	; 30
+     246:	6d e2       	ldi	r22, 0x2D	; 45
+     248:	ce 01       	movw	r24, r28
+     24a:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     24e:	40 e0       	ldi	r20, 0x00	; 0
+     250:	6c e2       	ldi	r22, 0x2C	; 44
+     252:	ce 01       	movw	r24, r28
+     254:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     258:	40 e4       	ldi	r20, 0x40	; 64
+     25a:	65 e1       	ldi	r22, 0x15	; 21
+     25c:	ce 01       	movw	r24, r28
+     25e:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     262:	4d e3       	ldi	r20, 0x3D	; 61
+     264:	61 e1       	ldi	r22, 0x11	; 17
+     266:	ce 01       	movw	r24, r28
+     268:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     26c:	43 e0       	ldi	r20, 0x03	; 3
+     26e:	64 e1       	ldi	r22, 0x14	; 20
+     270:	ce 01       	movw	r24, r28
+     272:	0e 94 de 00 	call	0x1bc	; 0x1bc <MFRC522_SetBitMask>
+     276:	df 91       	pop	r29
+     278:	cf 91       	pop	r28
+     27a:	08 95       	ret
+
+0000027c <MFRC522_CommandTag>:
+     27c:	5f 92       	push	r5
+     27e:	6f 92       	push	r6
+     280:	7f 92       	push	r7
+     282:	8f 92       	push	r8
+     284:	9f 92       	push	r9
+     286:	af 92       	push	r10
+     288:	bf 92       	push	r11
+     28a:	cf 92       	push	r12
+     28c:	df 92       	push	r13
+     28e:	ef 92       	push	r14
+     290:	ff 92       	push	r15
+     292:	0f 93       	push	r16
+     294:	1f 93       	push	r17
+     296:	cf 93       	push	r28
+     298:	df 93       	push	r29
+     29a:	ec 01       	movw	r28, r24
+     29c:	76 2e       	mov	r7, r22
+     29e:	5a 01       	movw	r10, r20
+     2a0:	69 01       	movw	r12, r18
+     2a2:	4c e0       	ldi	r20, 0x0C	; 12
+     2a4:	64 17       	cp	r22, r20
+     2a6:	31 f0       	breq	.+12     	; 0x2b4 <MFRC522_CommandTag+0x38>
+     2a8:	5e e0       	ldi	r21, 0x0E	; 14
+     2aa:	65 17       	cp	r22, r21
+     2ac:	61 f0       	breq	.+24     	; 0x2c6 <MFRC522_CommandTag+0x4a>
+     2ae:	61 2c       	mov	r6, r1
+     2b0:	51 2c       	mov	r5, r1
+     2b2:	10 c0       	rjmp	.+32     	; 0x2d4 <MFRC522_CommandTag+0x58>
+     2b4:	0f 2e       	mov	r0, r31
+     2b6:	f0 e3       	ldi	r31, 0x30	; 48
+     2b8:	6f 2e       	mov	r6, r31
+     2ba:	f0 2d       	mov	r31, r0
+     2bc:	0f 2e       	mov	r0, r31
+     2be:	f7 e7       	ldi	r31, 0x77	; 119
+     2c0:	5f 2e       	mov	r5, r31
+     2c2:	f0 2d       	mov	r31, r0
+     2c4:	07 c0       	rjmp	.+14     	; 0x2d4 <MFRC522_CommandTag+0x58>
+     2c6:	68 94       	set
+     2c8:	66 24       	eor	r6, r6
+     2ca:	64 f8       	bld	r6, 4
+     2cc:	0f 2e       	mov	r0, r31
+     2ce:	f2 e1       	ldi	r31, 0x12	; 18
+     2d0:	5f 2e       	mov	r5, r31
+     2d2:	f0 2d       	mov	r31, r0
+     2d4:	45 2d       	mov	r20, r5
+     2d6:	40 68       	ori	r20, 0x80	; 128
+     2d8:	62 e0       	ldi	r22, 0x02	; 2
+     2da:	ce 01       	movw	r24, r28
+     2dc:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     2e0:	40 e8       	ldi	r20, 0x80	; 128
+     2e2:	64 e0       	ldi	r22, 0x04	; 4
+     2e4:	ce 01       	movw	r24, r28
+     2e6:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <MFRC522_ClearBitMask>
+     2ea:	40 e8       	ldi	r20, 0x80	; 128
+     2ec:	6a e0       	ldi	r22, 0x0A	; 10
+     2ee:	ce 01       	movw	r24, r28
+     2f0:	0e 94 de 00 	call	0x1bc	; 0x1bc <MFRC522_SetBitMask>
+     2f4:	40 e0       	ldi	r20, 0x00	; 0
+     2f6:	61 e0       	ldi	r22, 0x01	; 1
+     2f8:	ce 01       	movw	r24, r28
+     2fa:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     2fe:	81 2c       	mov	r8, r1
+     300:	91 2c       	mov	r9, r1
+     302:	0b c0       	rjmp	.+22     	; 0x31a <MFRC522_CommandTag+0x9e>
+     304:	f5 01       	movw	r30, r10
+     306:	e8 0d       	add	r30, r8
+     308:	f9 1d       	adc	r31, r9
+     30a:	40 81       	ld	r20, Z
+     30c:	69 e0       	ldi	r22, 0x09	; 9
+     30e:	ce 01       	movw	r24, r28
+     310:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     314:	8f ef       	ldi	r24, 0xFF	; 255
+     316:	88 1a       	sub	r8, r24
+     318:	98 0a       	sbc	r9, r24
+     31a:	8c 14       	cp	r8, r12
+     31c:	9d 04       	cpc	r9, r13
+     31e:	94 f3       	brlt	.-28     	; 0x304 <MFRC522_CommandTag+0x88>
+     320:	47 2d       	mov	r20, r7
+     322:	61 e0       	ldi	r22, 0x01	; 1
+     324:	ce 01       	movw	r24, r28
+     326:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     32a:	9c e0       	ldi	r25, 0x0C	; 12
+     32c:	79 12       	cpse	r7, r25
+     32e:	05 c0       	rjmp	.+10     	; 0x33a <MFRC522_CommandTag+0xbe>
+     330:	40 e8       	ldi	r20, 0x80	; 128
+     332:	6d e0       	ldi	r22, 0x0D	; 13
+     334:	ce 01       	movw	r24, r28
+     336:	0e 94 de 00 	call	0x1bc	; 0x1bc <MFRC522_SetBitMask>
+     33a:	0f 2e       	mov	r0, r31
+     33c:	f9 e1       	ldi	r31, 0x19	; 25
+     33e:	cf 2e       	mov	r12, r31
+     340:	d1 2c       	mov	r13, r1
+     342:	f0 2d       	mov	r31, r0
+     344:	e1 ee       	ldi	r30, 0xE1	; 225
+     346:	f4 e0       	ldi	r31, 0x04	; 4
+     348:	31 97       	sbiw	r30, 0x01	; 1
+     34a:	f1 f7       	brne	.-4      	; 0x348 <MFRC522_CommandTag+0xcc>
+     34c:	00 c0       	rjmp	.+0      	; 0x34e <MFRC522_CommandTag+0xd2>
+     34e:	00 00       	nop
+     350:	64 e0       	ldi	r22, 0x04	; 4
+     352:	ce 01       	movw	r24, r28
+     354:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     358:	b8 2e       	mov	r11, r24
+     35a:	f1 e0       	ldi	r31, 0x01	; 1
+     35c:	cf 1a       	sub	r12, r31
+     35e:	d1 08       	sbc	r13, r1
+     360:	29 f0       	breq	.+10     	; 0x36c <MFRC522_CommandTag+0xf0>
+     362:	80 fd       	sbrc	r24, 0
+     364:	03 c0       	rjmp	.+6      	; 0x36c <MFRC522_CommandTag+0xf0>
+     366:	86 2d       	mov	r24, r6
+     368:	8b 21       	and	r24, r11
+     36a:	61 f3       	breq	.-40     	; 0x344 <MFRC522_CommandTag+0xc8>
+     36c:	40 e8       	ldi	r20, 0x80	; 128
+     36e:	6d e0       	ldi	r22, 0x0D	; 13
+     370:	ce 01       	movw	r24, r28
+     372:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <MFRC522_ClearBitMask>
+     376:	cd 28       	or	r12, r13
+     378:	09 f4       	brne	.+2      	; 0x37c <MFRC522_CommandTag+0x100>
+     37a:	58 c0       	rjmp	.+176    	; 0x42c <__DATA_REGION_LENGTH__+0x2c>
+     37c:	66 e0       	ldi	r22, 0x06	; 6
+     37e:	ce 01       	movw	r24, r28
+     380:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     384:	8d 71       	andi	r24, 0x1D	; 29
+     386:	09 f0       	breq	.+2      	; 0x38a <MFRC522_CommandTag+0x10e>
+     388:	55 c0       	rjmp	.+170    	; 0x434 <__DATA_REGION_LENGTH__+0x34>
+     38a:	b5 20       	and	r11, r5
+     38c:	b0 fc       	sbrc	r11, 0
+     38e:	02 c0       	rjmp	.+4      	; 0x394 <MFRC522_CommandTag+0x118>
+     390:	d1 2c       	mov	r13, r1
+     392:	02 c0       	rjmp	.+4      	; 0x398 <MFRC522_CommandTag+0x11c>
+     394:	dd 24       	eor	r13, r13
+     396:	d3 94       	inc	r13
+     398:	4c e0       	ldi	r20, 0x0C	; 12
+     39a:	74 12       	cpse	r7, r20
+     39c:	4e c0       	rjmp	.+156    	; 0x43a <__DATA_REGION_LENGTH__+0x3a>
+     39e:	6a e0       	ldi	r22, 0x0A	; 10
+     3a0:	ce 01       	movw	r24, r28
+     3a2:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     3a6:	c8 2e       	mov	r12, r24
+     3a8:	6c e0       	ldi	r22, 0x0C	; 12
+     3aa:	ce 01       	movw	r24, r28
+     3ac:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     3b0:	87 70       	andi	r24, 0x07	; 7
+     3b2:	91 f0       	breq	.+36     	; 0x3d8 <MFRC522_CommandTag+0x15c>
+     3b4:	2c 2d       	mov	r18, r12
+     3b6:	30 e0       	ldi	r19, 0x00	; 0
+     3b8:	21 50       	subi	r18, 0x01	; 1
+     3ba:	31 09       	sbc	r19, r1
+     3bc:	22 0f       	add	r18, r18
+     3be:	33 1f       	adc	r19, r19
+     3c0:	22 0f       	add	r18, r18
+     3c2:	33 1f       	adc	r19, r19
+     3c4:	22 0f       	add	r18, r18
+     3c6:	33 1f       	adc	r19, r19
+     3c8:	f9 01       	movw	r30, r18
+     3ca:	e8 0f       	add	r30, r24
+     3cc:	f1 1d       	adc	r31, r1
+     3ce:	cf 01       	movw	r24, r30
+     3d0:	f7 01       	movw	r30, r14
+     3d2:	91 83       	std	Z+1, r25	; 0x01
+     3d4:	80 83       	st	Z, r24
+     3d6:	0b c0       	rjmp	.+22     	; 0x3ee <MFRC522_CommandTag+0x172>
+     3d8:	8c 2d       	mov	r24, r12
+     3da:	90 e0       	ldi	r25, 0x00	; 0
+     3dc:	88 0f       	add	r24, r24
+     3de:	99 1f       	adc	r25, r25
+     3e0:	88 0f       	add	r24, r24
+     3e2:	99 1f       	adc	r25, r25
+     3e4:	88 0f       	add	r24, r24
+     3e6:	99 1f       	adc	r25, r25
+     3e8:	f7 01       	movw	r30, r14
+     3ea:	91 83       	std	Z+1, r25	; 0x01
+     3ec:	80 83       	st	Z, r24
+     3ee:	c1 10       	cpse	r12, r1
+     3f0:	02 c0       	rjmp	.+4      	; 0x3f6 <MFRC522_CommandTag+0x17a>
+     3f2:	cc 24       	eor	r12, r12
+     3f4:	c3 94       	inc	r12
+     3f6:	f0 e1       	ldi	r31, 0x10	; 16
+     3f8:	fc 15       	cp	r31, r12
+     3fa:	18 f4       	brcc	.+6      	; 0x402 <__DATA_REGION_LENGTH__+0x2>
+     3fc:	68 94       	set
+     3fe:	cc 24       	eor	r12, r12
+     400:	c4 f8       	bld	r12, 4
+     402:	e1 2c       	mov	r14, r1
+     404:	f1 2c       	mov	r15, r1
+     406:	0c c0       	rjmp	.+24     	; 0x420 <__DATA_REGION_LENGTH__+0x20>
+     408:	58 01       	movw	r10, r16
+     40a:	ae 0c       	add	r10, r14
+     40c:	bf 1c       	adc	r11, r15
+     40e:	69 e0       	ldi	r22, 0x09	; 9
+     410:	ce 01       	movw	r24, r28
+     412:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     416:	f5 01       	movw	r30, r10
+     418:	80 83       	st	Z, r24
+     41a:	ff ef       	ldi	r31, 0xFF	; 255
+     41c:	ef 1a       	sub	r14, r31
+     41e:	ff 0a       	sbc	r15, r31
+     420:	8c 2d       	mov	r24, r12
+     422:	90 e0       	ldi	r25, 0x00	; 0
+     424:	e8 16       	cp	r14, r24
+     426:	f9 06       	cpc	r15, r25
+     428:	7c f3       	brlt	.-34     	; 0x408 <__DATA_REGION_LENGTH__+0x8>
+     42a:	07 c0       	rjmp	.+14     	; 0x43a <__DATA_REGION_LENGTH__+0x3a>
+     42c:	68 94       	set
+     42e:	dd 24       	eor	r13, r13
+     430:	d1 f8       	bld	r13, 1
+     432:	03 c0       	rjmp	.+6      	; 0x43a <__DATA_REGION_LENGTH__+0x3a>
+     434:	68 94       	set
+     436:	dd 24       	eor	r13, r13
+     438:	d1 f8       	bld	r13, 1
+     43a:	8d 2d       	mov	r24, r13
+     43c:	df 91       	pop	r29
+     43e:	cf 91       	pop	r28
+     440:	1f 91       	pop	r17
+     442:	0f 91       	pop	r16
+     444:	ff 90       	pop	r15
+     446:	ef 90       	pop	r14
+     448:	df 90       	pop	r13
+     44a:	cf 90       	pop	r12
+     44c:	bf 90       	pop	r11
+     44e:	af 90       	pop	r10
+     450:	9f 90       	pop	r9
+     452:	8f 90       	pop	r8
+     454:	7f 90       	pop	r7
+     456:	6f 90       	pop	r6
+     458:	5f 90       	pop	r5
+     45a:	08 95       	ret
+
+0000045c <MFRC522_RequestTag>:
+     45c:	af 92       	push	r10
+     45e:	bf 92       	push	r11
+     460:	cf 92       	push	r12
+     462:	df 92       	push	r13
+     464:	ef 92       	push	r14
+     466:	ff 92       	push	r15
+     468:	0f 93       	push	r16
+     46a:	1f 93       	push	r17
+     46c:	cf 93       	push	r28
+     46e:	df 93       	push	r29
+     470:	00 d0       	rcall	.+0      	; 0x472 <__stack+0x13>
+     472:	cd b7       	in	r28, 0x3d	; 61
+     474:	de b7       	in	r29, 0x3e	; 62
+     476:	5c 01       	movw	r10, r24
+     478:	16 2f       	mov	r17, r22
+     47a:	6a 01       	movw	r12, r20
+     47c:	1a 82       	std	Y+2, r1	; 0x02
+     47e:	19 82       	std	Y+1, r1	; 0x01
+     480:	47 e0       	ldi	r20, 0x07	; 7
+     482:	6d e0       	ldi	r22, 0x0D	; 13
+     484:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     488:	f6 01       	movw	r30, r12
+     48a:	10 83       	st	Z, r17
+     48c:	ce 01       	movw	r24, r28
+     48e:	01 96       	adiw	r24, 0x01	; 1
+     490:	7c 01       	movw	r14, r24
+     492:	86 01       	movw	r16, r12
+     494:	21 e0       	ldi	r18, 0x01	; 1
+     496:	30 e0       	ldi	r19, 0x00	; 0
+     498:	a6 01       	movw	r20, r12
+     49a:	6c e0       	ldi	r22, 0x0C	; 12
+     49c:	c5 01       	movw	r24, r10
+     49e:	0e 94 3e 01 	call	0x27c	; 0x27c <MFRC522_CommandTag>
+     4a2:	90 e0       	ldi	r25, 0x00	; 0
+     4a4:	00 97       	sbiw	r24, 0x00	; 0
+     4a6:	31 f4       	brne	.+12     	; 0x4b4 <__stack+0x55>
+     4a8:	29 81       	ldd	r18, Y+1	; 0x01
+     4aa:	3a 81       	ldd	r19, Y+2	; 0x02
+     4ac:	20 31       	cpi	r18, 0x10	; 16
+     4ae:	31 05       	cpc	r19, r1
+     4b0:	21 f4       	brne	.+8      	; 0x4ba <__stack+0x5b>
+     4b2:	05 c0       	rjmp	.+10     	; 0x4be <__stack+0x5f>
+     4b4:	82 e0       	ldi	r24, 0x02	; 2
+     4b6:	90 e0       	ldi	r25, 0x00	; 0
+     4b8:	02 c0       	rjmp	.+4      	; 0x4be <__stack+0x5f>
+     4ba:	82 e0       	ldi	r24, 0x02	; 2
+     4bc:	90 e0       	ldi	r25, 0x00	; 0
+     4be:	0f 90       	pop	r0
+     4c0:	0f 90       	pop	r0
+     4c2:	df 91       	pop	r29
+     4c4:	cf 91       	pop	r28
+     4c6:	1f 91       	pop	r17
+     4c8:	0f 91       	pop	r16
+     4ca:	ff 90       	pop	r15
+     4cc:	ef 90       	pop	r14
+     4ce:	df 90       	pop	r13
+     4d0:	cf 90       	pop	r12
+     4d2:	bf 90       	pop	r11
+     4d4:	af 90       	pop	r10
+     4d6:	08 95       	ret
+
+000004d8 <MFRC522_AntiCollision>:
+     4d8:	af 92       	push	r10
+     4da:	bf 92       	push	r11
+     4dc:	cf 92       	push	r12
+     4de:	df 92       	push	r13
+     4e0:	ef 92       	push	r14
+     4e2:	ff 92       	push	r15
+     4e4:	0f 93       	push	r16
+     4e6:	1f 93       	push	r17
+     4e8:	cf 93       	push	r28
+     4ea:	df 93       	push	r29
+     4ec:	00 d0       	rcall	.+0      	; 0x4ee <MFRC522_AntiCollision+0x16>
+     4ee:	cd b7       	in	r28, 0x3d	; 61
+     4f0:	de b7       	in	r29, 0x3e	; 62
+     4f2:	5c 01       	movw	r10, r24
+     4f4:	6b 01       	movw	r12, r22
+     4f6:	40 e0       	ldi	r20, 0x00	; 0
+     4f8:	6d e0       	ldi	r22, 0x0D	; 13
+     4fa:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     4fe:	83 e9       	ldi	r24, 0x93	; 147
+     500:	f6 01       	movw	r30, r12
+     502:	80 83       	st	Z, r24
+     504:	80 e2       	ldi	r24, 0x20	; 32
+     506:	81 83       	std	Z+1, r24	; 0x01
+     508:	ce 01       	movw	r24, r28
+     50a:	01 96       	adiw	r24, 0x01	; 1
+     50c:	7c 01       	movw	r14, r24
+     50e:	86 01       	movw	r16, r12
+     510:	22 e0       	ldi	r18, 0x02	; 2
+     512:	30 e0       	ldi	r19, 0x00	; 0
+     514:	a6 01       	movw	r20, r12
+     516:	6c e0       	ldi	r22, 0x0C	; 12
+     518:	c5 01       	movw	r24, r10
+     51a:	0e 94 3e 01 	call	0x27c	; 0x27c <MFRC522_CommandTag>
+     51e:	a8 2f       	mov	r26, r24
+     520:	b0 e0       	ldi	r27, 0x00	; 0
+     522:	49 81       	ldd	r20, Y+1	; 0x01
+     524:	5a 81       	ldd	r21, Y+2	; 0x02
+     526:	55 23       	and	r21, r21
+     528:	14 f4       	brge	.+4      	; 0x52e <MFRC522_AntiCollision+0x56>
+     52a:	49 5f       	subi	r20, 0xF9	; 249
+     52c:	5f 4f       	sbci	r21, 0xFF	; 255
+     52e:	55 95       	asr	r21
+     530:	47 95       	ror	r20
+     532:	55 95       	asr	r21
+     534:	47 95       	ror	r20
+     536:	55 95       	asr	r21
+     538:	47 95       	ror	r20
+     53a:	10 97       	sbiw	r26, 0x00	; 0
+     53c:	49 f0       	breq	.+18     	; 0x550 <MFRC522_AntiCollision+0x78>
+     53e:	19 c0       	rjmp	.+50     	; 0x572 <MFRC522_AntiCollision+0x9a>
+     540:	f6 01       	movw	r30, r12
+     542:	e6 0f       	add	r30, r22
+     544:	f7 1f       	adc	r31, r23
+     546:	20 81       	ld	r18, Z
+     548:	92 27       	eor	r25, r18
+     54a:	6f 5f       	subi	r22, 0xFF	; 255
+     54c:	7f 4f       	sbci	r23, 0xFF	; 255
+     54e:	03 c0       	rjmp	.+6      	; 0x556 <MFRC522_AntiCollision+0x7e>
+     550:	90 e0       	ldi	r25, 0x00	; 0
+     552:	60 e0       	ldi	r22, 0x00	; 0
+     554:	70 e0       	ldi	r23, 0x00	; 0
+     556:	9a 01       	movw	r18, r20
+     558:	21 50       	subi	r18, 0x01	; 1
+     55a:	31 09       	sbc	r19, r1
+     55c:	62 17       	cp	r22, r18
+     55e:	73 07       	cpc	r23, r19
+     560:	7c f3       	brlt	.-34     	; 0x540 <MFRC522_AntiCollision+0x68>
+     562:	f6 01       	movw	r30, r12
+     564:	e6 0f       	add	r30, r22
+     566:	f7 1f       	adc	r31, r23
+     568:	80 81       	ld	r24, Z
+     56a:	98 17       	cp	r25, r24
+     56c:	11 f0       	breq	.+4      	; 0x572 <MFRC522_AntiCollision+0x9a>
+     56e:	a2 e0       	ldi	r26, 0x02	; 2
+     570:	b0 e0       	ldi	r27, 0x00	; 0
+     572:	8a 2f       	mov	r24, r26
+     574:	0f 90       	pop	r0
+     576:	0f 90       	pop	r0
+     578:	df 91       	pop	r29
+     57a:	cf 91       	pop	r28
+     57c:	1f 91       	pop	r17
+     57e:	0f 91       	pop	r16
+     580:	ff 90       	pop	r15
+     582:	ef 90       	pop	r14
+     584:	df 90       	pop	r13
+     586:	cf 90       	pop	r12
+     588:	bf 90       	pop	r11
+     58a:	af 90       	pop	r10
+     58c:	08 95       	ret
+
+0000058e <MFRC522_CalculateCRC>:
+     58e:	af 92       	push	r10
+     590:	bf 92       	push	r11
+     592:	cf 92       	push	r12
+     594:	df 92       	push	r13
+     596:	ef 92       	push	r14
+     598:	ff 92       	push	r15
+     59a:	0f 93       	push	r16
+     59c:	1f 93       	push	r17
+     59e:	cf 93       	push	r28
+     5a0:	df 93       	push	r29
+     5a2:	8c 01       	movw	r16, r24
+     5a4:	5b 01       	movw	r10, r22
+     5a6:	6a 01       	movw	r12, r20
+     5a8:	79 01       	movw	r14, r18
+     5aa:	44 e0       	ldi	r20, 0x04	; 4
+     5ac:	65 e0       	ldi	r22, 0x05	; 5
+     5ae:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <MFRC522_ClearBitMask>
+     5b2:	40 e8       	ldi	r20, 0x80	; 128
+     5b4:	6a e0       	ldi	r22, 0x0A	; 10
+     5b6:	c8 01       	movw	r24, r16
+     5b8:	0e 94 de 00 	call	0x1bc	; 0x1bc <MFRC522_SetBitMask>
+     5bc:	c0 e0       	ldi	r28, 0x00	; 0
+     5be:	d0 e0       	ldi	r29, 0x00	; 0
+     5c0:	09 c0       	rjmp	.+18     	; 0x5d4 <MFRC522_CalculateCRC+0x46>
+     5c2:	f5 01       	movw	r30, r10
+     5c4:	ec 0f       	add	r30, r28
+     5c6:	fd 1f       	adc	r31, r29
+     5c8:	40 81       	ld	r20, Z
+     5ca:	69 e0       	ldi	r22, 0x09	; 9
+     5cc:	c8 01       	movw	r24, r16
+     5ce:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     5d2:	21 96       	adiw	r28, 0x01	; 1
+     5d4:	cc 15       	cp	r28, r12
+     5d6:	dd 05       	cpc	r29, r13
+     5d8:	a4 f3       	brlt	.-24     	; 0x5c2 <MFRC522_CalculateCRC+0x34>
+     5da:	43 e0       	ldi	r20, 0x03	; 3
+     5dc:	61 e0       	ldi	r22, 0x01	; 1
+     5de:	c8 01       	movw	r24, r16
+     5e0:	0e 94 7b 00 	call	0xf6	; 0xf6 <MFRC522_WriteRegister>
+     5e4:	cf ef       	ldi	r28, 0xFF	; 255
+     5e6:	d0 e0       	ldi	r29, 0x00	; 0
+     5e8:	65 e0       	ldi	r22, 0x05	; 5
+     5ea:	c8 01       	movw	r24, r16
+     5ec:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     5f0:	21 97       	sbiw	r28, 0x01	; 1
+     5f2:	11 f0       	breq	.+4      	; 0x5f8 <MFRC522_CalculateCRC+0x6a>
+     5f4:	82 ff       	sbrs	r24, 2
+     5f6:	f8 cf       	rjmp	.-16     	; 0x5e8 <MFRC522_CalculateCRC+0x5a>
+     5f8:	62 e2       	ldi	r22, 0x22	; 34
+     5fa:	c8 01       	movw	r24, r16
+     5fc:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     600:	f7 01       	movw	r30, r14
+     602:	80 83       	st	Z, r24
+     604:	61 e2       	ldi	r22, 0x21	; 33
+     606:	c8 01       	movw	r24, r16
+     608:	0e 94 ab 00 	call	0x156	; 0x156 <MFRC522_ReadRegister>
+     60c:	f7 01       	movw	r30, r14
+     60e:	81 83       	std	Z+1, r24	; 0x01
+     610:	df 91       	pop	r29
+     612:	cf 91       	pop	r28
+     614:	1f 91       	pop	r17
+     616:	0f 91       	pop	r16
+     618:	ff 90       	pop	r15
+     61a:	ef 90       	pop	r14
+     61c:	df 90       	pop	r13
+     61e:	cf 90       	pop	r12
+     620:	bf 90       	pop	r11
+     622:	af 90       	pop	r10
+     624:	08 95       	ret
+
+00000626 <MFRC522_HaltTag>:
+/*
+ * D?ng th? RFID
+ * @param dev: Con tr? ??n c?u tr�c thi?t b?
+ * @return: Tr?ng th�i (MI_OK, MI_ERR, MI_NOTAGERR)
+ */
+uint8_t MFRC522_HaltTag(MFRC522_Dev* dev) {
+     626:	cf 92       	push	r12
+     628:	df 92       	push	r13
+     62a:	ef 92       	push	r14
+     62c:	ff 92       	push	r15
+     62e:	0f 93       	push	r16
+     630:	1f 93       	push	r17
+     632:	cf 93       	push	r28
+     634:	df 93       	push	r29
+     636:	00 d0       	rcall	.+0      	; 0x638 <MFRC522_HaltTag+0x12>
+     638:	00 d0       	rcall	.+0      	; 0x63a <MFRC522_HaltTag+0x14>
+     63a:	00 d0       	rcall	.+0      	; 0x63c <MFRC522_HaltTag+0x16>
+     63c:	cd b7       	in	r28, 0x3d	; 61
+     63e:	de b7       	in	r29, 0x3e	; 62
+     640:	6c 01       	movw	r12, r24
+    int status, len;
+    uint8_t buffer[4];
+
+    buffer[0] = MF1_HALT;  // L?nh d?ng th?
+     642:	80 e5       	ldi	r24, 0x50	; 80
+     644:	8b 83       	std	Y+3, r24	; 0x03
+    buffer[1] = 0;         // ?�nh d?u bit
+     646:	1c 82       	std	Y+4, r1	; 0x04
+    
+    // Th�m 2 byte CRC v�o cu?i
+    MFRC522_CalculateCRC(dev, buffer, 2, &buffer[2]);
+     648:	9e 01       	movw	r18, r28
+     64a:	2b 5f       	subi	r18, 0xFB	; 251
+     64c:	3f 4f       	sbci	r19, 0xFF	; 255
+     64e:	42 e0       	ldi	r20, 0x02	; 2
+     650:	50 e0       	ldi	r21, 0x00	; 0
+     652:	be 01       	movw	r22, r28
+     654:	6d 5f       	subi	r22, 0xFD	; 253
+     656:	7f 4f       	sbci	r23, 0xFF	; 255
+     658:	c6 01       	movw	r24, r12
+     65a:	0e 94 c7 02 	call	0x58e	; 0x58e <MFRC522_CalculateCRC>
+    
+    // G?i l?nh d?ng th?
+    status = MFRC522_CommandTag(dev, MFRC522_TRANSCEIVE, buffer, 4, buffer, &len);
+     65e:	ce 01       	movw	r24, r28
+     660:	01 96       	adiw	r24, 0x01	; 1
+     662:	7c 01       	movw	r14, r24
+     664:	8e 01       	movw	r16, r28
+     666:	0d 5f       	subi	r16, 0xFD	; 253
+     668:	1f 4f       	sbci	r17, 0xFF	; 255
+     66a:	24 e0       	ldi	r18, 0x04	; 4
+     66c:	30 e0       	ldi	r19, 0x00	; 0
+     66e:	a8 01       	movw	r20, r16
+     670:	6c e0       	ldi	r22, 0x0C	; 12
+     672:	c6 01       	movw	r24, r12
+     674:	0e 94 3e 01 	call	0x27c	; 0x27c <MFRC522_CommandTag>
+     678:	18 2f       	mov	r17, r24
+    
+    // T?t m� h�a
+    MFRC522_ClearBitMask(dev, Status2Reg, 0x08);
+     67a:	48 e0       	ldi	r20, 0x08	; 8
+     67c:	68 e0       	ldi	r22, 0x08	; 8
+     67e:	c6 01       	movw	r24, r12
+     680:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <MFRC522_ClearBitMask>
+    
+    return status;
+}
+     684:	81 2f       	mov	r24, r17
+     686:	26 96       	adiw	r28, 0x06	; 6
+     688:	0f b6       	in	r0, 0x3f	; 63
+     68a:	f8 94       	cli
+     68c:	de bf       	out	0x3e, r29	; 62
+     68e:	0f be       	out	0x3f, r0	; 63
+     690:	cd bf       	out	0x3d, r28	; 61
+     692:	df 91       	pop	r29
+     694:	cf 91       	pop	r28
+     696:	1f 91       	pop	r17
+     698:	0f 91       	pop	r16
+     69a:	ff 90       	pop	r15
+     69c:	ef 90       	pop	r14
+     69e:	df 90       	pop	r13
+     6a0:	cf 90       	pop	r12
+     6a2:	08 95       	ret
+
+000006a4 <RFID_IsValidUID>:
+	{ 0xC5, 0x57, 0xA5, 0xAC }	// ID user 3
+};
+
+char current_uid[UID_LEN*2 +1];
+
+uint8_t RFID_IsValidUID(MFRC522_Dev *dev) {
+     6a4:	0f 93       	push	r16
+     6a6:	1f 93       	push	r17
+     6a8:	cf 93       	push	r28
+     6aa:	df 93       	push	r29
+     6ac:	cd b7       	in	r28, 0x3d	; 61
+     6ae:	de b7       	in	r29, 0x3e	; 62
+     6b0:	27 97       	sbiw	r28, 0x07	; 7
+     6b2:	0f b6       	in	r0, 0x3f	; 63
+     6b4:	f8 94       	cli
+     6b6:	de bf       	out	0x3e, r29	; 62
+     6b8:	0f be       	out	0x3f, r0	; 63
+     6ba:	cd bf       	out	0x3d, r28	; 61
+     6bc:	8c 01       	movw	r16, r24
+	uint8_t status;
+	uint8_t dataBuf[2];
+	uint8_t serial[5];
+
+	// 1. Kiểm tra xem có thẻ không
+	status = MFRC522_RequestTag(dev, MF1_REQIDL, dataBuf);
+     6be:	ae 01       	movw	r20, r28
+     6c0:	4f 5f       	subi	r20, 0xFF	; 255
+     6c2:	5f 4f       	sbci	r21, 0xFF	; 255
+     6c4:	66 e2       	ldi	r22, 0x26	; 38
+     6c6:	0e 94 2e 02 	call	0x45c	; 0x45c <MFRC522_RequestTag>
+	if (status != MI_OK) {
+     6ca:	81 11       	cpse	r24, r1
+     6cc:	61 c0       	rjmp	.+194    	; 0x790 <RFID_IsValidUID+0xec>
+		return -1;   // Không có thẻ
+	}
+
+	// 2. Đọc UID
+	status = MFRC522_AntiCollision(dev, serial);
+     6ce:	be 01       	movw	r22, r28
+     6d0:	6d 5f       	subi	r22, 0xFD	; 253
+     6d2:	7f 4f       	sbci	r23, 0xFF	; 255
+     6d4:	c8 01       	movw	r24, r16
+     6d6:	0e 94 6c 02 	call	0x4d8	; 0x4d8 <MFRC522_AntiCollision>
+	if (status != MI_OK) {
+     6da:	81 11       	cpse	r24, r1
+     6dc:	5b c0       	rjmp	.+182    	; 0x794 <RFID_IsValidUID+0xf0>
+     6de:	20 e0       	ldi	r18, 0x00	; 0
+     6e0:	30 e0       	ldi	r19, 0x00	; 0
+     6e2:	4e c0       	rjmp	.+156    	; 0x780 <RFID_IsValidUID+0xdc>
+
+	// 3. So sánh UID
+	for (int i = 0; i < VALID_UID_COUNT; i++) {
+		int match = 1;
+		for (int j = 0; j < UID_LEN; j++) {
+			if (serial[j] != validUIDs[i][j]) {
+     6e4:	e3 e0       	ldi	r30, 0x03	; 3
+     6e6:	f0 e0       	ldi	r31, 0x00	; 0
+     6e8:	ec 0f       	add	r30, r28
+     6ea:	fd 1f       	adc	r31, r29
+     6ec:	e8 0f       	add	r30, r24
+     6ee:	f9 1f       	adc	r31, r25
+     6f0:	50 81       	ld	r21, Z
+     6f2:	f9 01       	movw	r30, r18
+     6f4:	ee 0f       	add	r30, r30
+     6f6:	ff 1f       	adc	r31, r31
+     6f8:	ee 0f       	add	r30, r30
+     6fa:	ff 1f       	adc	r31, r31
+     6fc:	ee 57       	subi	r30, 0x7E	; 126
+     6fe:	ff 4f       	sbci	r31, 0xFF	; 255
+     700:	e8 0f       	add	r30, r24
+     702:	f9 1f       	adc	r31, r25
+     704:	40 81       	ld	r20, Z
+     706:	54 13       	cpse	r21, r20
+     708:	0a c0       	rjmp	.+20     	; 0x71e <RFID_IsValidUID+0x7a>
+	}
+
+	// 3. So sánh UID
+	for (int i = 0; i < VALID_UID_COUNT; i++) {
+		int match = 1;
+		for (int j = 0; j < UID_LEN; j++) {
+     70a:	01 96       	adiw	r24, 0x01	; 1
+     70c:	02 c0       	rjmp	.+4      	; 0x712 <RFID_IsValidUID+0x6e>
+     70e:	80 e0       	ldi	r24, 0x00	; 0
+     710:	90 e0       	ldi	r25, 0x00	; 0
+     712:	84 30       	cpi	r24, 0x04	; 4
+     714:	91 05       	cpc	r25, r1
+     716:	34 f3       	brlt	.-52     	; 0x6e4 <RFID_IsValidUID+0x40>
+		return -1;
+	}
+
+	// 3. So sánh UID
+	for (int i = 0; i < VALID_UID_COUNT; i++) {
+		int match = 1;
+     718:	81 e0       	ldi	r24, 0x01	; 1
+     71a:	90 e0       	ldi	r25, 0x00	; 0
+     71c:	02 c0       	rjmp	.+4      	; 0x722 <RFID_IsValidUID+0x7e>
+		for (int j = 0; j < UID_LEN; j++) {
+			if (serial[j] != validUIDs[i][j]) {
+				match = 0;
+     71e:	80 e0       	ldi	r24, 0x00	; 0
+     720:	90 e0       	ldi	r25, 0x00	; 0
+				break;
+			}
+		}
+		if (match) {
+     722:	89 2b       	or	r24, r25
+     724:	59 f1       	breq	.+86     	; 0x77c <RFID_IsValidUID+0xd8>
+			MFRC522_HaltTag(dev);
+     726:	c8 01       	movw	r24, r16
+     728:	0e 94 13 03 	call	0x626	; 0x626 <MFRC522_HaltTag>
+			
+			// Thuc hien luu hien luu ma the vao trong mang
+			for (int k = 0; k < UID_LEN; k++) {
+     72c:	00 e0       	ldi	r16, 0x00	; 0
+     72e:	10 e0       	ldi	r17, 0x00	; 0
+     730:	1e c0       	rjmp	.+60     	; 0x76e <RFID_IsValidUID+0xca>
+				sprintf(&current_uid[k * 2], "%02X", serial[k]);
+     732:	e3 e0       	ldi	r30, 0x03	; 3
+     734:	f0 e0       	ldi	r31, 0x00	; 0
+     736:	ec 0f       	add	r30, r28
+     738:	fd 1f       	adc	r31, r29
+     73a:	e0 0f       	add	r30, r16
+     73c:	f1 1f       	adc	r31, r17
+     73e:	20 81       	ld	r18, Z
+     740:	c8 01       	movw	r24, r16
+     742:	88 0f       	add	r24, r24
+     744:	99 1f       	adc	r25, r25
+     746:	1f 92       	push	r1
+     748:	2f 93       	push	r18
+     74a:	2d e7       	ldi	r18, 0x7D	; 125
+     74c:	30 e0       	ldi	r19, 0x00	; 0
+     74e:	3f 93       	push	r19
+     750:	2f 93       	push	r18
+     752:	8b 50       	subi	r24, 0x0B	; 11
+     754:	9e 4f       	sbci	r25, 0xFE	; 254
+     756:	9f 93       	push	r25
+     758:	8f 93       	push	r24
+     75a:	0e 94 10 0c 	call	0x1820	; 0x1820 <sprintf>
+		}
+		if (match) {
+			MFRC522_HaltTag(dev);
+			
+			// Thuc hien luu hien luu ma the vao trong mang
+			for (int k = 0; k < UID_LEN; k++) {
+     75e:	0f 5f       	subi	r16, 0xFF	; 255
+     760:	1f 4f       	sbci	r17, 0xFF	; 255
+     762:	0f 90       	pop	r0
+     764:	0f 90       	pop	r0
+     766:	0f 90       	pop	r0
+     768:	0f 90       	pop	r0
+     76a:	0f 90       	pop	r0
+     76c:	0f 90       	pop	r0
+     76e:	04 30       	cpi	r16, 0x04	; 4
+     770:	11 05       	cpc	r17, r1
+     772:	fc f2       	brlt	.-66     	; 0x732 <RFID_IsValidUID+0x8e>
+				sprintf(&current_uid[k * 2], "%02X", serial[k]);
+			}
+			current_uid[UID_LEN * 2] = '\0';  //them gia tri null vao cuoi chuoi
+     774:	10 92 fd 01 	sts	0x01FD, r1	; 0x8001fd <current_uid+0x8>
+			return 1;
+     778:	81 e0       	ldi	r24, 0x01	; 1
+     77a:	0d c0       	rjmp	.+26     	; 0x796 <RFID_IsValidUID+0xf2>
+	if (status != MI_OK) {
+		return -1;
+	}
+
+	// 3. So sánh UID
+	for (int i = 0; i < VALID_UID_COUNT; i++) {
+     77c:	2f 5f       	subi	r18, 0xFF	; 255
+     77e:	3f 4f       	sbci	r19, 0xFF	; 255
+     780:	23 30       	cpi	r18, 0x03	; 3
+     782:	31 05       	cpc	r19, r1
+     784:	24 f2       	brlt	.-120    	; 0x70e <RFID_IsValidUID+0x6a>
+			return 1;
+		}
+	}
+
+	// 4. Không khớp UID nào
+	MFRC522_HaltTag(dev);
+     786:	c8 01       	movw	r24, r16
+     788:	0e 94 13 03 	call	0x626	; 0x626 <MFRC522_HaltTag>
+	return 0;
+     78c:	80 e0       	ldi	r24, 0x00	; 0
+     78e:	03 c0       	rjmp	.+6      	; 0x796 <RFID_IsValidUID+0xf2>
+	uint8_t serial[5];
+
+	// 1. Kiểm tra xem có thẻ không
+	status = MFRC522_RequestTag(dev, MF1_REQIDL, dataBuf);
+	if (status != MI_OK) {
+		return -1;   // Không có thẻ
+     790:	8f ef       	ldi	r24, 0xFF	; 255
+     792:	01 c0       	rjmp	.+2      	; 0x796 <RFID_IsValidUID+0xf2>
+	}
+
+	// 2. Đọc UID
+	status = MFRC522_AntiCollision(dev, serial);
+	if (status != MI_OK) {
+		return -1;
+     794:	8f ef       	ldi	r24, 0xFF	; 255
+	}
+
+	// 4. Không khớp UID nào
+	MFRC522_HaltTag(dev);
+	return 0;
+}
+     796:	27 96       	adiw	r28, 0x07	; 7
+     798:	0f b6       	in	r0, 0x3f	; 63
+     79a:	f8 94       	cli
+     79c:	de bf       	out	0x3e, r29	; 62
+     79e:	0f be       	out	0x3f, r0	; 63
+     7a0:	cd bf       	out	0x3d, r28	; 61
+     7a2:	df 91       	pop	r29
+     7a4:	cf 91       	pop	r28
+     7a6:	1f 91       	pop	r17
+     7a8:	0f 91       	pop	r16
+     7aa:	08 95       	ret
+
+000007ac <SPI_Init>:
+
+void SPI_Init(void) {
+	// Thi?t l?p ch?n MOSI, SCK, SS l? output
+	sbi(DDRB, MOSI_PIN);
+     7ac:	87 b3       	in	r24, 0x17	; 23
+     7ae:	80 62       	ori	r24, 0x20	; 32
+     7b0:	87 bb       	out	0x17, r24	; 23
+	sbi(DDRB, SCK_PIN);
+     7b2:	87 b3       	in	r24, 0x17	; 23
+     7b4:	80 68       	ori	r24, 0x80	; 128
+     7b6:	87 bb       	out	0x17, r24	; 23
+	sbi(DDRB, SS);           // ??m b?o SS l? OUTPUT ?? gi? ch? ?? Master
+     7b8:	87 b3       	in	r24, 0x17	; 23
+     7ba:	80 61       	ori	r24, 0x10	; 16
+     7bc:	87 bb       	out	0x17, r24	; 23
+	// B?t SPI, Master mode, fosc/4
+	SPCR = (1<<SPE) | (1<<MSTR);
+     7be:	80 e5       	ldi	r24, 0x50	; 80
+     7c0:	8d b9       	out	0x0d, r24	; 13
+     7c2:	08 95       	ret
+
+000007c4 <UART_init>:
+volatile bool UART_flag = false;
+volatile char UART_data = 0;
+
+void UART_init() {
+	// bat che do double speed
+	UCSRA |= (1 << U2X);
+     7c4:	8b b1       	in	r24, 0x0b	; 11
+     7c6:	82 60       	ori	r24, 0x02	; 2
+     7c8:	8b b9       	out	0x0b, r24	; 11
+	
+	// Set Baudrate
+	uint16_t ubrr = MYUBRR;
+	UBRRH = (uint8_t)(ubrr >> 8);
+     7ca:	10 bc       	out	0x20, r1	; 32
+	UBRRL = (uint8_t)ubrr;
+     7cc:	83 e3       	ldi	r24, 0x33	; 51
+     7ce:	89 b9       	out	0x09, r24	; 9
+
+	// enable chan RX va TX, cho phep ngat RX
+	UCSRB = (1 << RXEN) | (1 << TXEN) | (1 << RXCIE);
+     7d0:	88 e9       	ldi	r24, 0x98	; 152
+     7d2:	8a b9       	out	0x0a, r24	; 10
+
+	// Che do khong dong bo, khong parity bit, frame truyen 8 bit, 1 stop bit.
+	UCSRC = (1 << URSEL) | (1 << UCSZ1) | (1 << UCSZ0);
+     7d4:	86 e8       	ldi	r24, 0x86	; 134
+     7d6:	80 bd       	out	0x20, r24	; 32
+     7d8:	08 95       	ret
+
+000007da <__vector_11>:
+}
+
+ISR(USART_RXC_vect) {
+     7da:	1f 92       	push	r1
+     7dc:	0f 92       	push	r0
+     7de:	0f b6       	in	r0, 0x3f	; 63
+     7e0:	0f 92       	push	r0
+     7e2:	11 24       	eor	r1, r1
+     7e4:	8f 93       	push	r24
+     7e6:	9f 93       	push	r25
+     7e8:	ef 93       	push	r30
+     7ea:	ff 93       	push	r31
+	char received = UDR;
+     7ec:	9c b1       	in	r25, 0x0c	; 12
+
+	if (!UART_flag) {
+     7ee:	80 91 f0 01 	lds	r24, 0x01F0	; 0x8001f0 <__data_end>
+     7f2:	81 11       	cpse	r24, r1
+     7f4:	1f c0       	rjmp	.+62     	; 0x834 <__vector_11+0x5a>
+		if (received == ',') {
+     7f6:	9c 32       	cpi	r25, 0x2C	; 44
+     7f8:	61 f4       	brne	.+24     	; 0x812 <__vector_11+0x38>
+			uart_buffer[uart_index] = '\0'; // Ket thuc chuoi
+     7fa:	e0 91 f1 01 	lds	r30, 0x01F1	; 0x8001f1 <uart_index>
+     7fe:	f0 e0       	ldi	r31, 0x00	; 0
+     800:	e2 50       	subi	r30, 0x02	; 2
+     802:	fe 4f       	sbci	r31, 0xFE	; 254
+     804:	10 82       	st	Z, r1
+			UART_flag = true;              // Danh dau de co ngat la da nhan xong va xu ly chuoi
+     806:	81 e0       	ldi	r24, 0x01	; 1
+     808:	80 93 f0 01 	sts	0x01F0, r24	; 0x8001f0 <__data_end>
+			uart_index = 0;
+     80c:	10 92 f1 01 	sts	0x01F1, r1	; 0x8001f1 <uart_index>
+     810:	11 c0       	rjmp	.+34     	; 0x834 <__vector_11+0x5a>
+		} else {
+			if (uart_index < UART_BUFFER_SIZE - 1) {
+     812:	80 91 f1 01 	lds	r24, 0x01F1	; 0x8001f1 <uart_index>
+     816:	8f 31       	cpi	r24, 0x1F	; 31
+     818:	58 f4       	brcc	.+22     	; 0x830 <__vector_11+0x56>
+				uart_buffer[uart_index++] = received;
+     81a:	e0 91 f1 01 	lds	r30, 0x01F1	; 0x8001f1 <uart_index>
+     81e:	81 e0       	ldi	r24, 0x01	; 1
+     820:	8e 0f       	add	r24, r30
+     822:	80 93 f1 01 	sts	0x01F1, r24	; 0x8001f1 <uart_index>
+     826:	f0 e0       	ldi	r31, 0x00	; 0
+     828:	e2 50       	subi	r30, 0x02	; 2
+     82a:	fe 4f       	sbci	r31, 0xFE	; 254
+     82c:	90 83       	st	Z, r25
+     82e:	02 c0       	rjmp	.+4      	; 0x834 <__vector_11+0x5a>
+			} else {
+				uart_index = 0; // Reset neu gui chuoi qua dai
+     830:	10 92 f1 01 	sts	0x01F1, r1	; 0x8001f1 <uart_index>
+			}
+		}
+	}
+
+}
+     834:	ff 91       	pop	r31
+     836:	ef 91       	pop	r30
+     838:	9f 91       	pop	r25
+     83a:	8f 91       	pop	r24
+     83c:	0f 90       	pop	r0
+     83e:	0f be       	out	0x3f, r0	; 63
+     840:	0f 90       	pop	r0
+     842:	1f 90       	pop	r1
+     844:	18 95       	reti
+
+00000846 <UART_sendChar>:
+
+void UART_sendChar(char data)
+{
+	while (!(UCSRA & (1 << UDRE))); //Doi den khi thanh ghi du lieu UDR trong
+     846:	5d 9b       	sbis	0x0b, 5	; 11
+     848:	fe cf       	rjmp	.-4      	; 0x846 <UART_sendChar>
+	UDR = data;
+     84a:	8c b9       	out	0x0c, r24	; 12
+     84c:	08 95       	ret
+
+0000084e <UART_sendString>:
+}
+
+void UART_sendString(const char* str)
+{
+     84e:	cf 93       	push	r28
+     850:	df 93       	push	r29
+     852:	ec 01       	movw	r28, r24
+	while (*str)
+     854:	03 c0       	rjmp	.+6      	; 0x85c <UART_sendString+0xe>
+	{
+		UART_sendChar(*str++);
+     856:	21 96       	adiw	r28, 0x01	; 1
+     858:	0e 94 23 04 	call	0x846	; 0x846 <UART_sendChar>
+	UDR = data;
+}
+
+void UART_sendString(const char* str)
+{
+	while (*str)
+     85c:	88 81       	ld	r24, Y
+     85e:	81 11       	cpse	r24, r1
+     860:	fa cf       	rjmp	.-12     	; 0x856 <UART_sendString+0x8>
+	{
+		UART_sendChar(*str++);
+	}
+}
+     862:	df 91       	pop	r29
+     864:	cf 91       	pop	r28
+     866:	08 95       	ret
+
+00000868 <I2C_init>:
+#include <i2c.h>
+
+void I2C_init(void) {
+    // Đặt tốc độ SCL theo công thức: SCL frequency = F_CPU / (16 + 2 * TWBR * Prescaler)
+    TWSR = 0x00; // Prescaler là 1 
+     868:	11 b8       	out	0x01, r1	; 1
+    TWBR = (F_CPU / SCL_CLOCK - 16) / 2; // Tính giá trị TWBR
+     86a:	8d ef       	ldi	r24, 0xFD	; 253
+     86c:	80 b9       	out	0x00, r24	; 0
+    TWCR = (1 << TWEN); // Kích hoạt I2C
+     86e:	84 e0       	ldi	r24, 0x04	; 4
+     870:	86 bf       	out	0x36, r24	; 54
+     872:	08 95       	ret
+
+00000874 <I2C_start>:
+}
+
+void I2C_start(void) {
+    TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT); // Bắt đầu truyền
+     874:	84 ea       	ldi	r24, 0xA4	; 164
+     876:	86 bf       	out	0x36, r24	; 54
+    while (!(TWCR & (1 << TWINT))); // Chờ quá trình bắt đầu
+     878:	06 b6       	in	r0, 0x36	; 54
+     87a:	07 fe       	sbrs	r0, 7
+     87c:	fd cf       	rjmp	.-6      	; 0x878 <I2C_start+0x4>
+}
+     87e:	08 95       	ret
+
+00000880 <I2C_stop>:
+
+void I2C_stop(void) {
+    TWCR = (1 << TWSTO) | (1 << TWEN) | (1 << TWINT); // Kết thúc truyền
+     880:	84 e9       	ldi	r24, 0x94	; 148
+     882:	86 bf       	out	0x36, r24	; 54
+     884:	08 95       	ret
+
+00000886 <I2C_write>:
+}
+
+void I2C_write(uint8_t data) {
+    TWDR = data; // Đưa dữ liệu vào thanh ghi
+     886:	83 b9       	out	0x03, r24	; 3
+    TWCR = (1 << TWEN) | (1 << TWINT); // Truyền dữ liệu
+     888:	84 e8       	ldi	r24, 0x84	; 132
+     88a:	86 bf       	out	0x36, r24	; 54
+    while (!(TWCR & (1 << TWINT))); // Chờ quá trình truyền xong
+     88c:	06 b6       	in	r0, 0x36	; 54
+     88e:	07 fe       	sbrs	r0, 7
+     890:	fd cf       	rjmp	.-6      	; 0x88c <I2C_write+0x6>
+}
+     892:	08 95       	ret
+
+00000894 <LCD_sendCommand>:
+	} else if (a == DISPLAY && b == RIGHT) {
+		LCD_sendCommand(0x1C); // Dich chuyen toan bo ky tu sang phai
+	} else if (a == CURSOR && b == LEFT) {
+		LCD_sendCommand(0x10); // Dich chuyen vi tri con tro sang trai
+	} else if(a == CURSOR && b == RIGHT) {
+		LCD_sendCommand(0x14); // Dich chuyen vi tri con tro sang phai
+     894:	cf 93       	push	r28
+     896:	df 93       	push	r29
+     898:	c0 91 f2 01 	lds	r28, 0x01F2	; 0x8001f2 <backlight_state>
+     89c:	d8 2f       	mov	r29, r24
+     89e:	d0 7f       	andi	r29, 0xF0	; 240
+     8a0:	dc 2b       	or	r29, r28
+     8a2:	20 e1       	ldi	r18, 0x10	; 16
+     8a4:	82 9f       	mul	r24, r18
+     8a6:	c0 01       	movw	r24, r0
+     8a8:	11 24       	eor	r1, r1
+     8aa:	c8 2b       	or	r28, r24
+     8ac:	0e 94 3a 04 	call	0x874	; 0x874 <I2C_start>
+     8b0:	8e e4       	ldi	r24, 0x4E	; 78
+     8b2:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8b6:	8d 2f       	mov	r24, r29
+     8b8:	84 60       	ori	r24, 0x04	; 4
+     8ba:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8be:	8d 2f       	mov	r24, r29
+     8c0:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8c4:	0e 94 40 04 	call	0x880	; 0x880 <I2C_stop>
+     8c8:	0e 94 3a 04 	call	0x874	; 0x874 <I2C_start>
+     8cc:	8e e4       	ldi	r24, 0x4E	; 78
+     8ce:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8d2:	8c 2f       	mov	r24, r28
+     8d4:	84 60       	ori	r24, 0x04	; 4
+     8d6:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8da:	8c 2f       	mov	r24, r28
+     8dc:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     8e0:	0e 94 40 04 	call	0x880	; 0x880 <I2C_stop>
+     8e4:	df 91       	pop	r29
+     8e6:	cf 91       	pop	r28
+     8e8:	08 95       	ret
+
+000008ea <LCD_sendData>:
+     8ea:	0f 93       	push	r16
+     8ec:	1f 93       	push	r17
+     8ee:	cf 93       	push	r28
+     8f0:	df 93       	push	r29
+     8f2:	c0 91 f2 01 	lds	r28, 0x01F2	; 0x8001f2 <backlight_state>
+     8f6:	d8 2f       	mov	r29, r24
+     8f8:	d0 7f       	andi	r29, 0xF0	; 240
+     8fa:	dc 2b       	or	r29, r28
+     8fc:	0d 2f       	mov	r16, r29
+     8fe:	01 60       	ori	r16, 0x01	; 1
+     900:	20 e1       	ldi	r18, 0x10	; 16
+     902:	82 9f       	mul	r24, r18
+     904:	c0 01       	movw	r24, r0
+     906:	11 24       	eor	r1, r1
+     908:	c8 2b       	or	r28, r24
+     90a:	1c 2f       	mov	r17, r28
+     90c:	11 60       	ori	r17, 0x01	; 1
+     90e:	0e 94 3a 04 	call	0x874	; 0x874 <I2C_start>
+     912:	8e e4       	ldi	r24, 0x4E	; 78
+     914:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     918:	8d 2f       	mov	r24, r29
+     91a:	85 60       	ori	r24, 0x05	; 5
+     91c:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     920:	80 2f       	mov	r24, r16
+     922:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     926:	0e 94 40 04 	call	0x880	; 0x880 <I2C_stop>
+     92a:	0e 94 3a 04 	call	0x874	; 0x874 <I2C_start>
+     92e:	8e e4       	ldi	r24, 0x4E	; 78
+     930:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     934:	8c 2f       	mov	r24, r28
+     936:	85 60       	ori	r24, 0x05	; 5
+     938:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     93c:	81 2f       	mov	r24, r17
+     93e:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+     942:	0e 94 40 04 	call	0x880	; 0x880 <I2C_stop>
+     946:	df 91       	pop	r29
+     948:	cf 91       	pop	r28
+     94a:	1f 91       	pop	r17
+     94c:	0f 91       	pop	r16
+     94e:	08 95       	ret
+
+00000950 <LCD_print>:
+     950:	cf 93       	push	r28
+     952:	df 93       	push	r29
+     954:	ec 01       	movw	r28, r24
+     956:	03 c0       	rjmp	.+6      	; 0x95e <LCD_print+0xe>
+     958:	21 96       	adiw	r28, 0x01	; 1
+     95a:	0e 94 75 04 	call	0x8ea	; 0x8ea <LCD_sendData>
+     95e:	88 81       	ld	r24, Y
+     960:	81 11       	cpse	r24, r1
+     962:	fa cf       	rjmp	.-12     	; 0x958 <LCD_print+0x8>
+     964:	df 91       	pop	r29
+     966:	cf 91       	pop	r28
+     968:	08 95       	ret
+
+0000096a <LCD_clear>:
+     96a:	81 e0       	ldi	r24, 0x01	; 1
+     96c:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     970:	83 ef       	ldi	r24, 0xF3	; 243
+     972:	91 e0       	ldi	r25, 0x01	; 1
+     974:	01 97       	sbiw	r24, 0x01	; 1
+     976:	f1 f7       	brne	.-4      	; 0x974 <LCD_clear+0xa>
+     978:	00 c0       	rjmp	.+0      	; 0x97a <LCD_clear+0x10>
+     97a:	00 00       	nop
+     97c:	08 95       	ret
+
+0000097e <LCD_DisAndCurControl>:
+     97e:	81 11       	cpse	r24, r1
+     980:	06 c0       	rjmp	.+12     	; 0x98e <LCD_DisAndCurControl+0x10>
+     982:	61 11       	cpse	r22, r1
+     984:	04 c0       	rjmp	.+8      	; 0x98e <LCD_DisAndCurControl+0x10>
+     986:	88 e0       	ldi	r24, 0x08	; 8
+     988:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     98c:	08 95       	ret
+     98e:	88 23       	and	r24, r24
+     990:	31 f0       	breq	.+12     	; 0x99e <LCD_DisAndCurControl+0x20>
+     992:	61 11       	cpse	r22, r1
+     994:	04 c0       	rjmp	.+8      	; 0x99e <LCD_DisAndCurControl+0x20>
+     996:	8c e0       	ldi	r24, 0x0C	; 12
+     998:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     99c:	08 95       	ret
+     99e:	81 11       	cpse	r24, r1
+     9a0:	0e c0       	rjmp	.+28     	; 0x9be <LCD_DisAndCurControl+0x40>
+     9a2:	66 23       	and	r22, r22
+     9a4:	61 f0       	breq	.+24     	; 0x9be <LCD_DisAndCurControl+0x40>
+     9a6:	41 11       	cpse	r20, r1
+     9a8:	04 c0       	rjmp	.+8      	; 0x9b2 <LCD_DisAndCurControl+0x34>
+     9aa:	8a e0       	ldi	r24, 0x0A	; 10
+     9ac:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     9b0:	08 95       	ret
+     9b2:	44 23       	and	r20, r20
+     9b4:	99 f0       	breq	.+38     	; 0x9dc <LCD_DisAndCurControl+0x5e>
+     9b6:	8b e0       	ldi	r24, 0x0B	; 11
+     9b8:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     9bc:	08 95       	ret
+     9be:	88 23       	and	r24, r24
+     9c0:	69 f0       	breq	.+26     	; 0x9dc <LCD_DisAndCurControl+0x5e>
+     9c2:	66 23       	and	r22, r22
+     9c4:	59 f0       	breq	.+22     	; 0x9dc <LCD_DisAndCurControl+0x5e>
+     9c6:	41 11       	cpse	r20, r1
+     9c8:	04 c0       	rjmp	.+8      	; 0x9d2 <LCD_DisAndCurControl+0x54>
+     9ca:	8e e0       	ldi	r24, 0x0E	; 14
+     9cc:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     9d0:	08 95       	ret
+     9d2:	44 23       	and	r20, r20
+     9d4:	19 f0       	breq	.+6      	; 0x9dc <LCD_DisAndCurControl+0x5e>
+     9d6:	8f e0       	ldi	r24, 0x0F	; 15
+     9d8:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     9dc:	08 95       	ret
+
+000009de <LCD_Backlight>:
+	}
+}
+
+void LCD_Backlight(bool a) {
+	if (a==1) {
+     9de:	88 23       	and	r24, r24
+     9e0:	21 f0       	breq	.+8      	; 0x9ea <LCD_Backlight+0xc>
+		backlight_state = 0x08; // Dao trang thai cho chan p3 len 1
+     9e2:	88 e0       	ldi	r24, 0x08	; 8
+     9e4:	80 93 f2 01 	sts	0x01F2, r24	; 0x8001f2 <backlight_state>
+     9e8:	04 c0       	rjmp	.+8      	; 0x9f2 <LCD_Backlight+0x14>
+	} else if (a==0) {
+     9ea:	81 11       	cpse	r24, r1
+     9ec:	02 c0       	rjmp	.+4      	; 0x9f2 <LCD_Backlight+0x14>
+		backlight_state = 0x00; // Dao trang thai cho chan p3 ve 0
+     9ee:	10 92 f2 01 	sts	0x01F2, r1	; 0x8001f2 <backlight_state>
+	}
+	I2C_start();
+     9f2:	0e 94 3a 04 	call	0x874	; 0x874 <I2C_start>
+	I2C_write(LCD_I2C_ADDRESS << 1);
+     9f6:	8e e4       	ldi	r24, 0x4E	; 78
+     9f8:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+	I2C_write(backlight_state);
+     9fc:	80 91 f2 01 	lds	r24, 0x01F2	; 0x8001f2 <backlight_state>
+     a00:	0e 94 43 04 	call	0x886	; 0x886 <I2C_write>
+	I2C_stop();
+     a04:	0e 94 40 04 	call	0x880	; 0x880 <I2C_stop>
+     a08:	08 95       	ret
+
+00000a0a <LCD_setCursor>:
+}
+
+void LCD_setCursor(uint8_t col, uint8_t row) {
+	uint8_t address;
+	// Tính toán địa chỉ cho dòng 0 và dòng 1
+	if (row == 0) {
+     a0a:	61 11       	cpse	r22, r1
+     a0c:	02 c0       	rjmp	.+4      	; 0xa12 <LCD_setCursor+0x8>
+		address = 0x80 + col;  // Dòng 0
+     a0e:	80 58       	subi	r24, 0x80	; 128
+     a10:	01 c0       	rjmp	.+2      	; 0xa14 <LCD_setCursor+0xa>
+		} else {
+		address = 0xC0 + col;  // Dòng 1
+     a12:	80 54       	subi	r24, 0x40	; 64
+	}
+	LCD_sendCommand(address);  // Gửi lệnh đặt con trỏ
+     a14:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+     a18:	08 95       	ret
+
+00000a1a <LCD_init>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     a1a:	87 e8       	ldi	r24, 0x87	; 135
+     a1c:	93 e1       	ldi	r25, 0x13	; 19
+     a1e:	01 97       	sbiw	r24, 0x01	; 1
+     a20:	f1 f7       	brne	.-4      	; 0xa1e <LCD_init+0x4>
+     a22:	00 c0       	rjmp	.+0      	; 0xa24 <LCD_init+0xa>
+     a24:	00 00       	nop
+}
+
+void LCD_init() {
+		
+	_delay_ms(20);  
+	LCD_sendCommand (0x02);	
+     a26:	82 e0       	ldi	r24, 0x02	; 2
+     a28:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+	LCD_sendCommand (0x28); /* Khoi tao giao tiep 4bit, 2 dong ky tu, font 5x8  */
+     a2c:	88 e2       	ldi	r24, 0x28	; 40
+     a2e:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+	LCD_sendCommand (0x06);	/* Khoi tao huong di chuyen cua con tro sang phai */
+     a32:	86 e0       	ldi	r24, 0x06	; 6
+     a34:	0e 94 4a 04 	call	0x894	; 0x894 <LCD_sendCommand>
+	LCD_Backlight(1); /* Bat den nen */
+     a38:	81 e0       	ldi	r24, 0x01	; 1
+     a3a:	0e 94 ef 04 	call	0x9de	; 0x9de <LCD_Backlight>
+	LCD_DisAndCurControl(1,0,0); /* Display ON, Cursor OFF */	
+     a3e:	40 e0       	ldi	r20, 0x00	; 0
+     a40:	60 e0       	ldi	r22, 0x00	; 0
+     a42:	81 e0       	ldi	r24, 0x01	; 1
+     a44:	0e 94 bf 04 	call	0x97e	; 0x97e <LCD_DisAndCurControl>
+	LCD_clear(); /* Clear display */
+     a48:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_setCursor(0,0); /* Dua con tro ve hang 1 cot 1 */
+     a4c:	60 e0       	ldi	r22, 0x00	; 0
+     a4e:	80 e0       	ldi	r24, 0x00	; 0
+     a50:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+     a54:	08 95       	ret
+
+00000a56 <PWM_init>:
+
+#define F_CPU 1000000UL // Tần số CPU 1 MHz
+
+void PWM_init() {
+    // Cấu hình Timer1 ở chế độ Fast PWM, Gia tri top bang ICR1
+    TCCR1A|=(1<<COM1A1)|(1<<WGM11); //NON Inverted PWM
+     a56:	8f b5       	in	r24, 0x2f	; 47
+     a58:	82 68       	ori	r24, 0x82	; 130
+     a5a:	8f bd       	out	0x2f, r24	; 47
+
+    TCCR1B|=(1<<WGM13)|(1<<WGM12)|(1<<CS10); //Khong prescaler, xung clock 1MHz
+     a5c:	8e b5       	in	r24, 0x2e	; 46
+     a5e:	89 61       	ori	r24, 0x19	; 25
+     a60:	8e bd       	out	0x2e, r24	; 46
+
+    ICR1 = 19999;  // Đặt TOP = 20ms (tần số 50Hz)
+     a62:	8f e1       	ldi	r24, 0x1F	; 31
+     a64:	9e e4       	ldi	r25, 0x4E	; 78
+     a66:	97 bd       	out	0x27, r25	; 39
+     a68:	86 bd       	out	0x26, r24	; 38
+    DDRD |= (1 << PD5); // Đặt chân OC1A (PD5) làm output
+     a6a:	81 b3       	in	r24, 0x11	; 17
+     a6c:	80 62       	ori	r24, 0x20	; 32
+     a6e:	81 bb       	out	0x11, r24	; 17
+     a70:	08 95       	ret
+
+00000a72 <__vector_1>:
+
+
+//khai bao thiet bi RC522
+MFRC522_Dev rfid;
+
+ISR(INT0_vect) {
+     a72:	1f 92       	push	r1
+     a74:	0f 92       	push	r0
+     a76:	0f b6       	in	r0, 0x3f	; 63
+     a78:	0f 92       	push	r0
+     a7a:	11 24       	eor	r1, r1
+     a7c:	8f 93       	push	r24
+	INT0_flag = 1;
+     a7e:	81 e0       	ldi	r24, 0x01	; 1
+     a80:	80 93 f4 01 	sts	0x01F4, r24	; 0x8001f4 <INT0_flag>
+	if(door_state == 1) {
+     a84:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <door_state>
+     a88:	88 23       	and	r24, r24
+     a8a:	19 f0       	breq	.+6      	; 0xa92 <__vector_1+0x20>
+		door_state = 0;
+     a8c:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <door_state>
+     a90:	03 c0       	rjmp	.+6      	; 0xa98 <__vector_1+0x26>
+	} else {
+		door_state = 1;
+     a92:	81 e0       	ldi	r24, 0x01	; 1
+     a94:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <door_state>
+	}
+}
+     a98:	8f 91       	pop	r24
+     a9a:	0f 90       	pop	r0
+     a9c:	0f be       	out	0x3f, r0	; 63
+     a9e:	0f 90       	pop	r0
+     aa0:	1f 90       	pop	r1
+     aa2:	18 95       	reti
+
+00000aa4 <check_password>:
+
+
+// Ham thuc hien kiem tra mat khau
+bool check_password(const char *password, const char *correct_password)
+{
+	return strcmp(password, correct_password) == 0;
+     aa4:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+     aa8:	21 e0       	ldi	r18, 0x01	; 1
+     aaa:	89 2b       	or	r24, r25
+     aac:	09 f0       	breq	.+2      	; 0xab0 <check_password+0xc>
+     aae:	20 e0       	ldi	r18, 0x00	; 0
+}
+     ab0:	82 2f       	mov	r24, r18
+     ab2:	08 95       	ret
+
+00000ab4 <init_keypad>:
+
+void init_keypad()
+{
+     ab4:	cf 93       	push	r28
+     ab6:	df 93       	push	r29
+	// Cau hinh cac chan hang PORT A tu A4 - A7 va bat pull_down resistor
+	DDRA &= ~((1 << Row_pins[0]) | (1 << Row_pins[1]) | (1 << Row_pins[2]) | (1 << Row_pins[3])); // INPUT
+     ab8:	ca b3       	in	r28, 0x1a	; 26
+     aba:	e0 e7       	ldi	r30, 0x70	; 112
+     abc:	f0 e0       	ldi	r31, 0x00	; 0
+     abe:	81 e0       	ldi	r24, 0x01	; 1
+     ac0:	90 e0       	ldi	r25, 0x00	; 0
+     ac2:	9c 01       	movw	r18, r24
+     ac4:	00 80       	ld	r0, Z
+     ac6:	02 c0       	rjmp	.+4      	; 0xacc <init_keypad+0x18>
+     ac8:	22 0f       	add	r18, r18
+     aca:	33 1f       	adc	r19, r19
+     acc:	0a 94       	dec	r0
+     ace:	e2 f7       	brpl	.-8      	; 0xac8 <init_keypad+0x14>
+     ad0:	dc 01       	movw	r26, r24
+     ad2:	01 80       	ldd	r0, Z+1	; 0x01
+     ad4:	02 c0       	rjmp	.+4      	; 0xada <init_keypad+0x26>
+     ad6:	aa 0f       	add	r26, r26
+     ad8:	bb 1f       	adc	r27, r27
+     ada:	0a 94       	dec	r0
+     adc:	e2 f7       	brpl	.-8      	; 0xad6 <init_keypad+0x22>
+     ade:	bc 01       	movw	r22, r24
+     ae0:	02 80       	ldd	r0, Z+2	; 0x02
+     ae2:	02 c0       	rjmp	.+4      	; 0xae8 <init_keypad+0x34>
+     ae4:	66 0f       	add	r22, r22
+     ae6:	77 1f       	adc	r23, r23
+     ae8:	0a 94       	dec	r0
+     aea:	e2 f7       	brpl	.-8      	; 0xae4 <init_keypad+0x30>
+     aec:	ac 01       	movw	r20, r24
+     aee:	03 80       	ldd	r0, Z+3	; 0x03
+     af0:	02 c0       	rjmp	.+4      	; 0xaf6 <init_keypad+0x42>
+     af2:	44 0f       	add	r20, r20
+     af4:	55 1f       	adc	r21, r21
+     af6:	0a 94       	dec	r0
+     af8:	e2 f7       	brpl	.-8      	; 0xaf2 <init_keypad+0x3e>
+     afa:	2a 2b       	or	r18, r26
+     afc:	26 2b       	or	r18, r22
+     afe:	24 2b       	or	r18, r20
+     b00:	20 95       	com	r18
+     b02:	2c 23       	and	r18, r28
+     b04:	2a bb       	out	0x1a, r18	; 26
+	PORTA &= (1 << Row_pins[0]) | (1 << Row_pins[1]) | (1 << Row_pins[2]) | (1 << Row_pins[3]);  // pull_down resistor
+     b06:	2b b3       	in	r18, 0x1b	; 27
+     b08:	ec 01       	movw	r28, r24
+     b0a:	00 80       	ld	r0, Z
+     b0c:	02 c0       	rjmp	.+4      	; 0xb12 <init_keypad+0x5e>
+     b0e:	cc 0f       	add	r28, r28
+     b10:	dd 1f       	adc	r29, r29
+     b12:	0a 94       	dec	r0
+     b14:	e2 f7       	brpl	.-8      	; 0xb0e <init_keypad+0x5a>
+     b16:	ac 2b       	or	r26, r28
+     b18:	6a 2b       	or	r22, r26
+     b1a:	46 2b       	or	r20, r22
+     b1c:	42 23       	and	r20, r18
+     b1e:	4b bb       	out	0x1b, r20	; 27
+	
+	// Cau hinh cac chan cot PORTA tu A0 - A3 la OUTPUT va dat muc LOW
+	DDRA |= (1 << Col_pins[0]) | (1 << Col_pins[1]) | (1 << Col_pins[2]) | (1 << Col_pins[3]); // OUTPUT
+     b20:	ca b3       	in	r28, 0x1a	; 26
+     b22:	e4 e7       	ldi	r30, 0x74	; 116
+     b24:	f0 e0       	ldi	r31, 0x00	; 0
+     b26:	9c 01       	movw	r18, r24
+     b28:	00 80       	ld	r0, Z
+     b2a:	02 c0       	rjmp	.+4      	; 0xb30 <init_keypad+0x7c>
+     b2c:	22 0f       	add	r18, r18
+     b2e:	33 1f       	adc	r19, r19
+     b30:	0a 94       	dec	r0
+     b32:	e2 f7       	brpl	.-8      	; 0xb2c <init_keypad+0x78>
+     b34:	dc 01       	movw	r26, r24
+     b36:	01 80       	ldd	r0, Z+1	; 0x01
+     b38:	02 c0       	rjmp	.+4      	; 0xb3e <init_keypad+0x8a>
+     b3a:	aa 0f       	add	r26, r26
+     b3c:	bb 1f       	adc	r27, r27
+     b3e:	0a 94       	dec	r0
+     b40:	e2 f7       	brpl	.-8      	; 0xb3a <init_keypad+0x86>
+     b42:	bc 01       	movw	r22, r24
+     b44:	02 80       	ldd	r0, Z+2	; 0x02
+     b46:	02 c0       	rjmp	.+4      	; 0xb4c <init_keypad+0x98>
+     b48:	66 0f       	add	r22, r22
+     b4a:	77 1f       	adc	r23, r23
+     b4c:	0a 94       	dec	r0
+     b4e:	e2 f7       	brpl	.-8      	; 0xb48 <init_keypad+0x94>
+     b50:	ac 01       	movw	r20, r24
+     b52:	03 80       	ldd	r0, Z+3	; 0x03
+     b54:	02 c0       	rjmp	.+4      	; 0xb5a <init_keypad+0xa6>
+     b56:	44 0f       	add	r20, r20
+     b58:	55 1f       	adc	r21, r21
+     b5a:	0a 94       	dec	r0
+     b5c:	e2 f7       	brpl	.-8      	; 0xb56 <init_keypad+0xa2>
+     b5e:	2a 2b       	or	r18, r26
+     b60:	26 2b       	or	r18, r22
+     b62:	24 2b       	or	r18, r20
+     b64:	2c 2b       	or	r18, r28
+     b66:	2a bb       	out	0x1a, r18	; 26
+	PORTA &= ~((1 << Col_pins[0]) | (1 << Col_pins[1]) | (1 << Col_pins[2]) | (1 << Col_pins[3])); // LOW
+     b68:	2b b3       	in	r18, 0x1b	; 27
+     b6a:	00 80       	ld	r0, Z
+     b6c:	02 c0       	rjmp	.+4      	; 0xb72 <init_keypad+0xbe>
+     b6e:	88 0f       	add	r24, r24
+     b70:	99 1f       	adc	r25, r25
+     b72:	0a 94       	dec	r0
+     b74:	e2 f7       	brpl	.-8      	; 0xb6e <init_keypad+0xba>
+     b76:	8a 2b       	or	r24, r26
+     b78:	68 2b       	or	r22, r24
+     b7a:	46 2b       	or	r20, r22
+     b7c:	40 95       	com	r20
+     b7e:	42 23       	and	r20, r18
+     b80:	4b bb       	out	0x1b, r20	; 27
+}
+     b82:	df 91       	pop	r29
+     b84:	cf 91       	pop	r28
+     b86:	08 95       	ret
+
+00000b88 <INT0_init>:
+
+void INT0_init() {
+	// Cau hinh ngat INT0 ngat suon xuong
+	MCUCR |= (1 << ISC01);  // ISC01 = 1, ISC00 = 0 ? Falling edge
+     b88:	85 b7       	in	r24, 0x35	; 53
+     b8a:	82 60       	ori	r24, 0x02	; 2
+     b8c:	85 bf       	out	0x35, r24	; 53
+	MCUCR &= ~(1 << ISC00);
+     b8e:	85 b7       	in	r24, 0x35	; 53
+     b90:	8e 7f       	andi	r24, 0xFE	; 254
+     b92:	85 bf       	out	0x35, r24	; 53
+
+	// Enable INT0
+	GICR |= (1 << INT0);
+     b94:	8b b7       	in	r24, 0x3b	; 59
+     b96:	80 64       	ori	r24, 0x40	; 64
+     b98:	8b bf       	out	0x3b, r24	; 59
+
+	// Xoa co ngat INT0 neu co
+	GIFR |= (1 << INTF0);
+     b9a:	8a b7       	in	r24, 0x3a	; 58
+     b9c:	80 64       	ori	r24, 0x40	; 64
+     b9e:	8a bf       	out	0x3a, r24	; 58
+
+	// cau hinh INT0 la input, tro keo len
+	DDRD &= ~(1 << PD2);    
+     ba0:	81 b3       	in	r24, 0x11	; 17
+     ba2:	8b 7f       	andi	r24, 0xFB	; 251
+     ba4:	81 bb       	out	0x11, r24	; 17
+	PORTD |= (1 << PD2);    
+     ba6:	82 b3       	in	r24, 0x12	; 18
+     ba8:	84 60       	ori	r24, 0x04	; 4
+     baa:	82 bb       	out	0x12, r24	; 18
+     bac:	08 95       	ret
+
+00000bae <Pass_word_init>:
+}
+
+void Pass_word_init() {
+	 uint8_t flag = eeprom_read_byte(&password_flag);
+     bae:	80 e0       	ldi	r24, 0x00	; 0
+     bb0:	90 e0       	ldi	r25, 0x00	; 0
+     bb2:	0e 94 d3 0e 	call	0x1da6	; 0x1da6 <eeprom_read_byte>
+	if(flag != 0xAA) {
+     bb6:	8a 3a       	cpi	r24, 0xAA	; 170
+     bb8:	69 f0       	breq	.+26     	; 0xbd4 <Pass_word_init+0x26>
+		eeprom_write_block((const void *)default_password, (void *)right_password, MAX_LENGTH);
+     bba:	44 e0       	ldi	r20, 0x04	; 4
+     bbc:	50 e0       	ldi	r21, 0x00	; 0
+     bbe:	61 e0       	ldi	r22, 0x01	; 1
+     bc0:	70 e0       	ldi	r23, 0x00	; 0
+     bc2:	88 e7       	ldi	r24, 0x78	; 120
+     bc4:	90 e0       	ldi	r25, 0x00	; 0
+     bc6:	0e 94 fc 0e 	call	0x1df8	; 0x1df8 <eeprom_write_block>
+		eeprom_write_byte(&password_flag, 0xAA);
+     bca:	6a ea       	ldi	r22, 0xAA	; 170
+     bcc:	80 e0       	ldi	r24, 0x00	; 0
+     bce:	90 e0       	ldi	r25, 0x00	; 0
+     bd0:	0e 94 06 0f 	call	0x1e0c	; 0x1e0c <eeprom_write_byte>
+     bd4:	08 95       	ret
+
+00000bd6 <press_check>:
+}
+
+uint8_t press_check(void) {
+	uint8_t a=0; 
+
+	for (int i = 0; i < 4; i++) {
+     bd6:	a0 e0       	ldi	r26, 0x00	; 0
+     bd8:	b0 e0       	ldi	r27, 0x00	; 0
+     bda:	5f c0       	rjmp	.+190    	; 0xc9a <press_check+0xc4>
+		// Thuc hien vong quet dua lan luot cac chan COLUM len muc cao
+		COL_SET |= (1 << Col_pins[i]);
+     bdc:	2b b3       	in	r18, 0x1b	; 27
+     bde:	81 e0       	ldi	r24, 0x01	; 1
+     be0:	90 e0       	ldi	r25, 0x00	; 0
+     be2:	fd 01       	movw	r30, r26
+     be4:	ec 58       	subi	r30, 0x8C	; 140
+     be6:	ff 4f       	sbci	r31, 0xFF	; 255
+     be8:	00 80       	ld	r0, Z
+     bea:	02 c0       	rjmp	.+4      	; 0xbf0 <press_check+0x1a>
+     bec:	88 0f       	add	r24, r24
+     bee:	99 1f       	adc	r25, r25
+     bf0:	0a 94       	dec	r0
+     bf2:	e2 f7       	brpl	.-8      	; 0xbec <press_check+0x16>
+     bf4:	82 2b       	or	r24, r18
+     bf6:	8b bb       	out	0x1b, r24	; 27
+     bf8:	89 ef       	ldi	r24, 0xF9	; 249
+     bfa:	90 e0       	ldi	r25, 0x00	; 0
+     bfc:	01 97       	sbiw	r24, 0x01	; 1
+     bfe:	f1 f7       	brne	.-4      	; 0xbfc <press_check+0x26>
+     c00:	00 c0       	rjmp	.+0      	; 0xc02 <press_check+0x2c>
+     c02:	00 00       	nop
+		_delay_ms(1);
+
+		for (int j = 0; j < 4; j++) {
+     c04:	40 e0       	ldi	r20, 0x00	; 0
+     c06:	50 e0       	ldi	r21, 0x00	; 0
+     c08:	35 c0       	rjmp	.+106    	; 0xc74 <press_check+0x9e>
+			// Thuc hien vong quet lan luot kiem tra tin hieu cac chan ROW
+			if (( ROW_SET & (1 << Row_pins[j]) )>0) { 
+     c0a:	69 b3       	in	r22, 0x19	; 25
+     c0c:	81 e0       	ldi	r24, 0x01	; 1
+     c0e:	90 e0       	ldi	r25, 0x00	; 0
+     c10:	fa 01       	movw	r30, r20
+     c12:	e0 59       	subi	r30, 0x90	; 144
+     c14:	ff 4f       	sbci	r31, 0xFF	; 255
+     c16:	9c 01       	movw	r18, r24
+     c18:	00 80       	ld	r0, Z
+     c1a:	02 c0       	rjmp	.+4      	; 0xc20 <press_check+0x4a>
+     c1c:	22 0f       	add	r18, r18
+     c1e:	33 1f       	adc	r19, r19
+     c20:	0a 94       	dec	r0
+     c22:	e2 f7       	brpl	.-8      	; 0xc1c <press_check+0x46>
+     c24:	86 2f       	mov	r24, r22
+     c26:	90 e0       	ldi	r25, 0x00	; 0
+     c28:	82 23       	and	r24, r18
+     c2a:	93 23       	and	r25, r19
+     c2c:	18 16       	cp	r1, r24
+     c2e:	19 06       	cpc	r1, r25
+     c30:	fc f4       	brge	.+62     	; 0xc70 <press_check+0x9a>
+				a = key_maps[j][i]; // Lay gia tri cua chan COLUM va ROW tuong ung duoc nhan
+     c32:	fa 01       	movw	r30, r20
+     c34:	ee 0f       	add	r30, r30
+     c36:	ff 1f       	adc	r31, r31
+     c38:	ee 0f       	add	r30, r30
+     c3a:	ff 1f       	adc	r31, r31
+     c3c:	e0 5a       	subi	r30, 0xA0	; 160
+     c3e:	ff 4f       	sbci	r31, 0xFF	; 255
+     c40:	ea 0f       	add	r30, r26
+     c42:	fb 1f       	adc	r31, r27
+     c44:	80 81       	ld	r24, Z
+     c46:	e3 e2       	ldi	r30, 0x23	; 35
+     c48:	f4 ef       	ldi	r31, 0xF4	; 244
+     c4a:	31 97       	sbiw	r30, 0x01	; 1
+     c4c:	f1 f7       	brne	.-4      	; 0xc4a <press_check+0x74>
+     c4e:	00 c0       	rjmp	.+0      	; 0xc50 <press_check+0x7a>
+     c50:	00 00       	nop
+				_delay_ms(250);             // Delay tranh doi phim
+				COL_SET &= ~(1 << Col_pins[i]); // Keo tin hieu cua chan COLUM xuong muc thap
+     c52:	9b b3       	in	r25, 0x1b	; 27
+     c54:	ac 58       	subi	r26, 0x8C	; 140
+     c56:	bf 4f       	sbci	r27, 0xFF	; 255
+     c58:	21 e0       	ldi	r18, 0x01	; 1
+     c5a:	30 e0       	ldi	r19, 0x00	; 0
+     c5c:	0c 90       	ld	r0, X
+     c5e:	02 c0       	rjmp	.+4      	; 0xc64 <press_check+0x8e>
+     c60:	22 0f       	add	r18, r18
+     c62:	33 1f       	adc	r19, r19
+     c64:	0a 94       	dec	r0
+     c66:	e2 f7       	brpl	.-8      	; 0xc60 <press_check+0x8a>
+     c68:	20 95       	com	r18
+     c6a:	29 23       	and	r18, r25
+     c6c:	2b bb       	out	0x1b, r18	; 27
+				return a;           // Tra ve gia tri cua nut nhan tuong ung
+     c6e:	08 95       	ret
+	for (int i = 0; i < 4; i++) {
+		// Thuc hien vong quet dua lan luot cac chan COLUM len muc cao
+		COL_SET |= (1 << Col_pins[i]);
+		_delay_ms(1);
+
+		for (int j = 0; j < 4; j++) {
+     c70:	4f 5f       	subi	r20, 0xFF	; 255
+     c72:	5f 4f       	sbci	r21, 0xFF	; 255
+     c74:	44 30       	cpi	r20, 0x04	; 4
+     c76:	51 05       	cpc	r21, r1
+     c78:	44 f2       	brlt	.-112    	; 0xc0a <press_check+0x34>
+				COL_SET &= ~(1 << Col_pins[i]); // Keo tin hieu cua chan COLUM xuong muc thap
+				return a;           // Tra ve gia tri cua nut nhan tuong ung
+			}
+		}
+		// Keo tin hieu cua chan COLUM xuong muc thap
+		COL_SET &= ~(1 << Col_pins[i]);
+     c7a:	2b b3       	in	r18, 0x1b	; 27
+     c7c:	fd 01       	movw	r30, r26
+     c7e:	ec 58       	subi	r30, 0x8C	; 140
+     c80:	ff 4f       	sbci	r31, 0xFF	; 255
+     c82:	81 e0       	ldi	r24, 0x01	; 1
+     c84:	90 e0       	ldi	r25, 0x00	; 0
+     c86:	00 80       	ld	r0, Z
+     c88:	02 c0       	rjmp	.+4      	; 0xc8e <press_check+0xb8>
+     c8a:	88 0f       	add	r24, r24
+     c8c:	99 1f       	adc	r25, r25
+     c8e:	0a 94       	dec	r0
+     c90:	e2 f7       	brpl	.-8      	; 0xc8a <press_check+0xb4>
+     c92:	80 95       	com	r24
+     c94:	82 23       	and	r24, r18
+     c96:	8b bb       	out	0x1b, r24	; 27
+}
+
+uint8_t press_check(void) {
+	uint8_t a=0; 
+
+	for (int i = 0; i < 4; i++) {
+     c98:	11 96       	adiw	r26, 0x01	; 1
+     c9a:	a4 30       	cpi	r26, 0x04	; 4
+     c9c:	b1 05       	cpc	r27, r1
+     c9e:	0c f4       	brge	.+2      	; 0xca2 <press_check+0xcc>
+     ca0:	9d cf       	rjmp	.-198    	; 0xbdc <press_check+0x6>
+		}
+		// Keo tin hieu cua chan COLUM xuong muc thap
+		COL_SET &= ~(1 << Col_pins[i]);
+	}
+
+	return 100; //Tra ve mot gia tri rac khi khong co nut nao duoc nhan
+     ca2:	84 e6       	ldi	r24, 0x64	; 100
+}
+     ca4:	08 95       	ret
+
+00000ca6 <set_new_password>:
+
+uint8_t set_new_password(char *correct_password)
+{
+     ca6:	ef 92       	push	r14
+     ca8:	ff 92       	push	r15
+     caa:	0f 93       	push	r16
+     cac:	1f 93       	push	r17
+     cae:	cf 93       	push	r28
+     cb0:	df 93       	push	r29
+     cb2:	cd b7       	in	r28, 0x3d	; 61
+     cb4:	de b7       	in	r29, 0x3e	; 62
+     cb6:	2a 97       	sbiw	r28, 0x0a	; 10
+     cb8:	0f b6       	in	r0, 0x3f	; 63
+     cba:	f8 94       	cli
+     cbc:	de bf       	out	0x3e, r29	; 62
+     cbe:	0f be       	out	0x3f, r0	; 63
+     cc0:	cd bf       	out	0x3d, r28	; 61
+     cc2:	7c 01       	movw	r14, r24
+  char current_password[MAX_LENGTH + 1]; // Mang luu tru mat khau hien tai
+  char new_password[MAX_LENGTH + 1];     // Mang luu tru mat khau moi
+  
+  // Thuc hien nhay coi bao vao chuong trinh nhap mat khau moi
+  PORTD |= (1<<PD6);
+     cc4:	82 b3       	in	r24, 0x12	; 18
+     cc6:	80 64       	ori	r24, 0x40	; 64
+     cc8:	82 bb       	out	0x12, r24	; 18
+     cca:	83 e2       	ldi	r24, 0x23	; 35
+     ccc:	94 ef       	ldi	r25, 0xF4	; 244
+     cce:	01 97       	sbiw	r24, 0x01	; 1
+     cd0:	f1 f7       	brne	.-4      	; 0xcce <set_new_password+0x28>
+     cd2:	00 c0       	rjmp	.+0      	; 0xcd4 <set_new_password+0x2e>
+     cd4:	00 00       	nop
+  _delay_ms(250);
+  PORTD &= ~(1<<PD6);
+     cd6:	82 b3       	in	r24, 0x12	; 18
+     cd8:	8f 7b       	andi	r24, 0xBF	; 191
+     cda:	82 bb       	out	0x12, r24	; 18
+     cdc:	e1 e1       	ldi	r30, 0x11	; 17
+     cde:	fa e7       	ldi	r31, 0x7A	; 122
+     ce0:	31 97       	sbiw	r30, 0x01	; 1
+     ce2:	f1 f7       	brne	.-4      	; 0xce0 <set_new_password+0x3a>
+     ce4:	00 c0       	rjmp	.+0      	; 0xce6 <set_new_password+0x40>
+     ce6:	00 00       	nop
+  _delay_ms(125);
+  for(uint8_t i=0;i<2;i++){
+     ce8:	80 e0       	ldi	r24, 0x00	; 0
+     cea:	13 c0       	rjmp	.+38     	; 0xd12 <set_new_password+0x6c>
+	  PORTD |= (1<<PD6);
+     cec:	92 b3       	in	r25, 0x12	; 18
+     cee:	90 64       	ori	r25, 0x40	; 64
+     cf0:	92 bb       	out	0x12, r25	; 18
+     cf2:	e1 e1       	ldi	r30, 0x11	; 17
+     cf4:	fa e7       	ldi	r31, 0x7A	; 122
+     cf6:	31 97       	sbiw	r30, 0x01	; 1
+     cf8:	f1 f7       	brne	.-4      	; 0xcf6 <set_new_password+0x50>
+     cfa:	00 c0       	rjmp	.+0      	; 0xcfc <set_new_password+0x56>
+     cfc:	00 00       	nop
+	  _delay_ms(125);
+	  PORTD &= ~(1<<PD6);
+     cfe:	92 b3       	in	r25, 0x12	; 18
+     d00:	9f 7b       	andi	r25, 0xBF	; 191
+     d02:	92 bb       	out	0x12, r25	; 18
+     d04:	e1 e1       	ldi	r30, 0x11	; 17
+     d06:	fa e7       	ldi	r31, 0x7A	; 122
+     d08:	31 97       	sbiw	r30, 0x01	; 1
+     d0a:	f1 f7       	brne	.-4      	; 0xd08 <set_new_password+0x62>
+     d0c:	00 c0       	rjmp	.+0      	; 0xd0e <set_new_password+0x68>
+     d0e:	00 00       	nop
+  // Thuc hien nhay coi bao vao chuong trinh nhap mat khau moi
+  PORTD |= (1<<PD6);
+  _delay_ms(250);
+  PORTD &= ~(1<<PD6);
+  _delay_ms(125);
+  for(uint8_t i=0;i<2;i++){
+     d10:	8f 5f       	subi	r24, 0xFF	; 255
+     d12:	82 30       	cpi	r24, 0x02	; 2
+     d14:	58 f3       	brcs	.-42     	; 0xcec <set_new_password+0x46>
+	  _delay_ms(125);
+	  PORTD &= ~(1<<PD6);
+	  _delay_ms(125);
+  }
+  
+  LCD_clear();
+     d16:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+  LCD_print("Enter old pass:");
+     d1a:	8e e8       	ldi	r24, 0x8E	; 142
+     d1c:	90 e0       	ldi	r25, 0x00	; 0
+     d1e:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+  LCD_setCursor(0, 1);
+     d22:	61 e0       	ldi	r22, 0x01	; 1
+     d24:	80 e0       	ldi	r24, 0x00	; 0
+     d26:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+  LCD_print("     ");
+     d2a:	8e e9       	ldi	r24, 0x9E	; 158
+     d2c:	90 e0       	ldi	r25, 0x00	; 0
+     d2e:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+  
+  int current_length = 0; //Bien luu tru do dai mat khau hien tai
+     d32:	00 e0       	ldi	r16, 0x00	; 0
+     d34:	10 e0       	ldi	r17, 0x00	; 0
+  while (current_length < MAX_LENGTH)
+     d36:	74 c0       	rjmp	.+232    	; 0xe20 <set_new_password+0x17a>
+    {
+      uint8_t key = press_check(); // Bien luu tru gia tri tra ve ham nhan nut
+     d38:	0e 94 eb 05 	call	0xbd6	; 0xbd6 <press_check>
+	  
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc nhan khong?
+     d3c:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <INT0_flag>
+     d40:	91 11       	cpse	r25, r1
+     d42:	a5 c1       	rjmp	.+842    	; 0x108e <set_new_password+0x3e8>
+		  return 2;
+	  }
+	  if(UART_flag) { //Kiem tra xem co task duoc gui tu esp khong?
+     d44:	90 91 f0 01 	lds	r25, 0x01F0	; 0x8001f0 <__data_end>
+     d48:	91 11       	cpse	r25, r1
+     d4a:	a3 c1       	rjmp	.+838    	; 0x1092 <set_new_password+0x3ec>
+		  return 3;
+	  }
+	  
+      if (key != 100) {
+     d4c:	84 36       	cpi	r24, 0x64	; 100
+     d4e:	09 f4       	brne	.+2      	; 0xd52 <set_new_password+0xac>
+     d50:	67 c0       	rjmp	.+206    	; 0xe20 <set_new_password+0x17a>
+		  
+		  //Neu co phim duoc nhan
+		  PORTD |= (1<<PD6);
+     d52:	92 b3       	in	r25, 0x12	; 18
+     d54:	90 64       	ori	r25, 0x40	; 64
+     d56:	92 bb       	out	0x12, r25	; 18
+     d58:	e1 e1       	ldi	r30, 0x11	; 17
+     d5a:	fa e7       	ldi	r31, 0x7A	; 122
+     d5c:	31 97       	sbiw	r30, 0x01	; 1
+     d5e:	f1 f7       	brne	.-4      	; 0xd5c <set_new_password+0xb6>
+     d60:	00 c0       	rjmp	.+0      	; 0xd62 <set_new_password+0xbc>
+     d62:	00 00       	nop
+		  _delay_ms(125);
+		  PORTD &= ~(1<<PD6);
+     d64:	92 b3       	in	r25, 0x12	; 18
+     d66:	9f 7b       	andi	r25, 0xBF	; 191
+     d68:	92 bb       	out	0x12, r25	; 18
+		  
+          if (key == 10)
+     d6a:	8a 30       	cpi	r24, 0x0A	; 10
+     d6c:	b1 f4       	brne	.+44     	; 0xd9a <set_new_password+0xf4>
+            { // Phim xoa so truoc do duoc nhap
+              if (current_length > 0)
+     d6e:	10 16       	cp	r1, r16
+     d70:	11 06       	cpc	r1, r17
+     d72:	0c f0       	brlt	.+2      	; 0xd76 <set_new_password+0xd0>
+     d74:	55 c0       	rjmp	.+170    	; 0xe20 <set_new_password+0x17a>
+                {
+                  current_length--;
+     d76:	01 50       	subi	r16, 0x01	; 1
+     d78:	11 09       	sbc	r17, r1
+                  current_password[current_length] = 0; // THuc hien xoa ky tu cuoi cung
+     d7a:	e1 e0       	ldi	r30, 0x01	; 1
+     d7c:	f0 e0       	ldi	r31, 0x00	; 0
+     d7e:	ec 0f       	add	r30, r28
+     d80:	fd 1f       	adc	r31, r29
+     d82:	e0 0f       	add	r30, r16
+     d84:	f1 1f       	adc	r31, r17
+     d86:	10 82       	st	Z, r1
+                  
+                  LCD_setCursor(current_length, 1);
+     d88:	61 e0       	ldi	r22, 0x01	; 1
+     d8a:	80 2f       	mov	r24, r16
+     d8c:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print(" "); // Xoa ky tu cuoi cung tren LCD
+     d90:	82 ea       	ldi	r24, 0xA2	; 162
+     d92:	90 e0       	ldi	r25, 0x00	; 0
+     d94:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+     d98:	43 c0       	rjmp	.+134    	; 0xe20 <set_new_password+0x17a>
+                                  
+                }
+            }
+          else if (key == 13)
+     d9a:	8d 30       	cpi	r24, 0x0D	; 13
+     d9c:	19 f5       	brne	.+70     	; 0xde4 <set_new_password+0x13e>
+            { // Phim ENTER duoc nhan
+
+              if (current_length != MAX_LENGTH)
+     d9e:	04 30       	cpi	r16, 0x04	; 4
+     da0:	11 05       	cpc	r17, r1
+     da2:	09 f4       	brne	.+2      	; 0xda6 <set_new_password+0x100>
+     da4:	41 c0       	rjmp	.+130    	; 0xe28 <set_new_password+0x182>
+                {
+                      
+                      LCD_clear();
+     da6:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                      LCD_print("Password length");
+     daa:	84 ea       	ldi	r24, 0xA4	; 164
+     dac:	90 e0       	ldi	r25, 0x00	; 0
+     dae:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+                      LCD_setCursor(0, 1);
+     db2:	61 e0       	ldi	r22, 0x01	; 1
+     db4:	80 e0       	ldi	r24, 0x00	; 0
+     db6:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                      LCD_print("must be 4 digits!");
+     dba:	84 eb       	ldi	r24, 0xB4	; 180
+     dbc:	90 e0       	ldi	r25, 0x00	; 0
+     dbe:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+                      
+					  PORTD |= (1<<PD6);
+     dc2:	82 b3       	in	r24, 0x12	; 18
+     dc4:	80 64       	ori	r24, 0x40	; 64
+     dc6:	82 bb       	out	0x12, r24	; 18
+     dc8:	ff ed       	ldi	r31, 0xDF	; 223
+     dca:	23 e9       	ldi	r18, 0x93	; 147
+     dcc:	84 e0       	ldi	r24, 0x04	; 4
+     dce:	f1 50       	subi	r31, 0x01	; 1
+     dd0:	20 40       	sbci	r18, 0x00	; 0
+     dd2:	80 40       	sbci	r24, 0x00	; 0
+     dd4:	e1 f7       	brne	.-8      	; 0xdce <set_new_password+0x128>
+     dd6:	00 c0       	rjmp	.+0      	; 0xdd8 <set_new_password+0x132>
+     dd8:	00 00       	nop
+					  _delay_ms(1500);
+					  PORTD &= ~(1<<PD6);
+     dda:	82 b3       	in	r24, 0x12	; 18
+     ddc:	8f 7b       	andi	r24, 0xBF	; 191
+     dde:	82 bb       	out	0x12, r24	; 18
+					                     
+                      return 0;
+     de0:	80 e0       	ldi	r24, 0x00	; 0
+     de2:	5c c1       	rjmp	.+696    	; 0x109c <set_new_password+0x3f6>
+              else
+                {
+                  break;
+                } // Ket thuc nhap mat khau hien tai
+            }
+          else if(key>=0 && key<=9)
+     de4:	8a 30       	cpi	r24, 0x0A	; 10
+     de6:	e0 f4       	brcc	.+56     	; 0xe20 <set_new_password+0x17a>
+            { // Neu la cac phim so duoc nhan
+              if(current_length < MAX_LENGTH)
+     de8:	04 30       	cpi	r16, 0x04	; 4
+     dea:	11 05       	cpc	r17, r1
+     dec:	cc f4       	brge	.+50     	; 0xe20 <set_new_password+0x17a>
+                {
+                  current_password[current_length] = key + '0'; // Truyen tu so thanh ky tu
+     dee:	e1 e0       	ldi	r30, 0x01	; 1
+     df0:	f0 e0       	ldi	r31, 0x00	; 0
+     df2:	ec 0f       	add	r30, r28
+     df4:	fd 1f       	adc	r31, r29
+     df6:	e0 0f       	add	r30, r16
+     df8:	f1 1f       	adc	r31, r17
+     dfa:	80 5d       	subi	r24, 0xD0	; 208
+     dfc:	80 83       	st	Z, r24
+                  
+                  LCD_setCursor(current_length, 1);
+     dfe:	61 e0       	ldi	r22, 0x01	; 1
+     e00:	80 2f       	mov	r24, r16
+     e02:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print("*"); // THem dau * hien thi tren LCD
+     e06:	86 ec       	ldi	r24, 0xC6	; 198
+     e08:	90 e0       	ldi	r25, 0x00	; 0
+     e0a:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+
+                  current_length++;
+     e0e:	0f 5f       	subi	r16, 0xFF	; 255
+     e10:	1f 4f       	sbci	r17, 0xFF	; 255
+                  current_password[current_length] = '\0';
+     e12:	e1 e0       	ldi	r30, 0x01	; 1
+     e14:	f0 e0       	ldi	r31, 0x00	; 0
+     e16:	ec 0f       	add	r30, r28
+     e18:	fd 1f       	adc	r31, r29
+     e1a:	e0 0f       	add	r30, r16
+     e1c:	f1 1f       	adc	r31, r17
+     e1e:	10 82       	st	Z, r1
+  LCD_print("Enter old pass:");
+  LCD_setCursor(0, 1);
+  LCD_print("     ");
+  
+  int current_length = 0; //Bien luu tru do dai mat khau hien tai
+  while (current_length < MAX_LENGTH)
+     e20:	04 30       	cpi	r16, 0x04	; 4
+     e22:	11 05       	cpc	r17, r1
+     e24:	0c f4       	brge	.+2      	; 0xe28 <set_new_password+0x182>
+     e26:	88 cf       	rjmp	.-240    	; 0xd38 <set_new_password+0x92>
+
+      }
+    }
+
+  // Kiem tra mat khau vua nhap co dung voi mat khau hien tai
+  if (!check_password(current_password, correct_password)) {
+     e28:	b7 01       	movw	r22, r14
+     e2a:	ce 01       	movw	r24, r28
+     e2c:	01 96       	adiw	r24, 0x01	; 1
+     e2e:	0e 94 52 05 	call	0xaa4	; 0xaa4 <check_password>
+     e32:	81 11       	cpse	r24, r1
+     e34:	28 c0       	rjmp	.+80     	; 0xe86 <set_new_password+0x1e0>
+      
+	  // Thuc hien truong trinh nhay coi neu kiem tra sai
+      LCD_clear();
+     e36:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+      LCD_print("Incorrect current");
+     e3a:	88 ec       	ldi	r24, 0xC8	; 200
+     e3c:	90 e0       	ldi	r25, 0x00	; 0
+     e3e:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+      LCD_setCursor(0, 1);
+     e42:	61 e0       	ldi	r22, 0x01	; 1
+     e44:	80 e0       	ldi	r24, 0x00	; 0
+     e46:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+      LCD_print("password!");
+     e4a:	8a ed       	ldi	r24, 0xDA	; 218
+     e4c:	90 e0       	ldi	r25, 0x00	; 0
+     e4e:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	  
+	  PORTD |= (1<<PD6);
+     e52:	82 b3       	in	r24, 0x12	; 18
+     e54:	80 64       	ori	r24, 0x40	; 64
+     e56:	82 bb       	out	0x12, r24	; 18
+     e58:	9f e3       	ldi	r25, 0x3F	; 63
+     e5a:	ed e0       	ldi	r30, 0x0D	; 13
+     e5c:	f3 e0       	ldi	r31, 0x03	; 3
+     e5e:	91 50       	subi	r25, 0x01	; 1
+     e60:	e0 40       	sbci	r30, 0x00	; 0
+     e62:	f0 40       	sbci	r31, 0x00	; 0
+     e64:	e1 f7       	brne	.-8      	; 0xe5e <set_new_password+0x1b8>
+     e66:	00 c0       	rjmp	.+0      	; 0xe68 <set_new_password+0x1c2>
+     e68:	00 00       	nop
+	  _delay_ms(1000);
+	  PORTD &= ~(1<<PD6);
+     e6a:	82 b3       	in	r24, 0x12	; 18
+     e6c:	8f 7b       	andi	r24, 0xBF	; 191
+     e6e:	82 bb       	out	0x12, r24	; 18
+     e70:	2f e9       	ldi	r18, 0x9F	; 159
+     e72:	86 e8       	ldi	r24, 0x86	; 134
+     e74:	91 e0       	ldi	r25, 0x01	; 1
+     e76:	21 50       	subi	r18, 0x01	; 1
+     e78:	80 40       	sbci	r24, 0x00	; 0
+     e7a:	90 40       	sbci	r25, 0x00	; 0
+     e7c:	e1 f7       	brne	.-8      	; 0xe76 <set_new_password+0x1d0>
+     e7e:	00 c0       	rjmp	.+0      	; 0xe80 <set_new_password+0x1da>
+     e80:	00 00       	nop
+	  _delay_ms(500);
+
+      return 0; //Tra ve thoat khoi chuong trinh nhap mat khau
+     e82:	80 e0       	ldi	r24, 0x00	; 0
+     e84:	0b c1       	rjmp	.+534    	; 0x109c <set_new_password+0x3f6>
+  }
+  
+  // Neu nhap dung thuc hien chuong trinh nhay coi vao nhap mat khau moi
+  PORTD |= (1<<PD6);
+     e86:	82 b3       	in	r24, 0x12	; 18
+     e88:	80 64       	ori	r24, 0x40	; 64
+     e8a:	82 bb       	out	0x12, r24	; 18
+     e8c:	e3 e2       	ldi	r30, 0x23	; 35
+     e8e:	f4 ef       	ldi	r31, 0xF4	; 244
+     e90:	31 97       	sbiw	r30, 0x01	; 1
+     e92:	f1 f7       	brne	.-4      	; 0xe90 <set_new_password+0x1ea>
+     e94:	00 c0       	rjmp	.+0      	; 0xe96 <set_new_password+0x1f0>
+     e96:	00 00       	nop
+  _delay_ms(250);
+  PORTD &= ~(1<<PD6);
+     e98:	82 b3       	in	r24, 0x12	; 18
+     e9a:	8f 7b       	andi	r24, 0xBF	; 191
+     e9c:	82 bb       	out	0x12, r24	; 18
+     e9e:	81 e1       	ldi	r24, 0x11	; 17
+     ea0:	9a e7       	ldi	r25, 0x7A	; 122
+     ea2:	01 97       	sbiw	r24, 0x01	; 1
+     ea4:	f1 f7       	brne	.-4      	; 0xea2 <set_new_password+0x1fc>
+     ea6:	00 c0       	rjmp	.+0      	; 0xea8 <set_new_password+0x202>
+     ea8:	00 00       	nop
+  _delay_ms(125);
+  for(uint8_t i=0;i<2;i++){
+     eaa:	80 e0       	ldi	r24, 0x00	; 0
+     eac:	13 c0       	rjmp	.+38     	; 0xed4 <set_new_password+0x22e>
+	  PORTD |= (1<<PD6);
+     eae:	92 b3       	in	r25, 0x12	; 18
+     eb0:	90 64       	ori	r25, 0x40	; 64
+     eb2:	92 bb       	out	0x12, r25	; 18
+     eb4:	e1 e1       	ldi	r30, 0x11	; 17
+     eb6:	fa e7       	ldi	r31, 0x7A	; 122
+     eb8:	31 97       	sbiw	r30, 0x01	; 1
+     eba:	f1 f7       	brne	.-4      	; 0xeb8 <set_new_password+0x212>
+     ebc:	00 c0       	rjmp	.+0      	; 0xebe <set_new_password+0x218>
+     ebe:	00 00       	nop
+	  _delay_ms(125);
+	  PORTD &= ~(1<<PD6);
+     ec0:	92 b3       	in	r25, 0x12	; 18
+     ec2:	9f 7b       	andi	r25, 0xBF	; 191
+     ec4:	92 bb       	out	0x12, r25	; 18
+     ec6:	e1 e1       	ldi	r30, 0x11	; 17
+     ec8:	fa e7       	ldi	r31, 0x7A	; 122
+     eca:	31 97       	sbiw	r30, 0x01	; 1
+     ecc:	f1 f7       	brne	.-4      	; 0xeca <set_new_password+0x224>
+     ece:	00 c0       	rjmp	.+0      	; 0xed0 <set_new_password+0x22a>
+     ed0:	00 00       	nop
+  // Neu nhap dung thuc hien chuong trinh nhay coi vao nhap mat khau moi
+  PORTD |= (1<<PD6);
+  _delay_ms(250);
+  PORTD &= ~(1<<PD6);
+  _delay_ms(125);
+  for(uint8_t i=0;i<2;i++){
+     ed2:	8f 5f       	subi	r24, 0xFF	; 255
+     ed4:	82 30       	cpi	r24, 0x02	; 2
+     ed6:	58 f3       	brcs	.-42     	; 0xeae <set_new_password+0x208>
+  }
+
+  /**************** Bat dau thuc hien nhap set mat khau moi *****************/
+
+  
+  LCD_clear();
+     ed8:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+  LCD_print("Enter new pass:");
+     edc:	84 ee       	ldi	r24, 0xE4	; 228
+     ede:	90 e0       	ldi	r25, 0x00	; 0
+     ee0:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+  LCD_setCursor(0, 1);
+     ee4:	61 e0       	ldi	r22, 0x01	; 1
+     ee6:	80 e0       	ldi	r24, 0x00	; 0
+     ee8:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+  LCD_print("     ");
+     eec:	8e e9       	ldi	r24, 0x9E	; 158
+     eee:	90 e0       	ldi	r25, 0x00	; 0
+     ef0:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+  
+  int new_length = 0; // Bien luu tru do dai nhap mat khau moi
+     ef4:	00 e0       	ldi	r16, 0x00	; 0
+     ef6:	10 e0       	ldi	r17, 0x00	; 0
+  while (1)
+    {
+      uint8_t key = press_check(); // Bien nhan gia tri tra ve cua ham nhan
+     ef8:	0e 94 eb 05 	call	0xbd6	; 0xbd6 <press_check>
+
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc bam khong?
+     efc:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <INT0_flag>
+     f00:	91 11       	cpse	r25, r1
+     f02:	c9 c0       	rjmp	.+402    	; 0x1096 <set_new_password+0x3f0>
+		  return 2;
+	  }
+	  if(UART_flag) { //Kiem tra xem co task tu esp gui xuong khong?
+     f04:	90 91 f0 01 	lds	r25, 0x01F0	; 0x8001f0 <__data_end>
+     f08:	91 11       	cpse	r25, r1
+     f0a:	c7 c0       	rjmp	.+398    	; 0x109a <set_new_password+0x3f4>
+		  return 3;
+	  }
+
+      if (key != 100)
+     f0c:	84 36       	cpi	r24, 0x64	; 100
+     f0e:	a1 f3       	breq	.-24     	; 0xef8 <set_new_password+0x252>
+        { //Neu co phim duoc nhan
+		  PORTD |= (1<<PD6);
+     f10:	92 b3       	in	r25, 0x12	; 18
+     f12:	90 64       	ori	r25, 0x40	; 64
+     f14:	92 bb       	out	0x12, r25	; 18
+     f16:	e1 e1       	ldi	r30, 0x11	; 17
+     f18:	fa e7       	ldi	r31, 0x7A	; 122
+     f1a:	31 97       	sbiw	r30, 0x01	; 1
+     f1c:	f1 f7       	brne	.-4      	; 0xf1a <set_new_password+0x274>
+     f1e:	00 c0       	rjmp	.+0      	; 0xf20 <set_new_password+0x27a>
+     f20:	00 00       	nop
+		  _delay_ms(125);
+		  PORTD &= ~(1<<PD6);
+     f22:	92 b3       	in	r25, 0x12	; 18
+     f24:	9f 7b       	andi	r25, 0xBF	; 191
+     f26:	92 bb       	out	0x12, r25	; 18
+		  
+          if (key == 10)
+     f28:	8a 30       	cpi	r24, 0x0A	; 10
+     f2a:	a9 f4       	brne	.+42     	; 0xf56 <set_new_password+0x2b0>
+            { // Phim xoa di so vua nhap truoc do
+              if (new_length > 0)
+     f2c:	10 16       	cp	r1, r16
+     f2e:	11 06       	cpc	r1, r17
+     f30:	1c f7       	brge	.-58     	; 0xef8 <set_new_password+0x252>
+                {
+                  new_length--;
+     f32:	01 50       	subi	r16, 0x01	; 1
+     f34:	11 09       	sbc	r17, r1
+                  new_password[new_length] = 0; // Xoa ky tu cuoi cung
+     f36:	e6 e0       	ldi	r30, 0x06	; 6
+     f38:	f0 e0       	ldi	r31, 0x00	; 0
+     f3a:	ec 0f       	add	r30, r28
+     f3c:	fd 1f       	adc	r31, r29
+     f3e:	e0 0f       	add	r30, r16
+     f40:	f1 1f       	adc	r31, r17
+     f42:	10 82       	st	Z, r1
+                  
+                  LCD_setCursor(new_length, 1);
+     f44:	61 e0       	ldi	r22, 0x01	; 1
+     f46:	80 2f       	mov	r24, r16
+     f48:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print(" "); // Xoa ky tu cuoi cung tren man hinh LCD
+     f4c:	82 ea       	ldi	r24, 0xA2	; 162
+     f4e:	90 e0       	ldi	r25, 0x00	; 0
+     f50:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+     f54:	d1 cf       	rjmp	.-94     	; 0xef8 <set_new_password+0x252>
+                  //LCD_setCursor(new_length, 1);
+                  
+                }
+            }
+          else if (key == 13)
+     f56:	8d 30       	cpi	r24, 0x0D	; 13
+     f58:	09 f0       	breq	.+2      	; 0xf5c <set_new_password+0x2b6>
+     f5a:	55 c0       	rjmp	.+170    	; 0x1006 <set_new_password+0x360>
+            { // Phim ENTER duoc nhan
+              if (new_length == MAX_LENGTH)
+     f5c:	04 30       	cpi	r16, 0x04	; 4
+     f5e:	11 05       	cpc	r17, r1
+     f60:	51 f5       	brne	.+84     	; 0xfb6 <set_new_password+0x310>
+                {
+					PORTD |= (1<<PD6);
+     f62:	82 b3       	in	r24, 0x12	; 18
+     f64:	80 64       	ori	r24, 0x40	; 64
+     f66:	82 bb       	out	0x12, r24	; 18
+     f68:	83 e2       	ldi	r24, 0x23	; 35
+     f6a:	94 ef       	ldi	r25, 0xF4	; 244
+     f6c:	01 97       	sbiw	r24, 0x01	; 1
+     f6e:	f1 f7       	brne	.-4      	; 0xf6c <set_new_password+0x2c6>
+     f70:	00 c0       	rjmp	.+0      	; 0xf72 <set_new_password+0x2cc>
+     f72:	00 00       	nop
+					_delay_ms(250);
+					PORTD &= ~(1<<PD6);
+     f74:	82 b3       	in	r24, 0x12	; 18
+     f76:	8f 7b       	andi	r24, 0xBF	; 191
+     f78:	82 bb       	out	0x12, r24	; 18
+     f7a:	e1 e1       	ldi	r30, 0x11	; 17
+     f7c:	fa e7       	ldi	r31, 0x7A	; 122
+     f7e:	31 97       	sbiw	r30, 0x01	; 1
+     f80:	f1 f7       	brne	.-4      	; 0xf7e <set_new_password+0x2d8>
+     f82:	00 c0       	rjmp	.+0      	; 0xf84 <set_new_password+0x2de>
+     f84:	00 00       	nop
+					_delay_ms(125);
+					for(uint8_t i=0;i<2;i++){
+     f86:	80 e0       	ldi	r24, 0x00	; 0
+     f88:	13 c0       	rjmp	.+38     	; 0xfb0 <set_new_password+0x30a>
+						PORTD |= (1<<PD6);
+     f8a:	92 b3       	in	r25, 0x12	; 18
+     f8c:	90 64       	ori	r25, 0x40	; 64
+     f8e:	92 bb       	out	0x12, r25	; 18
+     f90:	e1 e1       	ldi	r30, 0x11	; 17
+     f92:	fa e7       	ldi	r31, 0x7A	; 122
+     f94:	31 97       	sbiw	r30, 0x01	; 1
+     f96:	f1 f7       	brne	.-4      	; 0xf94 <set_new_password+0x2ee>
+     f98:	00 c0       	rjmp	.+0      	; 0xf9a <set_new_password+0x2f4>
+     f9a:	00 00       	nop
+						_delay_ms(125);
+						PORTD &= ~(1<<PD6);
+     f9c:	92 b3       	in	r25, 0x12	; 18
+     f9e:	9f 7b       	andi	r25, 0xBF	; 191
+     fa0:	92 bb       	out	0x12, r25	; 18
+     fa2:	e1 e1       	ldi	r30, 0x11	; 17
+     fa4:	fa e7       	ldi	r31, 0x7A	; 122
+     fa6:	31 97       	sbiw	r30, 0x01	; 1
+     fa8:	f1 f7       	brne	.-4      	; 0xfa6 <set_new_password+0x300>
+     faa:	00 c0       	rjmp	.+0      	; 0xfac <set_new_password+0x306>
+     fac:	00 00       	nop
+                {
+					PORTD |= (1<<PD6);
+					_delay_ms(250);
+					PORTD &= ~(1<<PD6);
+					_delay_ms(125);
+					for(uint8_t i=0;i<2;i++){
+     fae:	8f 5f       	subi	r24, 0xFF	; 255
+     fb0:	82 30       	cpi	r24, 0x02	; 2
+     fb2:	58 f3       	brcs	.-42     	; 0xf8a <set_new_password+0x2e4>
+     fb4:	42 c0       	rjmp	.+132    	; 0x103a <set_new_password+0x394>
+					break; // Ket thuc nhap mat khau moi
+                }
+              else
+                  {
+                      
+                      LCD_clear();
+     fb6:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                      LCD_print("Password must be");
+     fba:	84 ef       	ldi	r24, 0xF4	; 244
+     fbc:	90 e0       	ldi	r25, 0x00	; 0
+     fbe:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+                      LCD_setCursor(0, 1);
+     fc2:	61 e0       	ldi	r22, 0x01	; 1
+     fc4:	80 e0       	ldi	r24, 0x00	; 0
+     fc6:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                      LCD_print("4 digits!");
+     fca:	8c eb       	ldi	r24, 0xBC	; 188
+     fcc:	90 e0       	ldi	r25, 0x00	; 0
+     fce:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+					  
+					  PORTD |= (1<<PD6);
+     fd2:	82 b3       	in	r24, 0x12	; 18
+     fd4:	80 64       	ori	r24, 0x40	; 64
+     fd6:	82 bb       	out	0x12, r24	; 18
+     fd8:	ff e3       	ldi	r31, 0x3F	; 63
+     fda:	2d e0       	ldi	r18, 0x0D	; 13
+     fdc:	83 e0       	ldi	r24, 0x03	; 3
+     fde:	f1 50       	subi	r31, 0x01	; 1
+     fe0:	20 40       	sbci	r18, 0x00	; 0
+     fe2:	80 40       	sbci	r24, 0x00	; 0
+     fe4:	e1 f7       	brne	.-8      	; 0xfde <set_new_password+0x338>
+     fe6:	00 c0       	rjmp	.+0      	; 0xfe8 <set_new_password+0x342>
+     fe8:	00 00       	nop
+					  _delay_ms(1000);
+					  PORTD &= ~(1<<PD6);
+     fea:	82 b3       	in	r24, 0x12	; 18
+     fec:	8f 7b       	andi	r24, 0xBF	; 191
+     fee:	82 bb       	out	0x12, r24	; 18
+     ff0:	9f e9       	ldi	r25, 0x9F	; 159
+     ff2:	e6 e8       	ldi	r30, 0x86	; 134
+     ff4:	f1 e0       	ldi	r31, 0x01	; 1
+     ff6:	91 50       	subi	r25, 0x01	; 1
+     ff8:	e0 40       	sbci	r30, 0x00	; 0
+     ffa:	f0 40       	sbci	r31, 0x00	; 0
+     ffc:	e1 f7       	brne	.-8      	; 0xff6 <set_new_password+0x350>
+     ffe:	00 c0       	rjmp	.+0      	; 0x1000 <set_new_password+0x35a>
+    1000:	00 00       	nop
+					  _delay_ms(500);
+
+                      return 0;
+    1002:	80 e0       	ldi	r24, 0x00	; 0
+    1004:	4b c0       	rjmp	.+150    	; 0x109c <set_new_password+0x3f6>
+                  }
+            }
+          else if (key >= 0 && key <= 9)
+    1006:	8a 30       	cpi	r24, 0x0A	; 10
+    1008:	08 f0       	brcs	.+2      	; 0x100c <set_new_password+0x366>
+    100a:	76 cf       	rjmp	.-276    	; 0xef8 <set_new_password+0x252>
+            { // Neu la so duoc nhan
+              if (new_length < MAX_LENGTH)
+    100c:	04 30       	cpi	r16, 0x04	; 4
+    100e:	11 05       	cpc	r17, r1
+    1010:	0c f0       	brlt	.+2      	; 0x1014 <set_new_password+0x36e>
+    1012:	72 cf       	rjmp	.-284    	; 0xef8 <set_new_password+0x252>
+                {
+                  new_password[new_length] = key + '0'; // Chuyen doi so thanh ky tu
+    1014:	e6 e0       	ldi	r30, 0x06	; 6
+    1016:	f0 e0       	ldi	r31, 0x00	; 0
+    1018:	ec 0f       	add	r30, r28
+    101a:	fd 1f       	adc	r31, r29
+    101c:	e0 0f       	add	r30, r16
+    101e:	f1 1f       	adc	r31, r17
+    1020:	80 5d       	subi	r24, 0xD0	; 208
+    1022:	80 83       	st	Z, r24
+                  
+                  LCD_setCursor(new_length, 1);
+    1024:	61 e0       	ldi	r22, 0x01	; 1
+    1026:	80 2f       	mov	r24, r16
+    1028:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print("*"); // Th�m d?u * tr�n LCD
+    102c:	86 ec       	ldi	r24, 0xC6	; 198
+    102e:	90 e0       	ldi	r25, 0x00	; 0
+    1030:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+
+                  new_length++;
+    1034:	0f 5f       	subi	r16, 0xFF	; 255
+    1036:	1f 4f       	sbci	r17, 0xFF	; 255
+    1038:	5f cf       	rjmp	.-322    	; 0xef8 <set_new_password+0x252>
+            }
+        }
+    }
+
+  // Luu mat khau moi vao bien toan cuc - bien luu tru gia tri cua mat khau hien tai
+  strncpy(correct_password, new_password, MAX_LENGTH);
+    103a:	44 e0       	ldi	r20, 0x04	; 4
+    103c:	50 e0       	ldi	r21, 0x00	; 0
+    103e:	be 01       	movw	r22, r28
+    1040:	6a 5f       	subi	r22, 0xFA	; 250
+    1042:	7f 4f       	sbci	r23, 0xFF	; 255
+    1044:	c7 01       	movw	r24, r14
+    1046:	0e 94 01 0c 	call	0x1802	; 0x1802 <strncpy>
+  correct_password[MAX_LENGTH] = '\0'; // Dam bao gia tri cuoi cung la gia tri NULL
+    104a:	f7 01       	movw	r30, r14
+    104c:	14 82       	std	Z+4, r1	; 0x04
+  
+  
+  //Thuc hien update mat khau dung trong eerom
+  eeprom_update_block((const void *)correct_password, (void *)right_password, MAX_LENGTH);
+    104e:	44 e0       	ldi	r20, 0x04	; 4
+    1050:	50 e0       	ldi	r21, 0x00	; 0
+    1052:	61 e0       	ldi	r22, 0x01	; 1
+    1054:	70 e0       	ldi	r23, 0x00	; 0
+    1056:	c7 01       	movw	r24, r14
+    1058:	0e 94 db 0e 	call	0x1db6	; 0x1db6 <eeprom_update_block>
+  
+  LCD_clear();
+    105c:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+  LCD_print("Password set");
+    1060:	85 e0       	ldi	r24, 0x05	; 5
+    1062:	91 e0       	ldi	r25, 0x01	; 1
+    1064:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+  LCD_setCursor(0, 1);
+    1068:	61 e0       	ldi	r22, 0x01	; 1
+    106a:	80 e0       	ldi	r24, 0x00	; 0
+    106c:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+  LCD_print("successfully!");
+    1070:	82 e1       	ldi	r24, 0x12	; 18
+    1072:	91 e0       	ldi	r25, 0x01	; 1
+    1074:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+    1078:	ff ed       	ldi	r31, 0xDF	; 223
+    107a:	23 e9       	ldi	r18, 0x93	; 147
+    107c:	84 e0       	ldi	r24, 0x04	; 4
+    107e:	f1 50       	subi	r31, 0x01	; 1
+    1080:	20 40       	sbci	r18, 0x00	; 0
+    1082:	80 40       	sbci	r24, 0x00	; 0
+    1084:	e1 f7       	brne	.-8      	; 0x107e <set_new_password+0x3d8>
+    1086:	00 c0       	rjmp	.+0      	; 0x1088 <set_new_password+0x3e2>
+    1088:	00 00       	nop
+  _delay_ms(1500);
+  return 1;
+    108a:	81 e0       	ldi	r24, 0x01	; 1
+    108c:	07 c0       	rjmp	.+14     	; 0x109c <set_new_password+0x3f6>
+  while (current_length < MAX_LENGTH)
+    {
+      uint8_t key = press_check(); // Bien luu tru gia tri tra ve ham nhan nut
+	  
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc nhan khong?
+		  return 2;
+    108e:	82 e0       	ldi	r24, 0x02	; 2
+    1090:	05 c0       	rjmp	.+10     	; 0x109c <set_new_password+0x3f6>
+	  }
+	  if(UART_flag) { //Kiem tra xem co task duoc gui tu esp khong?
+		  return 3;
+    1092:	83 e0       	ldi	r24, 0x03	; 3
+    1094:	03 c0       	rjmp	.+6      	; 0x109c <set_new_password+0x3f6>
+  while (1)
+    {
+      uint8_t key = press_check(); // Bien nhan gia tri tra ve cua ham nhan
+
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc bam khong?
+		  return 2;
+    1096:	82 e0       	ldi	r24, 0x02	; 2
+    1098:	01 c0       	rjmp	.+2      	; 0x109c <set_new_password+0x3f6>
+	  }
+	  if(UART_flag) { //Kiem tra xem co task tu esp gui xuong khong?
+		  return 3;
+    109a:	83 e0       	ldi	r24, 0x03	; 3
+  LCD_print("Password set");
+  LCD_setCursor(0, 1);
+  LCD_print("successfully!");
+  _delay_ms(1500);
+  return 1;
+}
+    109c:	2a 96       	adiw	r28, 0x0a	; 10
+    109e:	0f b6       	in	r0, 0x3f	; 63
+    10a0:	f8 94       	cli
+    10a2:	de bf       	out	0x3e, r29	; 62
+    10a4:	0f be       	out	0x3f, r0	; 63
+    10a6:	cd bf       	out	0x3d, r28	; 61
+    10a8:	df 91       	pop	r29
+    10aa:	cf 91       	pop	r28
+    10ac:	1f 91       	pop	r17
+    10ae:	0f 91       	pop	r16
+    10b0:	ff 90       	pop	r15
+    10b2:	ef 90       	pop	r14
+    10b4:	08 95       	ret
+
+000010b6 <Password_check>:
+
+uint8_t Password_check(char *CoPass)
+{
+    10b6:	df 92       	push	r13
+    10b8:	ef 92       	push	r14
+    10ba:	ff 92       	push	r15
+    10bc:	0f 93       	push	r16
+    10be:	1f 93       	push	r17
+    10c0:	cf 93       	push	r28
+    10c2:	df 93       	push	r29
+    10c4:	00 d0       	rcall	.+0      	; 0x10c6 <Password_check+0x10>
+    10c6:	00 d0       	rcall	.+0      	; 0x10c8 <Password_check+0x12>
+    10c8:	1f 92       	push	r1
+    10ca:	cd b7       	in	r28, 0x3d	; 61
+    10cc:	de b7       	in	r29, 0x3e	; 62
+    10ce:	8c 01       	movw	r16, r24
+  char password[MAX_LENGTH + 1] = {0}; // Mang chua mat khau nhap vao
+    10d0:	fe 01       	movw	r30, r28
+    10d2:	31 96       	adiw	r30, 0x01	; 1
+    10d4:	85 e0       	ldi	r24, 0x05	; 5
+    10d6:	df 01       	movw	r26, r30
+    10d8:	1d 92       	st	X+, r1
+    10da:	8a 95       	dec	r24
+    10dc:	e9 f7       	brne	.-6      	; 0x10d8 <Password_check+0x22>
+  uint8_t length = 0; // Bien do dai cua mat khau
+
+  LCD_clear();
+    10de:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+  LCD_print("Enter password:");
+    10e2:	80 e2       	ldi	r24, 0x20	; 32
+    10e4:	91 e0       	ldi	r25, 0x01	; 1
+    10e6:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+
+  int k= 0; // Bien kiem tra so lan nhap sai mat khau
+    10ea:	e1 2c       	mov	r14, r1
+    10ec:	f1 2c       	mov	r15, r1
+}
+
+uint8_t Password_check(char *CoPass)
+{
+  char password[MAX_LENGTH + 1] = {0}; // Mang chua mat khau nhap vao
+  uint8_t length = 0; // Bien do dai cua mat khau
+    10ee:	d1 2c       	mov	r13, r1
+  LCD_clear();
+  LCD_print("Enter password:");
+
+  int k= 0; // Bien kiem tra so lan nhap sai mat khau
+  while (1) {
+      uint8_t key = press_check(); // Doc gia tri tu keypad
+    10f0:	0e 94 eb 05 	call	0xbd6	; 0xbd6 <press_check>
+	  
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc bam khong?
+    10f4:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <INT0_flag>
+    10f8:	91 11       	cpse	r25, r1
+    10fa:	f6 c0       	rjmp	.+492    	; 0x12e8 <Password_check+0x232>
+		  return 2;
+	  }
+	  if(UART_flag) { //Kiem tra xem co task tu esp gui xuong khong?
+    10fc:	90 91 f0 01 	lds	r25, 0x01F0	; 0x8001f0 <__data_end>
+    1100:	91 11       	cpse	r25, r1
+    1102:	f4 c0       	rjmp	.+488    	; 0x12ec <Password_check+0x236>
+		  return 3;
+	  }
+	  
+      if (key != 100)
+    1104:	84 36       	cpi	r24, 0x64	; 100
+    1106:	a1 f3       	breq	.-24     	; 0x10f0 <Password_check+0x3a>
+        { 
+		  
+		  //Neu co phim duoc nhan
+		  PORTD |= (1<<PD6);
+    1108:	92 b3       	in	r25, 0x12	; 18
+    110a:	90 64       	ori	r25, 0x40	; 64
+    110c:	92 bb       	out	0x12, r25	; 18
+    110e:	e1 e1       	ldi	r30, 0x11	; 17
+    1110:	fa e7       	ldi	r31, 0x7A	; 122
+    1112:	31 97       	sbiw	r30, 0x01	; 1
+    1114:	f1 f7       	brne	.-4      	; 0x1112 <Password_check+0x5c>
+    1116:	00 c0       	rjmp	.+0      	; 0x1118 <Password_check+0x62>
+    1118:	00 00       	nop
+		  _delay_ms(125);
+		  PORTD &= ~(1<<PD6);
+    111a:	92 b3       	in	r25, 0x12	; 18
+    111c:	9f 7b       	andi	r25, 0xBF	; 191
+    111e:	92 bb       	out	0x12, r25	; 18
+		  
+          if (key == 10)
+    1120:	8a 30       	cpi	r24, 0x0A	; 10
+    1122:	99 f4       	brne	.+38     	; 0x114a <Password_check+0x94>
+            { // Phim xoa so truoc do 
+              if (length > 0) {
+    1124:	dd 20       	and	r13, r13
+    1126:	21 f3       	breq	.-56     	; 0x10f0 <Password_check+0x3a>
+                  length--;
+    1128:	da 94       	dec	r13
+                  password[length] = 0; // Xoa di ky tu cuoi cung
+    112a:	e1 e0       	ldi	r30, 0x01	; 1
+    112c:	f0 e0       	ldi	r31, 0x00	; 0
+    112e:	ec 0f       	add	r30, r28
+    1130:	fd 1f       	adc	r31, r29
+    1132:	ed 0d       	add	r30, r13
+    1134:	f1 1d       	adc	r31, r1
+    1136:	10 82       	st	Z, r1
+                  
+                  LCD_setCursor(length, 1);
+    1138:	61 e0       	ldi	r22, 0x01	; 1
+    113a:	8d 2d       	mov	r24, r13
+    113c:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print(" "); // Xoa ky tu cuoi cung cua LCD
+    1140:	82 ea       	ldi	r24, 0xA2	; 162
+    1142:	90 e0       	ldi	r25, 0x00	; 0
+    1144:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+    1148:	d3 cf       	rjmp	.-90     	; 0x10f0 <Password_check+0x3a>
+                  
+              }
+            }
+          else if (key == 13)
+    114a:	8d 30       	cpi	r24, 0x0D	; 13
+    114c:	09 f0       	breq	.+2      	; 0x1150 <Password_check+0x9a>
+    114e:	9d c0       	rjmp	.+314    	; 0x128a <Password_check+0x1d4>
+            { // Phim ENTER duoc nhan
+              if (length == MAX_LENGTH)
+    1150:	f4 e0       	ldi	r31, 0x04	; 4
+    1152:	df 12       	cpse	r13, r31
+    1154:	4f c0       	rjmp	.+158    	; 0x11f4 <Password_check+0x13e>
+                {
+                  if (check_password(password,CoPass))
+    1156:	b8 01       	movw	r22, r16
+    1158:	ce 01       	movw	r24, r28
+    115a:	01 96       	adiw	r24, 0x01	; 1
+    115c:	0e 94 52 05 	call	0xaa4	; 0xaa4 <check_password>
+    1160:	88 23       	and	r24, r24
+    1162:	f9 f0       	breq	.+62     	; 0x11a2 <Password_check+0xec>
+                    {// Kiem tra neu nhu mat khau nhap dung
+
+                      LCD_clear();
+    1164:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                      LCD_print("Password Right!");
+    1168:	80 e3       	ldi	r24, 0x30	; 48
+    116a:	91 e0       	ldi	r25, 0x01	; 1
+    116c:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+					  
+					  // Thuc hien nhay coi khi nhap dung mat khau
+					  for(uint8_t i=0;i<5;i++){
+    1170:	80 e0       	ldi	r24, 0x00	; 0
+    1172:	13 c0       	rjmp	.+38     	; 0x119a <Password_check+0xe4>
+						  PORTD |= (1<<PD6);
+    1174:	92 b3       	in	r25, 0x12	; 18
+    1176:	90 64       	ori	r25, 0x40	; 64
+    1178:	92 bb       	out	0x12, r25	; 18
+    117a:	a1 e1       	ldi	r26, 0x11	; 17
+    117c:	ba e7       	ldi	r27, 0x7A	; 122
+    117e:	11 97       	sbiw	r26, 0x01	; 1
+    1180:	f1 f7       	brne	.-4      	; 0x117e <Password_check+0xc8>
+    1182:	00 c0       	rjmp	.+0      	; 0x1184 <Password_check+0xce>
+    1184:	00 00       	nop
+						  _delay_ms(125);
+						  PORTD &= ~(1<<PD6);
+    1186:	92 b3       	in	r25, 0x12	; 18
+    1188:	9f 7b       	andi	r25, 0xBF	; 191
+    118a:	92 bb       	out	0x12, r25	; 18
+    118c:	e1 e1       	ldi	r30, 0x11	; 17
+    118e:	fa e7       	ldi	r31, 0x7A	; 122
+    1190:	31 97       	sbiw	r30, 0x01	; 1
+    1192:	f1 f7       	brne	.-4      	; 0x1190 <Password_check+0xda>
+    1194:	00 c0       	rjmp	.+0      	; 0x1196 <Password_check+0xe0>
+    1196:	00 00       	nop
+
+                      LCD_clear();
+                      LCD_print("Password Right!");
+					  
+					  // Thuc hien nhay coi khi nhap dung mat khau
+					  for(uint8_t i=0;i<5;i++){
+    1198:	8f 5f       	subi	r24, 0xFF	; 255
+    119a:	85 30       	cpi	r24, 0x05	; 5
+    119c:	58 f3       	brcs	.-42     	; 0x1174 <Password_check+0xbe>
+						  _delay_ms(125);
+						  PORTD &= ~(1<<PD6);
+						  _delay_ms(125);
+					  }
+					  
+                      return 1; //Tra ve gia tri 1 khi nhap dung mat khau
+    119e:	81 e0       	ldi	r24, 0x01	; 1
+    11a0:	a8 c0       	rjmp	.+336    	; 0x12f2 <Password_check+0x23c>
+                    }
+                  else
+                    {// Neu mat khau nhap sai 
+
+                      LCD_clear();
+    11a2:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                      LCD_print("Wrong pass!");
+    11a6:	80 e4       	ldi	r24, 0x40	; 64
+    11a8:	91 e0       	ldi	r25, 0x01	; 1
+    11aa:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+					  
+					  // Thuc hien nhay coi khi nhap sai mat khau
+					  PORTD |= (1<<PD6);
+    11ae:	82 b3       	in	r24, 0x12	; 18
+    11b0:	80 64       	ori	r24, 0x40	; 64
+    11b2:	82 bb       	out	0x12, r24	; 18
+    11b4:	ff e3       	ldi	r31, 0x3F	; 63
+    11b6:	2d e0       	ldi	r18, 0x0D	; 13
+    11b8:	83 e0       	ldi	r24, 0x03	; 3
+    11ba:	f1 50       	subi	r31, 0x01	; 1
+    11bc:	20 40       	sbci	r18, 0x00	; 0
+    11be:	80 40       	sbci	r24, 0x00	; 0
+    11c0:	e1 f7       	brne	.-8      	; 0x11ba <Password_check+0x104>
+    11c2:	00 c0       	rjmp	.+0      	; 0x11c4 <Password_check+0x10e>
+    11c4:	00 00       	nop
+					  _delay_ms(1000);
+					  PORTD &= ~(1<<PD6);
+    11c6:	82 b3       	in	r24, 0x12	; 18
+    11c8:	8f 7b       	andi	r24, 0xBF	; 191
+    11ca:	82 bb       	out	0x12, r24	; 18
+    11cc:	9f e9       	ldi	r25, 0x9F	; 159
+    11ce:	a6 e8       	ldi	r26, 0x86	; 134
+    11d0:	b1 e0       	ldi	r27, 0x01	; 1
+    11d2:	91 50       	subi	r25, 0x01	; 1
+    11d4:	a0 40       	sbci	r26, 0x00	; 0
+    11d6:	b0 40       	sbci	r27, 0x00	; 0
+    11d8:	e1 f7       	brne	.-8      	; 0x11d2 <Password_check+0x11c>
+    11da:	00 c0       	rjmp	.+0      	; 0x11dc <Password_check+0x126>
+    11dc:	00 00       	nop
+					  _delay_ms(500);
+
+                      k=k+1; //Cong them vao bien kiem tra so lan nhap sai
+    11de:	ef ef       	ldi	r30, 0xFF	; 255
+    11e0:	ee 1a       	sub	r14, r30
+    11e2:	fe 0a       	sbc	r15, r30
+                    }
+                  length = 0; // Dat lai do dai va chuoi
+                  memset(password, 0, sizeof(password)); // Xoa mang mat khau
+    11e4:	fe 01       	movw	r30, r28
+    11e6:	31 96       	adiw	r30, 0x01	; 1
+    11e8:	85 e0       	ldi	r24, 0x05	; 5
+    11ea:	df 01       	movw	r26, r30
+    11ec:	1d 92       	st	X+, r1
+    11ee:	8a 95       	dec	r24
+    11f0:	e9 f7       	brne	.-6      	; 0x11ec <Password_check+0x136>
+    11f2:	21 c0       	rjmp	.+66     	; 0x1236 <Password_check+0x180>
+
+                }
+              else
+                {// Neu chua nhap du so ky tu la 4 ky tu cua mat khau
+				  
+                  LCD_clear();
+    11f4:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                  LCD_print("Must be 4 digits");
+    11f8:	8c e4       	ldi	r24, 0x4C	; 76
+    11fa:	91 e0       	ldi	r25, 0x01	; 1
+    11fc:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+				  
+				  // Thuc hien nhay coi khi nhap sai
+				  PORTD |= (1<<PD6);
+    1200:	82 b3       	in	r24, 0x12	; 18
+    1202:	80 64       	ori	r24, 0x40	; 64
+    1204:	82 bb       	out	0x12, r24	; 18
+    1206:	bf e3       	ldi	r27, 0x3F	; 63
+    1208:	ed e0       	ldi	r30, 0x0D	; 13
+    120a:	f3 e0       	ldi	r31, 0x03	; 3
+    120c:	b1 50       	subi	r27, 0x01	; 1
+    120e:	e0 40       	sbci	r30, 0x00	; 0
+    1210:	f0 40       	sbci	r31, 0x00	; 0
+    1212:	e1 f7       	brne	.-8      	; 0x120c <Password_check+0x156>
+    1214:	00 c0       	rjmp	.+0      	; 0x1216 <Password_check+0x160>
+    1216:	00 00       	nop
+				  _delay_ms(1000);
+				  PORTD &= ~(1<<PD6);
+    1218:	82 b3       	in	r24, 0x12	; 18
+    121a:	8f 7b       	andi	r24, 0xBF	; 191
+    121c:	82 bb       	out	0x12, r24	; 18
+    121e:	2f e9       	ldi	r18, 0x9F	; 159
+    1220:	86 e8       	ldi	r24, 0x86	; 134
+    1222:	91 e0       	ldi	r25, 0x01	; 1
+    1224:	21 50       	subi	r18, 0x01	; 1
+    1226:	80 40       	sbci	r24, 0x00	; 0
+    1228:	90 40       	sbci	r25, 0x00	; 0
+    122a:	e1 f7       	brne	.-8      	; 0x1224 <Password_check+0x16e>
+    122c:	00 c0       	rjmp	.+0      	; 0x122e <Password_check+0x178>
+    122e:	00 00       	nop
+				  _delay_ms(500);
+				  
+                  k=k+1;// Cong them vao bien kiem tra so lan nhap sai
+    1230:	af ef       	ldi	r26, 0xFF	; 255
+    1232:	ea 1a       	sub	r14, r26
+    1234:	fa 0a       	sbc	r15, r26
+                }
+              if(k==5)
+    1236:	b5 e0       	ldi	r27, 0x05	; 5
+    1238:	eb 16       	cp	r14, r27
+    123a:	f1 04       	cpc	r15, r1
+    123c:	b9 f4       	brne	.+46     	; 0x126c <Password_check+0x1b6>
+                { //Neu thuc hien viec nhap mat khau khong dung qua 5 lan
+
+
+                  LCD_clear();
+    123e:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+                  LCD_print("Wrong 5 times!");
+    1242:	8d e5       	ldi	r24, 0x5D	; 93
+    1244:	91 e0       	ldi	r25, 0x01	; 1
+    1246:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+				  
+				  PORTD |= (1<<PD6);
+    124a:	82 b3       	in	r24, 0x12	; 18
+    124c:	80 64       	ori	r24, 0x40	; 64
+    124e:	82 bb       	out	0x12, r24	; 18
+    1250:	ef e5       	ldi	r30, 0x5F	; 95
+    1252:	fe ea       	ldi	r31, 0xAE	; 174
+    1254:	2a e0       	ldi	r18, 0x0A	; 10
+    1256:	e1 50       	subi	r30, 0x01	; 1
+    1258:	f0 40       	sbci	r31, 0x00	; 0
+    125a:	20 40       	sbci	r18, 0x00	; 0
+    125c:	e1 f7       	brne	.-8      	; 0x1256 <Password_check+0x1a0>
+    125e:	00 c0       	rjmp	.+0      	; 0x1260 <Password_check+0x1aa>
+    1260:	00 00       	nop
+				  _delay_ms(3500);
+				  PORTD &= ~(1<<PD6);
+    1262:	82 b3       	in	r24, 0x12	; 18
+    1264:	8f 7b       	andi	r24, 0xBF	; 191
+    1266:	82 bb       	out	0x12, r24	; 18
+
+                  return 0; //Tra ve gia tri khong khi da nhap sai qua 5 lan 
+    1268:	80 e0       	ldi	r24, 0x00	; 0
+    126a:	43 c0       	rjmp	.+134    	; 0x12f2 <Password_check+0x23c>
+                }
+              length = 0; // Dat lai do dai cua chuoi nhap
+              memset(password, 0, sizeof(password)); // Xoa mang mat khau
+    126c:	fe 01       	movw	r30, r28
+    126e:	31 96       	adiw	r30, 0x01	; 1
+    1270:	85 e0       	ldi	r24, 0x05	; 5
+    1272:	df 01       	movw	r26, r30
+    1274:	1d 92       	st	X+, r1
+    1276:	8a 95       	dec	r24
+    1278:	e9 f7       	brne	.-6      	; 0x1274 <Password_check+0x1be>
+
+              LCD_clear();
+    127a:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+              LCD_print("Enter password:");
+    127e:	80 e2       	ldi	r24, 0x20	; 32
+    1280:	91 e0       	ldi	r25, 0x01	; 1
+    1282:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+				  _delay_ms(3500);
+				  PORTD &= ~(1<<PD6);
+
+                  return 0; //Tra ve gia tri khong khi da nhap sai qua 5 lan 
+                }
+              length = 0; // Dat lai do dai cua chuoi nhap
+    1286:	d1 2c       	mov	r13, r1
+    1288:	33 cf       	rjmp	.-410    	; 0x10f0 <Password_check+0x3a>
+              memset(password, 0, sizeof(password)); // Xoa mang mat khau
+
+              LCD_clear();
+              LCD_print("Enter password:");
+            }
+          else if(key == 14)
+    128a:	8e 30       	cpi	r24, 0x0E	; 14
+    128c:	a1 f4       	brne	.+40     	; 0x12b6 <Password_check+0x200>
+            { // Phim vao phan chuc nang set mat khau moi
+			  
+			  uint8_t set_check = 0;
+              set_check = set_new_password(CoPass);
+    128e:	c8 01       	movw	r24, r16
+    1290:	0e 94 53 06 	call	0xca6	; 0xca6 <set_new_password>
+
+              length = 0; // Dat lai do dai cua chuoi nhap
+              memset(password, 0, sizeof(password)); // Xoa mang mat khau
+    1294:	fe 01       	movw	r30, r28
+    1296:	31 96       	adiw	r30, 0x01	; 1
+    1298:	95 e0       	ldi	r25, 0x05	; 5
+    129a:	df 01       	movw	r26, r30
+    129c:	1d 92       	st	X+, r1
+    129e:	9a 95       	dec	r25
+    12a0:	e9 f7       	brne	.-6      	; 0x129c <Password_check+0x1e6>
+			  
+			  if(set_check == 2) {
+    12a2:	82 30       	cpi	r24, 0x02	; 2
+    12a4:	29 f1       	breq	.+74     	; 0x12f0 <Password_check+0x23a>
+				return 2;			  
+			  }
+              LCD_clear();
+    12a6:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+              LCD_print("Enter password:");
+    12aa:	80 e2       	ldi	r24, 0x20	; 32
+    12ac:	91 e0       	ldi	r25, 0x01	; 1
+    12ae:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+            { // Phim vao phan chuc nang set mat khau moi
+			  
+			  uint8_t set_check = 0;
+              set_check = set_new_password(CoPass);
+
+              length = 0; // Dat lai do dai cua chuoi nhap
+    12b2:	d1 2c       	mov	r13, r1
+    12b4:	1d cf       	rjmp	.-454    	; 0x10f0 <Password_check+0x3a>
+			  }
+              LCD_clear();
+              LCD_print("Enter password:");
+            }
+
+          else if(key >= 0 && key <= 9)
+    12b6:	8a 30       	cpi	r24, 0x0A	; 10
+    12b8:	08 f0       	brcs	.+2      	; 0x12bc <Password_check+0x206>
+    12ba:	1a cf       	rjmp	.-460    	; 0x10f0 <Password_check+0x3a>
+              { // Neu la so duoc nhan
+              if (length < MAX_LENGTH)
+    12bc:	b3 e0       	ldi	r27, 0x03	; 3
+    12be:	bd 15       	cp	r27, r13
+    12c0:	08 f4       	brcc	.+2      	; 0x12c4 <Password_check+0x20e>
+    12c2:	16 cf       	rjmp	.-468    	; 0x10f0 <Password_check+0x3a>
+                {
+                  password[length] = key + '0'; // Chuyen so thanh ky tu
+    12c4:	e1 e0       	ldi	r30, 0x01	; 1
+    12c6:	f0 e0       	ldi	r31, 0x00	; 0
+    12c8:	ec 0f       	add	r30, r28
+    12ca:	fd 1f       	adc	r31, r29
+    12cc:	ed 0d       	add	r30, r13
+    12ce:	f1 1d       	adc	r31, r1
+    12d0:	80 5d       	subi	r24, 0xD0	; 208
+    12d2:	80 83       	st	Z, r24
+                  
+                  LCD_setCursor(length, 1);
+    12d4:	61 e0       	ldi	r22, 0x01	; 1
+    12d6:	8d 2d       	mov	r24, r13
+    12d8:	0e 94 05 05 	call	0xa0a	; 0xa0a <LCD_setCursor>
+                  LCD_print("*"); // Th�m dau * tren LCD
+    12dc:	86 ec       	ldi	r24, 0xC6	; 198
+    12de:	90 e0       	ldi	r25, 0x00	; 0
+    12e0:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+
+                  length++;
+    12e4:	d3 94       	inc	r13
+    12e6:	04 cf       	rjmp	.-504    	; 0x10f0 <Password_check+0x3a>
+  int k= 0; // Bien kiem tra so lan nhap sai mat khau
+  while (1) {
+      uint8_t key = press_check(); // Doc gia tri tu keypad
+	  
+	  if(INT0_flag) { //Kiem tra xem nut nhan mo cua co duoc bam khong?
+		  return 2;
+    12e8:	82 e0       	ldi	r24, 0x02	; 2
+    12ea:	03 c0       	rjmp	.+6      	; 0x12f2 <Password_check+0x23c>
+	  }
+	  if(UART_flag) { //Kiem tra xem co task tu esp gui xuong khong?
+		  return 3;
+    12ec:	83 e0       	ldi	r24, 0x03	; 3
+    12ee:	01 c0       	rjmp	.+2      	; 0x12f2 <Password_check+0x23c>
+
+              length = 0; // Dat lai do dai cua chuoi nhap
+              memset(password, 0, sizeof(password)); // Xoa mang mat khau
+			  
+			  if(set_check == 2) {
+				return 2;			  
+    12f0:	82 e0       	ldi	r24, 0x02	; 2
+                  length++;
+                }
+              }
+        }
+  }
+}
+    12f2:	0f 90       	pop	r0
+    12f4:	0f 90       	pop	r0
+    12f6:	0f 90       	pop	r0
+    12f8:	0f 90       	pop	r0
+    12fa:	0f 90       	pop	r0
+    12fc:	df 91       	pop	r29
+    12fe:	cf 91       	pop	r28
+    1300:	1f 91       	pop	r17
+    1302:	0f 91       	pop	r16
+    1304:	ff 90       	pop	r15
+    1306:	ef 90       	pop	r14
+    1308:	df 90       	pop	r13
+    130a:	08 95       	ret
+
+0000130c <RFID_check>:
+
+uint8_t RFID_check() {
+    130c:	cf 93       	push	r28
+	uint8_t count = 0;
+	LCD_clear();
+    130e:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Scan card:");
+    1312:	8c e6       	ldi	r24, 0x6C	; 108
+    1314:	91 e0       	ldi	r25, 0x01	; 1
+    1316:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+        }
+  }
+}
+
+uint8_t RFID_check() {
+	uint8_t count = 0;
+    131a:	c0 e0       	ldi	r28, 0x00	; 0
+	LCD_clear();
+	LCD_print("Scan card:");
+	while(1) {
+		uint8_t check = RFID_IsValidUID(&rfid);
+    131c:	83 e2       	ldi	r24, 0x23	; 35
+    131e:	92 e0       	ldi	r25, 0x02	; 2
+    1320:	0e 94 52 03 	call	0x6a4	; 0x6a4 <RFID_IsValidUID>
+		
+		if(INT0_flag) {
+    1324:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <INT0_flag>
+    1328:	91 11       	cpse	r25, r1
+    132a:	5d c0       	rjmp	.+186    	; 0x13e6 <RFID_check+0xda>
+			return 2;
+		}
+		if(UART_flag) {
+    132c:	90 91 f0 01 	lds	r25, 0x01F0	; 0x8001f0 <__data_end>
+    1330:	91 11       	cpse	r25, r1
+    1332:	5b c0       	rjmp	.+182    	; 0x13ea <RFID_check+0xde>
+			return 3;
+		}
+		
+		if(check == 1) {
+    1334:	81 30       	cpi	r24, 0x01	; 1
+    1336:	f9 f4       	brne	.+62     	; 0x1376 <RFID_check+0x6a>
+			LCD_clear();
+    1338:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+			LCD_print("Right Card!");
+    133c:	87 e7       	ldi	r24, 0x77	; 119
+    133e:	91 e0       	ldi	r25, 0x01	; 1
+    1340:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+			for(uint8_t i=0;i<2;i++){
+    1344:	90 e0       	ldi	r25, 0x00	; 0
+    1346:	13 c0       	rjmp	.+38     	; 0x136e <RFID_check+0x62>
+				PORTD |= (1<<PD6);
+    1348:	82 b3       	in	r24, 0x12	; 18
+    134a:	80 64       	ori	r24, 0x40	; 64
+    134c:	82 bb       	out	0x12, r24	; 18
+    134e:	e1 e1       	ldi	r30, 0x11	; 17
+    1350:	fa e7       	ldi	r31, 0x7A	; 122
+    1352:	31 97       	sbiw	r30, 0x01	; 1
+    1354:	f1 f7       	brne	.-4      	; 0x1352 <RFID_check+0x46>
+    1356:	00 c0       	rjmp	.+0      	; 0x1358 <RFID_check+0x4c>
+    1358:	00 00       	nop
+				_delay_ms(125);
+				PORTD &= ~(1<<PD6);
+    135a:	82 b3       	in	r24, 0x12	; 18
+    135c:	8f 7b       	andi	r24, 0xBF	; 191
+    135e:	82 bb       	out	0x12, r24	; 18
+    1360:	e1 e1       	ldi	r30, 0x11	; 17
+    1362:	fa e7       	ldi	r31, 0x7A	; 122
+    1364:	31 97       	sbiw	r30, 0x01	; 1
+    1366:	f1 f7       	brne	.-4      	; 0x1364 <RFID_check+0x58>
+    1368:	00 c0       	rjmp	.+0      	; 0x136a <RFID_check+0x5e>
+    136a:	00 00       	nop
+		}
+		
+		if(check == 1) {
+			LCD_clear();
+			LCD_print("Right Card!");
+			for(uint8_t i=0;i<2;i++){
+    136c:	9f 5f       	subi	r25, 0xFF	; 255
+    136e:	92 30       	cpi	r25, 0x02	; 2
+    1370:	58 f3       	brcs	.-42     	; 0x1348 <RFID_check+0x3c>
+				PORTD |= (1<<PD6);
+				_delay_ms(125);
+				PORTD &= ~(1<<PD6);
+				_delay_ms(125);
+			}
+			return 1;
+    1372:	81 e0       	ldi	r24, 0x01	; 1
+    1374:	3b c0       	rjmp	.+118    	; 0x13ec <RFID_check+0xe0>
+		} else if(check == 0) {
+    1376:	81 11       	cpse	r24, r1
+    1378:	1c c0       	rjmp	.+56     	; 0x13b2 <RFID_check+0xa6>
+			LCD_clear();
+    137a:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+			LCD_print("Wrong Card!");
+    137e:	83 e8       	ldi	r24, 0x83	; 131
+    1380:	91 e0       	ldi	r25, 0x01	; 1
+    1382:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+			PORTD |= (1<<PD6);
+    1386:	82 b3       	in	r24, 0x12	; 18
+    1388:	80 64       	ori	r24, 0x40	; 64
+    138a:	82 bb       	out	0x12, r24	; 18
+    138c:	ff e3       	ldi	r31, 0x3F	; 63
+    138e:	2d e0       	ldi	r18, 0x0D	; 13
+    1390:	83 e0       	ldi	r24, 0x03	; 3
+    1392:	f1 50       	subi	r31, 0x01	; 1
+    1394:	20 40       	sbci	r18, 0x00	; 0
+    1396:	80 40       	sbci	r24, 0x00	; 0
+    1398:	e1 f7       	brne	.-8      	; 0x1392 <RFID_check+0x86>
+    139a:	00 c0       	rjmp	.+0      	; 0x139c <RFID_check+0x90>
+    139c:	00 00       	nop
+			_delay_ms(1000);
+			PORTD &= ~(1<<PD6);
+    139e:	82 b3       	in	r24, 0x12	; 18
+    13a0:	8f 7b       	andi	r24, 0xBF	; 191
+    13a2:	82 bb       	out	0x12, r24	; 18
+			count++;
+    13a4:	cf 5f       	subi	r28, 0xFF	; 255
+			LCD_clear();
+    13a6:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+			LCD_print("Scan card:");
+    13aa:	8c e6       	ldi	r24, 0x6C	; 108
+    13ac:	91 e0       	ldi	r25, 0x01	; 1
+    13ae:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+		}
+		if(count == 5) {
+    13b2:	c5 30       	cpi	r28, 0x05	; 5
+    13b4:	09 f0       	breq	.+2      	; 0x13b8 <RFID_check+0xac>
+    13b6:	b2 cf       	rjmp	.-156    	; 0x131c <RFID_check+0x10>
+			LCD_clear();
+    13b8:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+			LCD_print("Wrong 5 times!");
+    13bc:	8d e5       	ldi	r24, 0x5D	; 93
+    13be:	91 e0       	ldi	r25, 0x01	; 1
+    13c0:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+			
+			PORTD |= (1<<PD6);
+    13c4:	82 b3       	in	r24, 0x12	; 18
+    13c6:	80 64       	ori	r24, 0x40	; 64
+    13c8:	82 bb       	out	0x12, r24	; 18
+    13ca:	9f e5       	ldi	r25, 0x5F	; 95
+    13cc:	ee ea       	ldi	r30, 0xAE	; 174
+    13ce:	fa e0       	ldi	r31, 0x0A	; 10
+    13d0:	91 50       	subi	r25, 0x01	; 1
+    13d2:	e0 40       	sbci	r30, 0x00	; 0
+    13d4:	f0 40       	sbci	r31, 0x00	; 0
+    13d6:	e1 f7       	brne	.-8      	; 0x13d0 <RFID_check+0xc4>
+    13d8:	00 c0       	rjmp	.+0      	; 0x13da <RFID_check+0xce>
+    13da:	00 00       	nop
+			_delay_ms(3500);
+			PORTD &= ~(1<<PD6);
+    13dc:	82 b3       	in	r24, 0x12	; 18
+    13de:	8f 7b       	andi	r24, 0xBF	; 191
+    13e0:	82 bb       	out	0x12, r24	; 18
+			return 0;
+    13e2:	80 e0       	ldi	r24, 0x00	; 0
+    13e4:	03 c0       	rjmp	.+6      	; 0x13ec <RFID_check+0xe0>
+	LCD_print("Scan card:");
+	while(1) {
+		uint8_t check = RFID_IsValidUID(&rfid);
+		
+		if(INT0_flag) {
+			return 2;
+    13e6:	82 e0       	ldi	r24, 0x02	; 2
+    13e8:	01 c0       	rjmp	.+2      	; 0x13ec <RFID_check+0xe0>
+		}
+		if(UART_flag) {
+			return 3;
+    13ea:	83 e0       	ldi	r24, 0x03	; 3
+			_delay_ms(3500);
+			PORTD &= ~(1<<PD6);
+			return 0;
+		}
+	}
+}
+    13ec:	cf 91       	pop	r28
+    13ee:	08 95       	ret
+
+000013f0 <Open_Door>:
+
+void Open_Door() {
+	door_state = 1;
+    13f0:	81 e0       	ldi	r24, 0x01	; 1
+    13f2:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <door_state>
+	LCD_clear();
+    13f6:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Open! Come In");
+    13fa:	8f e8       	ldi	r24, 0x8F	; 143
+    13fc:	91 e0       	ldi	r25, 0x01	; 1
+    13fe:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	OCR1A = 1900;
+    1402:	8c e6       	ldi	r24, 0x6C	; 108
+    1404:	97 e0       	ldi	r25, 0x07	; 7
+    1406:	9b bd       	out	0x2b, r25	; 43
+    1408:	8a bd       	out	0x2a, r24	; 42
+	// Thuc hien nhay coi khi nhap dung mat khau
+	for(uint8_t i=0;i<2;i++){
+    140a:	80 e0       	ldi	r24, 0x00	; 0
+    140c:	13 c0       	rjmp	.+38     	; 0x1434 <Open_Door+0x44>
+		PORTD |= (1<<PD6);
+    140e:	92 b3       	in	r25, 0x12	; 18
+    1410:	90 64       	ori	r25, 0x40	; 64
+    1412:	92 bb       	out	0x12, r25	; 18
+    1414:	a1 e1       	ldi	r26, 0x11	; 17
+    1416:	ba e7       	ldi	r27, 0x7A	; 122
+    1418:	11 97       	sbiw	r26, 0x01	; 1
+    141a:	f1 f7       	brne	.-4      	; 0x1418 <Open_Door+0x28>
+    141c:	00 c0       	rjmp	.+0      	; 0x141e <Open_Door+0x2e>
+    141e:	00 00       	nop
+		_delay_ms(125);
+		PORTD &= ~(1<<PD6);
+    1420:	92 b3       	in	r25, 0x12	; 18
+    1422:	9f 7b       	andi	r25, 0xBF	; 191
+    1424:	92 bb       	out	0x12, r25	; 18
+    1426:	e1 e1       	ldi	r30, 0x11	; 17
+    1428:	fa e7       	ldi	r31, 0x7A	; 122
+    142a:	31 97       	sbiw	r30, 0x01	; 1
+    142c:	f1 f7       	brne	.-4      	; 0x142a <Open_Door+0x3a>
+    142e:	00 c0       	rjmp	.+0      	; 0x1430 <Open_Door+0x40>
+    1430:	00 00       	nop
+	door_state = 1;
+	LCD_clear();
+	LCD_print("Open! Come In");
+	OCR1A = 1900;
+	// Thuc hien nhay coi khi nhap dung mat khau
+	for(uint8_t i=0;i<2;i++){
+    1432:	8f 5f       	subi	r24, 0xFF	; 255
+    1434:	82 30       	cpi	r24, 0x02	; 2
+    1436:	58 f3       	brcs	.-42     	; 0x140e <Open_Door+0x1e>
+		PORTD |= (1<<PD6);
+		_delay_ms(125);
+		PORTD &= ~(1<<PD6);
+		_delay_ms(125);
+	}
+	UART_sendChar('O'); //Gui thong tin cho esp
+    1438:	8f e4       	ldi	r24, 0x4F	; 79
+    143a:	0e 94 23 04 	call	0x846	; 0x846 <UART_sendChar>
+	UART_sendString((char *)current_uid); //Gui thong tin cho ESP
+    143e:	85 ef       	ldi	r24, 0xF5	; 245
+    1440:	91 e0       	ldi	r25, 0x01	; 1
+    1442:	0e 94 27 04 	call	0x84e	; 0x84e <UART_sendString>
+	UART_flag = 0;
+    1446:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+	uint8_t y = 99;
+	while(1){
+		y = press_check();
+    144a:	0e 94 eb 05 	call	0xbd6	; 0xbd6 <press_check>
+		if(y==0 || y==1 || y==2 || y==3 || y==4 || y==5 || y==6 || y==7 || y==8 || y==9 || y==10 || y==11 || y==12 || y==13 || y==14 || y==15 || 
+    144e:	80 31       	cpi	r24, 0x10	; 16
+    1450:	00 f1       	brcs	.+64     	; 0x1492 <Open_Door+0xa2>
+			door_state == 0)
+    1452:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <door_state>
+	UART_sendString((char *)current_uid); //Gui thong tin cho ESP
+	UART_flag = 0;
+	uint8_t y = 99;
+	while(1){
+		y = press_check();
+		if(y==0 || y==1 || y==2 || y==3 || y==4 || y==5 || y==6 || y==7 || y==8 || y==9 || y==10 || y==11 || y==12 || y==13 || y==14 || y==15 || 
+    1456:	88 23       	and	r24, r24
+    1458:	e1 f0       	breq	.+56     	; 0x1492 <Open_Door+0xa2>
+			door_state == 0)
+		{
+			break;
+		}
+		if(UART_flag) {
+    145a:	80 91 f0 01 	lds	r24, 0x01F0	; 0x8001f0 <__data_end>
+    145e:	88 23       	and	r24, r24
+    1460:	a1 f3       	breq	.-24     	; 0x144a <Open_Door+0x5a>
+    1462:	81 e1       	ldi	r24, 0x11	; 17
+    1464:	9a e7       	ldi	r25, 0x7A	; 122
+    1466:	01 97       	sbiw	r24, 0x01	; 1
+    1468:	f1 f7       	brne	.-4      	; 0x1466 <Open_Door+0x76>
+    146a:	00 c0       	rjmp	.+0      	; 0x146c <Open_Door+0x7c>
+    146c:	00 00       	nop
+			_delay_ms(125);
+			if(strcmp((char*)uart_buffer, "Close") == 0) {
+    146e:	6d e9       	ldi	r22, 0x9D	; 157
+    1470:	71 e0       	ldi	r23, 0x01	; 1
+    1472:	8e ef       	ldi	r24, 0xFE	; 254
+    1474:	91 e0       	ldi	r25, 0x01	; 1
+    1476:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    147a:	89 2b       	or	r24, r25
+    147c:	51 f0       	breq	.+20     	; 0x1492 <Open_Door+0xa2>
+				break;
+			} else {
+				UART_flag = 0;
+    147e:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+				memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1482:	80 e2       	ldi	r24, 0x20	; 32
+    1484:	ee ef       	ldi	r30, 0xFE	; 254
+    1486:	f1 e0       	ldi	r31, 0x01	; 1
+    1488:	df 01       	movw	r26, r30
+    148a:	1d 92       	st	X+, r1
+    148c:	8a 95       	dec	r24
+    148e:	e9 f7       	brne	.-6      	; 0x148a <Open_Door+0x9a>
+    1490:	dc cf       	rjmp	.-72     	; 0x144a <Open_Door+0x5a>
+			}
+		}
+		
+	}
+	UART_flag = 0;
+    1492:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+	memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1496:	80 e2       	ldi	r24, 0x20	; 32
+    1498:	ee ef       	ldi	r30, 0xFE	; 254
+    149a:	f1 e0       	ldi	r31, 0x01	; 1
+    149c:	df 01       	movw	r26, r30
+    149e:	1d 92       	st	X+, r1
+    14a0:	8a 95       	dec	r24
+    14a2:	e9 f7       	brne	.-6      	; 0x149e <Open_Door+0xae>
+	memset((char *)current_uid, 0, UID_LEN*2+1);
+    14a4:	89 e0       	ldi	r24, 0x09	; 9
+    14a6:	e5 ef       	ldi	r30, 0xF5	; 245
+    14a8:	f1 e0       	ldi	r31, 0x01	; 1
+    14aa:	df 01       	movw	r26, r30
+    14ac:	1d 92       	st	X+, r1
+    14ae:	8a 95       	dec	r24
+    14b0:	e9 f7       	brne	.-6      	; 0x14ac <Open_Door+0xbc>
+    14b2:	08 95       	ret
+
+000014b4 <Close_Door>:
+}
+
+void Close_Door() {
+	door_state = 0;
+    14b4:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <door_state>
+	INT0_flag = 0;
+    14b8:	10 92 f4 01 	sts	0x01F4, r1	; 0x8001f4 <INT0_flag>
+	LCD_clear();
+    14bc:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Close!");
+    14c0:	83 ea       	ldi	r24, 0xA3	; 163
+    14c2:	91 e0       	ldi	r25, 0x01	; 1
+    14c4:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	OCR1A = 900;
+    14c8:	84 e8       	ldi	r24, 0x84	; 132
+    14ca:	93 e0       	ldi	r25, 0x03	; 3
+    14cc:	9b bd       	out	0x2b, r25	; 43
+    14ce:	8a bd       	out	0x2a, r24	; 42
+	for(uint8_t i=0;i<2;i++){
+    14d0:	80 e0       	ldi	r24, 0x00	; 0
+    14d2:	13 c0       	rjmp	.+38     	; 0x14fa <Close_Door+0x46>
+		PORTD |= (1<<PD6);
+    14d4:	92 b3       	in	r25, 0x12	; 18
+    14d6:	90 64       	ori	r25, 0x40	; 64
+    14d8:	92 bb       	out	0x12, r25	; 18
+    14da:	a1 e1       	ldi	r26, 0x11	; 17
+    14dc:	ba e7       	ldi	r27, 0x7A	; 122
+    14de:	11 97       	sbiw	r26, 0x01	; 1
+    14e0:	f1 f7       	brne	.-4      	; 0x14de <Close_Door+0x2a>
+    14e2:	00 c0       	rjmp	.+0      	; 0x14e4 <Close_Door+0x30>
+    14e4:	00 00       	nop
+		_delay_ms(125);
+		PORTD &= ~(1<<PD6);
+    14e6:	92 b3       	in	r25, 0x12	; 18
+    14e8:	9f 7b       	andi	r25, 0xBF	; 191
+    14ea:	92 bb       	out	0x12, r25	; 18
+    14ec:	e1 e1       	ldi	r30, 0x11	; 17
+    14ee:	fa e7       	ldi	r31, 0x7A	; 122
+    14f0:	31 97       	sbiw	r30, 0x01	; 1
+    14f2:	f1 f7       	brne	.-4      	; 0x14f0 <Close_Door+0x3c>
+    14f4:	00 c0       	rjmp	.+0      	; 0x14f6 <Close_Door+0x42>
+    14f6:	00 00       	nop
+	door_state = 0;
+	INT0_flag = 0;
+	LCD_clear();
+	LCD_print("Close!");
+	OCR1A = 900;
+	for(uint8_t i=0;i<2;i++){
+    14f8:	8f 5f       	subi	r24, 0xFF	; 255
+    14fa:	82 30       	cpi	r24, 0x02	; 2
+    14fc:	58 f3       	brcs	.-42     	; 0x14d4 <Close_Door+0x20>
+		PORTD |= (1<<PD6);
+		_delay_ms(125);
+		PORTD &= ~(1<<PD6);
+		_delay_ms(125);
+	}
+	UART_sendChar('C'); //Gui thong tin cho ESP
+    14fe:	83 e4       	ldi	r24, 0x43	; 67
+    1500:	0e 94 23 04 	call	0x846	; 0x846 <UART_sendChar>
+	UART_flag = 0;
+    1504:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+	memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1508:	80 e2       	ldi	r24, 0x20	; 32
+    150a:	ee ef       	ldi	r30, 0xFE	; 254
+    150c:	f1 e0       	ldi	r31, 0x01	; 1
+    150e:	df 01       	movw	r26, r30
+    1510:	1d 92       	st	X+, r1
+    1512:	8a 95       	dec	r24
+    1514:	e9 f7       	brne	.-6      	; 0x1510 <Close_Door+0x5c>
+    1516:	08 95       	ret
+
+00001518 <Access_Denied>:
+}
+
+void Access_Denied() {
+	door_state = 0;
+    1518:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <door_state>
+	INT0_flag = 0;
+    151c:	10 92 f4 01 	sts	0x01F4, r1	; 0x8001f4 <INT0_flag>
+	LCD_clear();
+    1520:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Access Denied!");
+    1524:	8a ea       	ldi	r24, 0xAA	; 170
+    1526:	91 e0       	ldi	r25, 0x01	; 1
+    1528:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	UART_sendChar('W');
+    152c:	87 e5       	ldi	r24, 0x57	; 87
+    152e:	0e 94 23 04 	call	0x846	; 0x846 <UART_sendChar>
+	while(1){
+		if(door_state == 1) { //Co nguoi tu ben trong kich hoat se enable cho cua
+    1532:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <door_state>
+    1536:	81 11       	cpse	r24, r1
+    1538:	1c c0       	rjmp	.+56     	; 0x1572 <Access_Denied+0x5a>
+			break;
+		}
+		
+		if(UART_flag) {
+    153a:	80 91 f0 01 	lds	r24, 0x01F0	; 0x8001f0 <__data_end>
+    153e:	88 23       	and	r24, r24
+    1540:	c1 f3       	breq	.-16     	; 0x1532 <Access_Denied+0x1a>
+    1542:	81 e1       	ldi	r24, 0x11	; 17
+    1544:	9a e7       	ldi	r25, 0x7A	; 122
+    1546:	01 97       	sbiw	r24, 0x01	; 1
+    1548:	f1 f7       	brne	.-4      	; 0x1546 <Access_Denied+0x2e>
+    154a:	00 c0       	rjmp	.+0      	; 0x154c <Access_Denied+0x34>
+    154c:	00 00       	nop
+			
+			_delay_ms(125);// Dam bao ngat UART da nhan du chuoi roi moi thuc hien cac phan khac
+			
+			if(strcmp((char*)uart_buffer, "Access") == 0){
+    154e:	69 eb       	ldi	r22, 0xB9	; 185
+    1550:	71 e0       	ldi	r23, 0x01	; 1
+    1552:	8e ef       	ldi	r24, 0xFE	; 254
+    1554:	91 e0       	ldi	r25, 0x01	; 1
+    1556:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    155a:	89 2b       	or	r24, r25
+    155c:	51 f0       	breq	.+20     	; 0x1572 <Access_Denied+0x5a>
+				break;
+			} else {
+				UART_flag = 0;
+    155e:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+				memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1562:	80 e2       	ldi	r24, 0x20	; 32
+    1564:	ee ef       	ldi	r30, 0xFE	; 254
+    1566:	f1 e0       	ldi	r31, 0x01	; 1
+    1568:	df 01       	movw	r26, r30
+    156a:	1d 92       	st	X+, r1
+    156c:	8a 95       	dec	r24
+    156e:	e9 f7       	brne	.-6      	; 0x156a <Access_Denied+0x52>
+    1570:	e0 cf       	rjmp	.-64     	; 0x1532 <Access_Denied+0x1a>
+			}
+		}
+	}
+	memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1572:	80 e2       	ldi	r24, 0x20	; 32
+    1574:	ee ef       	ldi	r30, 0xFE	; 254
+    1576:	f1 e0       	ldi	r31, 0x01	; 1
+    1578:	df 01       	movw	r26, r30
+    157a:	1d 92       	st	X+, r1
+    157c:	8a 95       	dec	r24
+    157e:	e9 f7       	brne	.-6      	; 0x157a <Access_Denied+0x62>
+	memset((char *)current_uid, '0', UID_LEN*2+1);
+    1580:	49 e0       	ldi	r20, 0x09	; 9
+    1582:	50 e0       	ldi	r21, 0x00	; 0
+    1584:	60 e3       	ldi	r22, 0x30	; 48
+    1586:	70 e0       	ldi	r23, 0x00	; 0
+    1588:	85 ef       	ldi	r24, 0xF5	; 245
+    158a:	91 e0       	ldi	r25, 0x01	; 1
+    158c:	0e 94 f1 0b 	call	0x17e2	; 0x17e2 <memset>
+	UART_flag = 0;
+    1590:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+    1594:	08 95       	ret
+
+00001596 <Pass_word>:
+}
+
+void Pass_word() {
+	door_state = 0;
+    1596:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <door_state>
+	INT0_flag = 0;
+    159a:	10 92 f4 01 	sts	0x01F4, r1	; 0x8001f4 <INT0_flag>
+	LCD_clear();
+    159e:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Send Password!");
+    15a2:	80 ec       	ldi	r24, 0xC0	; 192
+    15a4:	91 e0       	ldi	r25, 0x01	; 1
+    15a6:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	UART_sendChar('P');
+    15aa:	80 e5       	ldi	r24, 0x50	; 80
+    15ac:	0e 94 23 04 	call	0x846	; 0x846 <UART_sendChar>
+	UART_sendString(checked_password);
+    15b0:	8e e1       	ldi	r24, 0x1E	; 30
+    15b2:	92 e0       	ldi	r25, 0x02	; 2
+    15b4:	0e 94 27 04 	call	0x84e	; 0x84e <UART_sendString>
+    15b8:	2f e7       	ldi	r18, 0x7F	; 127
+    15ba:	8a e1       	ldi	r24, 0x1A	; 26
+    15bc:	96 e0       	ldi	r25, 0x06	; 6
+    15be:	21 50       	subi	r18, 0x01	; 1
+    15c0:	80 40       	sbci	r24, 0x00	; 0
+    15c2:	90 40       	sbci	r25, 0x00	; 0
+    15c4:	e1 f7       	brne	.-8      	; 0x15be <Pass_word+0x28>
+    15c6:	00 c0       	rjmp	.+0      	; 0x15c8 <Pass_word+0x32>
+    15c8:	00 00       	nop
+	_delay_ms(2000);
+	memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    15ca:	80 e2       	ldi	r24, 0x20	; 32
+    15cc:	ee ef       	ldi	r30, 0xFE	; 254
+    15ce:	f1 e0       	ldi	r31, 0x01	; 1
+    15d0:	df 01       	movw	r26, r30
+    15d2:	1d 92       	st	X+, r1
+    15d4:	8a 95       	dec	r24
+    15d6:	e9 f7       	brne	.-6      	; 0x15d2 <Pass_word+0x3c>
+	memset((char *)current_uid, 0, UID_LEN*2+1);
+    15d8:	89 e0       	ldi	r24, 0x09	; 9
+    15da:	e5 ef       	ldi	r30, 0xF5	; 245
+    15dc:	f1 e0       	ldi	r31, 0x01	; 1
+    15de:	df 01       	movw	r26, r30
+    15e0:	1d 92       	st	X+, r1
+    15e2:	8a 95       	dec	r24
+    15e4:	e9 f7       	brne	.-6      	; 0x15e0 <Pass_word+0x4a>
+	UART_flag = 0;
+    15e6:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+    15ea:	08 95       	ret
+
+000015ec <Change_pass_request>:
+}
+
+void Change_pass_request() {
+	door_state = 0;
+    15ec:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <door_state>
+	INT0_flag = 0;
+    15f0:	10 92 f4 01 	sts	0x01F4, r1	; 0x8001f4 <INT0_flag>
+	LCD_clear();
+    15f4:	0e 94 b5 04 	call	0x96a	; 0x96a <LCD_clear>
+	LCD_print("Password Changed");
+    15f8:	8f ec       	ldi	r24, 0xCF	; 207
+    15fa:	91 e0       	ldi	r25, 0x01	; 1
+    15fc:	0e 94 a8 04 	call	0x950	; 0x950 <LCD_print>
+	strncpy(checked_password, (char *)uart_buffer + 2, 4);
+    1600:	44 e0       	ldi	r20, 0x04	; 4
+    1602:	50 e0       	ldi	r21, 0x00	; 0
+    1604:	60 e0       	ldi	r22, 0x00	; 0
+    1606:	72 e0       	ldi	r23, 0x02	; 2
+    1608:	8e e1       	ldi	r24, 0x1E	; 30
+    160a:	92 e0       	ldi	r25, 0x02	; 2
+    160c:	0e 94 01 0c 	call	0x1802	; 0x1802 <strncpy>
+	checked_password[MAX_LENGTH + 1] = '\0';
+    1610:	10 92 23 02 	sts	0x0223, r1	; 0x800223 <rfid>
+    1614:	2f e7       	ldi	r18, 0x7F	; 127
+    1616:	8a e1       	ldi	r24, 0x1A	; 26
+    1618:	96 e0       	ldi	r25, 0x06	; 6
+    161a:	21 50       	subi	r18, 0x01	; 1
+    161c:	80 40       	sbci	r24, 0x00	; 0
+    161e:	90 40       	sbci	r25, 0x00	; 0
+    1620:	e1 f7       	brne	.-8      	; 0x161a <Change_pass_request+0x2e>
+    1622:	00 c0       	rjmp	.+0      	; 0x1624 <Change_pass_request+0x38>
+    1624:	00 00       	nop
+	_delay_ms(2000);
+	
+	//Thuc hien upadte mat khau moi vao eerom
+	eeprom_update_block((const void *)checked_password, (void *)right_password, MAX_LENGTH);
+    1626:	44 e0       	ldi	r20, 0x04	; 4
+    1628:	50 e0       	ldi	r21, 0x00	; 0
+    162a:	61 e0       	ldi	r22, 0x01	; 1
+    162c:	70 e0       	ldi	r23, 0x00	; 0
+    162e:	8e e1       	ldi	r24, 0x1E	; 30
+    1630:	92 e0       	ldi	r25, 0x02	; 2
+    1632:	0e 94 db 0e 	call	0x1db6	; 0x1db6 <eeprom_update_block>
+	
+	memset((char *)uart_buffer, 0, UART_BUFFER_SIZE);
+    1636:	80 e2       	ldi	r24, 0x20	; 32
+    1638:	ee ef       	ldi	r30, 0xFE	; 254
+    163a:	f1 e0       	ldi	r31, 0x01	; 1
+    163c:	df 01       	movw	r26, r30
+    163e:	1d 92       	st	X+, r1
+    1640:	8a 95       	dec	r24
+    1642:	e9 f7       	brne	.-6      	; 0x163e <Change_pass_request+0x52>
+	memset((char *)current_uid, 0, UID_LEN*2+1);
+    1644:	89 e0       	ldi	r24, 0x09	; 9
+    1646:	e5 ef       	ldi	r30, 0xF5	; 245
+    1648:	f1 e0       	ldi	r31, 0x01	; 1
+    164a:	df 01       	movw	r26, r30
+    164c:	1d 92       	st	X+, r1
+    164e:	8a 95       	dec	r24
+    1650:	e9 f7       	brne	.-6      	; 0x164c <Change_pass_request+0x60>
+	UART_flag = 0;
+    1652:	10 92 f0 01 	sts	0x01F0, r1	; 0x8001f0 <__data_end>
+    1656:	08 95       	ret
+
+00001658 <main>:
+}
+int main(void)
+{
+	const int RST_PIN = 3;
+	
+	I2C_init(); //Khoi tao cho I2C
+    1658:	0e 94 34 04 	call	0x868	; 0x868 <I2C_init>
+	LCD_init();	//Khoi tao cho LCD
+    165c:	0e 94 0d 05 	call	0xa1a	; 0xa1a <LCD_init>
+	init_keypad(); //Khoi tao cho keypad
+    1660:	0e 94 5a 05 	call	0xab4	; 0xab4 <init_keypad>
+	PWM_init(); //Khoi tao cho PWM
+    1664:	0e 94 2b 05 	call	0xa56	; 0xa56 <PWM_init>
+	INT0_init(); //Khoi tao ngat ngoai cho INT0
+    1668:	0e 94 c4 05 	call	0xb88	; 0xb88 <INT0_init>
+	UART_init(); //Khoi tao truyen nhan UART voi ESP
+    166c:	0e 94 e2 03 	call	0x7c4	; 0x7c4 <UART_init>
+	sei();
+    1670:	78 94       	sei
+	
+	SPI_Init();
+    1672:	0e 94 d6 03 	call	0x7ac	; 0x7ac <SPI_Init>
+	MFRC522_Init(&rfid, SS, RST_PIN);
+    1676:	43 e0       	ldi	r20, 0x03	; 3
+    1678:	50 e0       	ldi	r21, 0x00	; 0
+    167a:	64 e0       	ldi	r22, 0x04	; 4
+    167c:	70 e0       	ldi	r23, 0x00	; 0
+    167e:	83 e2       	ldi	r24, 0x23	; 35
+    1680:	92 e0       	ldi	r25, 0x02	; 2
+    1682:	0e 94 4e 00 	call	0x9c	; 0x9c <MFRC522_Init>
+	MFRC522_Begin(&rfid);
+    1686:	83 e2       	ldi	r24, 0x23	; 35
+    1688:	92 e0       	ldi	r25, 0x02	; 2
+    168a:	0e 94 07 01 	call	0x20e	; 0x20e <MFRC522_Begin>
+
+	Pass_word_init();
+    168e:	0e 94 d7 05 	call	0xbae	; 0xbae <Pass_word_init>
+	
+	DDRD |= (1<<PD6); //Khoi tao chan coi buzzer
+    1692:	81 b3       	in	r24, 0x11	; 17
+    1694:	80 64       	ori	r24, 0x40	; 64
+    1696:	81 bb       	out	0x11, r24	; 17
+	PORTD &= ~(1<<PD6);
+    1698:	82 b3       	in	r24, 0x12	; 18
+    169a:	8f 7b       	andi	r24, 0xBF	; 191
+    169c:	82 bb       	out	0x12, r24	; 18
+	
+	Close_Door();
+    169e:	0e 94 5a 0a 	call	0x14b4	; 0x14b4 <Close_Door>
+	
+	while (1)
+	{
+		// Thuc hien lay mat khau dung trong vung nho EEROM
+		eeprom_read_block((void *)checked_password, (const void *)right_password, MAX_LENGTH);
+    16a2:	44 e0       	ldi	r20, 0x04	; 4
+    16a4:	50 e0       	ldi	r21, 0x00	; 0
+    16a6:	61 e0       	ldi	r22, 0x01	; 1
+    16a8:	70 e0       	ldi	r23, 0x00	; 0
+    16aa:	8e e1       	ldi	r24, 0x1E	; 30
+    16ac:	92 e0       	ldi	r25, 0x02	; 2
+    16ae:	0e 94 c3 0e 	call	0x1d86	; 0x1d86 <eeprom_read_block>
+		
+		uint8_t check_pass = 99;
+		uint8_t check_rfid = 99;
+		
+		check_rfid = RFID_check();
+    16b2:	0e 94 86 09 	call	0x130c	; 0x130c <RFID_check>
+		if(check_rfid == 1) {
+    16b6:	81 30       	cpi	r24, 0x01	; 1
+    16b8:	09 f4       	brne	.+2      	; 0x16bc <main+0x64>
+    16ba:	47 c0       	rjmp	.+142    	; 0x174a <main+0xf2>
+			// Di toi nhap mat khau
+		} else if(check_rfid == 0) {
+    16bc:	81 11       	cpse	r24, r1
+    16be:	05 c0       	rjmp	.+10     	; 0x16ca <main+0x72>
+			Access_Denied();
+    16c0:	0e 94 8c 0a 	call	0x1518	; 0x1518 <Access_Denied>
+			Close_Door();
+    16c4:	0e 94 5a 0a 	call	0x14b4	; 0x14b4 <Close_Door>
+			continue;
+    16c8:	ec cf       	rjmp	.-40     	; 0x16a2 <main+0x4a>
+		} else if(check_rfid == 2) {
+    16ca:	82 30       	cpi	r24, 0x02	; 2
+    16cc:	61 f4       	brne	.+24     	; 0x16e6 <main+0x8e>
+			memset((char *)current_uid, 0, UID_LEN*2+1); //TH co nguoi tu trong bam ra thi xoa luon mang uid
+    16ce:	89 e0       	ldi	r24, 0x09	; 9
+    16d0:	e5 ef       	ldi	r30, 0xF5	; 245
+    16d2:	f1 e0       	ldi	r31, 0x01	; 1
+    16d4:	df 01       	movw	r26, r30
+    16d6:	1d 92       	st	X+, r1
+    16d8:	8a 95       	dec	r24
+    16da:	e9 f7       	brne	.-6      	; 0x16d6 <main+0x7e>
+			Open_Door();
+    16dc:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Open_Door>
+			Close_Door();
+    16e0:	0e 94 5a 0a 	call	0x14b4	; 0x14b4 <Close_Door>
+			continue;
+    16e4:	de cf       	rjmp	.-68     	; 0x16a2 <main+0x4a>
+		} else if(check_rfid == 3) {
+    16e6:	83 30       	cpi	r24, 0x03	; 3
+    16e8:	81 f5       	brne	.+96     	; 0x174a <main+0xf2>
+    16ea:	81 e1       	ldi	r24, 0x11	; 17
+    16ec:	9a e7       	ldi	r25, 0x7A	; 122
+    16ee:	01 97       	sbiw	r24, 0x01	; 1
+    16f0:	f1 f7       	brne	.-4      	; 0x16ee <main+0x96>
+    16f2:	00 c0       	rjmp	.+0      	; 0x16f4 <main+0x9c>
+    16f4:	00 00       	nop
+			
+			_delay_ms(125);// Dam bao ngat UART da nhan du chuoi roi moi thuc hien cac phan khac
+			
+			if(strcmp((char*)uart_buffer, "Open") == 0) {
+    16f6:	60 ee       	ldi	r22, 0xE0	; 224
+    16f8:	71 e0       	ldi	r23, 0x01	; 1
+    16fa:	8e ef       	ldi	r24, 0xFE	; 254
+    16fc:	91 e0       	ldi	r25, 0x01	; 1
+    16fe:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    1702:	89 2b       	or	r24, r25
+    1704:	61 f4       	brne	.+24     	; 0x171e <main+0xc6>
+				memset((char *)current_uid, 0, UID_LEN*2+1);//TH esp yeu cau mo thi xoa luon mang uid
+    1706:	89 e0       	ldi	r24, 0x09	; 9
+    1708:	e5 ef       	ldi	r30, 0xF5	; 245
+    170a:	f1 e0       	ldi	r31, 0x01	; 1
+    170c:	df 01       	movw	r26, r30
+    170e:	1d 92       	st	X+, r1
+    1710:	8a 95       	dec	r24
+    1712:	e9 f7       	brne	.-6      	; 0x170e <main+0xb6>
+				Open_Door();
+    1714:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Open_Door>
+				Close_Door();
+    1718:	0e 94 5a 0a 	call	0x14b4	; 0x14b4 <Close_Door>
+				continue;
+    171c:	c2 cf       	rjmp	.-124    	; 0x16a2 <main+0x4a>
+			} else if(strcmp((char *)uart_buffer, "Passcheck") == 0) {
+    171e:	65 ee       	ldi	r22, 0xE5	; 229
+    1720:	71 e0       	ldi	r23, 0x01	; 1
+    1722:	8e ef       	ldi	r24, 0xFE	; 254
+    1724:	91 e0       	ldi	r25, 0x01	; 1
+    1726:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    172a:	89 2b       	or	r24, r25
+    172c:	19 f4       	brne	.+6      	; 0x1734 <main+0xdc>
+				Pass_word();
+    172e:	0e 94 cb 0a 	call	0x1596	; 0x1596 <Pass_word>
+				continue;
+    1732:	b7 cf       	rjmp	.-146    	; 0x16a2 <main+0x4a>
+			} else if(uart_buffer[0] == 'P' && uart_buffer[1] == 'C') {
+    1734:	80 91 fe 01 	lds	r24, 0x01FE	; 0x8001fe <uart_buffer>
+    1738:	80 35       	cpi	r24, 0x50	; 80
+    173a:	39 f4       	brne	.+14     	; 0x174a <main+0xf2>
+    173c:	80 91 ff 01 	lds	r24, 0x01FF	; 0x8001ff <uart_buffer+0x1>
+    1740:	83 34       	cpi	r24, 0x43	; 67
+    1742:	19 f4       	brne	.+6      	; 0x174a <main+0xf2>
+				Change_pass_request();
+    1744:	0e 94 f6 0a 	call	0x15ec	; 0x15ec <Change_pass_request>
+				continue;
+    1748:	ac cf       	rjmp	.-168    	; 0x16a2 <main+0x4a>
+			}
+		}
+		
+		
+		check_pass = Password_check(checked_password);
+    174a:	8e e1       	ldi	r24, 0x1E	; 30
+    174c:	92 e0       	ldi	r25, 0x02	; 2
+    174e:	0e 94 5b 08 	call	0x10b6	; 0x10b6 <Password_check>
+		if(check_pass == 1) {
+    1752:	81 30       	cpi	r24, 0x01	; 1
+    1754:	19 f4       	brne	.+6      	; 0x175c <main+0x104>
+			Open_Door();
+    1756:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Open_Door>
+    175a:	40 c0       	rjmp	.+128    	; 0x17dc <main+0x184>
+		} else if(check_pass == 2) {
+    175c:	82 30       	cpi	r24, 0x02	; 2
+    175e:	51 f4       	brne	.+20     	; 0x1774 <main+0x11c>
+			memset((char *)current_uid, 0, UID_LEN*2+1); // TH co nguoi tu trong bam ra thi xoa luon mang uid
+    1760:	89 e0       	ldi	r24, 0x09	; 9
+    1762:	e5 ef       	ldi	r30, 0xF5	; 245
+    1764:	f1 e0       	ldi	r31, 0x01	; 1
+    1766:	df 01       	movw	r26, r30
+    1768:	1d 92       	st	X+, r1
+    176a:	8a 95       	dec	r24
+    176c:	e9 f7       	brne	.-6      	; 0x1768 <main+0x110>
+			Open_Door();
+    176e:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Open_Door>
+    1772:	34 c0       	rjmp	.+104    	; 0x17dc <main+0x184>
+		} else if(check_pass == 0) {
+    1774:	81 11       	cpse	r24, r1
+    1776:	03 c0       	rjmp	.+6      	; 0x177e <main+0x126>
+			Access_Denied();
+    1778:	0e 94 8c 0a 	call	0x1518	; 0x1518 <Access_Denied>
+    177c:	2f c0       	rjmp	.+94     	; 0x17dc <main+0x184>
+		} else if(check_pass == 3) {
+    177e:	83 30       	cpi	r24, 0x03	; 3
+    1780:	69 f5       	brne	.+90     	; 0x17dc <main+0x184>
+    1782:	81 e1       	ldi	r24, 0x11	; 17
+    1784:	9a e7       	ldi	r25, 0x7A	; 122
+    1786:	01 97       	sbiw	r24, 0x01	; 1
+    1788:	f1 f7       	brne	.-4      	; 0x1786 <main+0x12e>
+    178a:	00 c0       	rjmp	.+0      	; 0x178c <main+0x134>
+    178c:	00 00       	nop
+			
+			_delay_ms(125);// Dam bao ngat UART da nhan du chuoi roi moi thuc hien cac phan khac
+			
+			if(strcmp((char*)uart_buffer, "Open") == 0) {
+    178e:	60 ee       	ldi	r22, 0xE0	; 224
+    1790:	71 e0       	ldi	r23, 0x01	; 1
+    1792:	8e ef       	ldi	r24, 0xFE	; 254
+    1794:	91 e0       	ldi	r25, 0x01	; 1
+    1796:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    179a:	89 2b       	or	r24, r25
+    179c:	51 f4       	brne	.+20     	; 0x17b2 <main+0x15a>
+				memset((char *)current_uid, 0, UID_LEN*2+1);//TH esp yeu cau mo thi xoa luon mang uid
+    179e:	89 e0       	ldi	r24, 0x09	; 9
+    17a0:	e5 ef       	ldi	r30, 0xF5	; 245
+    17a2:	f1 e0       	ldi	r31, 0x01	; 1
+    17a4:	df 01       	movw	r26, r30
+    17a6:	1d 92       	st	X+, r1
+    17a8:	8a 95       	dec	r24
+    17aa:	e9 f7       	brne	.-6      	; 0x17a6 <main+0x14e>
+				Open_Door();
+    17ac:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Open_Door>
+    17b0:	15 c0       	rjmp	.+42     	; 0x17dc <main+0x184>
+			} else if(strcmp((char *)uart_buffer, "Passcheck") == 0) {
+    17b2:	65 ee       	ldi	r22, 0xE5	; 229
+    17b4:	71 e0       	ldi	r23, 0x01	; 1
+    17b6:	8e ef       	ldi	r24, 0xFE	; 254
+    17b8:	91 e0       	ldi	r25, 0x01	; 1
+    17ba:	0e 94 f8 0b 	call	0x17f0	; 0x17f0 <strcmp>
+    17be:	89 2b       	or	r24, r25
+    17c0:	19 f4       	brne	.+6      	; 0x17c8 <main+0x170>
+				Pass_word();
+    17c2:	0e 94 cb 0a 	call	0x1596	; 0x1596 <Pass_word>
+    17c6:	0a c0       	rjmp	.+20     	; 0x17dc <main+0x184>
+			} else if(uart_buffer[0] == 'P' && uart_buffer[1] == 'C') {
+    17c8:	80 91 fe 01 	lds	r24, 0x01FE	; 0x8001fe <uart_buffer>
+    17cc:	80 35       	cpi	r24, 0x50	; 80
+    17ce:	31 f4       	brne	.+12     	; 0x17dc <main+0x184>
+    17d0:	80 91 ff 01 	lds	r24, 0x01FF	; 0x8001ff <uart_buffer+0x1>
+    17d4:	83 34       	cpi	r24, 0x43	; 67
+    17d6:	11 f4       	brne	.+4      	; 0x17dc <main+0x184>
+				Change_pass_request();
+    17d8:	0e 94 f6 0a 	call	0x15ec	; 0x15ec <Change_pass_request>
+			}
+		}
+		Close_Door();
+    17dc:	0e 94 5a 0a 	call	0x14b4	; 0x14b4 <Close_Door>
+    17e0:	60 cf       	rjmp	.-320    	; 0x16a2 <main+0x4a>
+
+000017e2 <memset>:
+    17e2:	dc 01       	movw	r26, r24
+    17e4:	01 c0       	rjmp	.+2      	; 0x17e8 <memset+0x6>
+    17e6:	6d 93       	st	X+, r22
+    17e8:	41 50       	subi	r20, 0x01	; 1
+    17ea:	50 40       	sbci	r21, 0x00	; 0
+    17ec:	e0 f7       	brcc	.-8      	; 0x17e6 <memset+0x4>
+    17ee:	08 95       	ret
+
+000017f0 <strcmp>:
+    17f0:	fb 01       	movw	r30, r22
+    17f2:	dc 01       	movw	r26, r24
+    17f4:	8d 91       	ld	r24, X+
+    17f6:	01 90       	ld	r0, Z+
+    17f8:	80 19       	sub	r24, r0
+    17fa:	01 10       	cpse	r0, r1
+    17fc:	d9 f3       	breq	.-10     	; 0x17f4 <strcmp+0x4>
+    17fe:	99 0b       	sbc	r25, r25
+    1800:	08 95       	ret
+
+00001802 <strncpy>:
+    1802:	fb 01       	movw	r30, r22
+    1804:	dc 01       	movw	r26, r24
+    1806:	41 50       	subi	r20, 0x01	; 1
+    1808:	50 40       	sbci	r21, 0x00	; 0
+    180a:	48 f0       	brcs	.+18     	; 0x181e <strncpy+0x1c>
+    180c:	01 90       	ld	r0, Z+
+    180e:	0d 92       	st	X+, r0
+    1810:	00 20       	and	r0, r0
+    1812:	c9 f7       	brne	.-14     	; 0x1806 <strncpy+0x4>
+    1814:	01 c0       	rjmp	.+2      	; 0x1818 <strncpy+0x16>
+    1816:	1d 92       	st	X+, r1
+    1818:	41 50       	subi	r20, 0x01	; 1
+    181a:	50 40       	sbci	r21, 0x00	; 0
+    181c:	e0 f7       	brcc	.-8      	; 0x1816 <strncpy+0x14>
+    181e:	08 95       	ret
+
+00001820 <sprintf>:
+    1820:	ae e0       	ldi	r26, 0x0E	; 14
+    1822:	b0 e0       	ldi	r27, 0x00	; 0
+    1824:	e6 e1       	ldi	r30, 0x16	; 22
+    1826:	fc e0       	ldi	r31, 0x0C	; 12
+    1828:	0c 94 21 0f 	jmp	0x1e42	; 0x1e42 <__prologue_saves__+0x1c>
+    182c:	0d 89       	ldd	r16, Y+21	; 0x15
+    182e:	1e 89       	ldd	r17, Y+22	; 0x16
+    1830:	86 e0       	ldi	r24, 0x06	; 6
+    1832:	8c 83       	std	Y+4, r24	; 0x04
+    1834:	1a 83       	std	Y+2, r17	; 0x02
+    1836:	09 83       	std	Y+1, r16	; 0x01
+    1838:	8f ef       	ldi	r24, 0xFF	; 255
+    183a:	9f e7       	ldi	r25, 0x7F	; 127
+    183c:	9e 83       	std	Y+6, r25	; 0x06
+    183e:	8d 83       	std	Y+5, r24	; 0x05
+    1840:	ae 01       	movw	r20, r28
+    1842:	47 5e       	subi	r20, 0xE7	; 231
+    1844:	5f 4f       	sbci	r21, 0xFF	; 255
+    1846:	6f 89       	ldd	r22, Y+23	; 0x17
+    1848:	78 8d       	ldd	r23, Y+24	; 0x18
+    184a:	ce 01       	movw	r24, r28
+    184c:	01 96       	adiw	r24, 0x01	; 1
+    184e:	0e 94 32 0c 	call	0x1864	; 0x1864 <vfprintf>
+    1852:	ef 81       	ldd	r30, Y+7	; 0x07
+    1854:	f8 85       	ldd	r31, Y+8	; 0x08
+    1856:	e0 0f       	add	r30, r16
+    1858:	f1 1f       	adc	r31, r17
+    185a:	10 82       	st	Z, r1
+    185c:	2e 96       	adiw	r28, 0x0e	; 14
+    185e:	e4 e0       	ldi	r30, 0x04	; 4
+    1860:	0c 94 3d 0f 	jmp	0x1e7a	; 0x1e7a <__epilogue_restores__+0x1c>
+
+00001864 <vfprintf>:
+    1864:	ab e0       	ldi	r26, 0x0B	; 11
+    1866:	b0 e0       	ldi	r27, 0x00	; 0
+    1868:	e8 e3       	ldi	r30, 0x38	; 56
+    186a:	fc e0       	ldi	r31, 0x0C	; 12
+    186c:	0c 94 13 0f 	jmp	0x1e26	; 0x1e26 <__prologue_saves__>
+    1870:	6c 01       	movw	r12, r24
+    1872:	7b 01       	movw	r14, r22
+    1874:	8a 01       	movw	r16, r20
+    1876:	fc 01       	movw	r30, r24
+    1878:	17 82       	std	Z+7, r1	; 0x07
+    187a:	16 82       	std	Z+6, r1	; 0x06
+    187c:	83 81       	ldd	r24, Z+3	; 0x03
+    187e:	81 ff       	sbrs	r24, 1
+    1880:	cc c1       	rjmp	.+920    	; 0x1c1a <vfprintf+0x3b6>
+    1882:	ce 01       	movw	r24, r28
+    1884:	01 96       	adiw	r24, 0x01	; 1
+    1886:	3c 01       	movw	r6, r24
+    1888:	f6 01       	movw	r30, r12
+    188a:	93 81       	ldd	r25, Z+3	; 0x03
+    188c:	f7 01       	movw	r30, r14
+    188e:	93 fd       	sbrc	r25, 3
+    1890:	85 91       	lpm	r24, Z+
+    1892:	93 ff       	sbrs	r25, 3
+    1894:	81 91       	ld	r24, Z+
+    1896:	7f 01       	movw	r14, r30
+    1898:	88 23       	and	r24, r24
+    189a:	09 f4       	brne	.+2      	; 0x189e <vfprintf+0x3a>
+    189c:	ba c1       	rjmp	.+884    	; 0x1c12 <vfprintf+0x3ae>
+    189e:	85 32       	cpi	r24, 0x25	; 37
+    18a0:	39 f4       	brne	.+14     	; 0x18b0 <vfprintf+0x4c>
+    18a2:	93 fd       	sbrc	r25, 3
+    18a4:	85 91       	lpm	r24, Z+
+    18a6:	93 ff       	sbrs	r25, 3
+    18a8:	81 91       	ld	r24, Z+
+    18aa:	7f 01       	movw	r14, r30
+    18ac:	85 32       	cpi	r24, 0x25	; 37
+    18ae:	29 f4       	brne	.+10     	; 0x18ba <vfprintf+0x56>
+    18b0:	b6 01       	movw	r22, r12
+    18b2:	90 e0       	ldi	r25, 0x00	; 0
+    18b4:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    18b8:	e7 cf       	rjmp	.-50     	; 0x1888 <vfprintf+0x24>
+    18ba:	91 2c       	mov	r9, r1
+    18bc:	21 2c       	mov	r2, r1
+    18be:	31 2c       	mov	r3, r1
+    18c0:	ff e1       	ldi	r31, 0x1F	; 31
+    18c2:	f3 15       	cp	r31, r3
+    18c4:	d8 f0       	brcs	.+54     	; 0x18fc <vfprintf+0x98>
+    18c6:	8b 32       	cpi	r24, 0x2B	; 43
+    18c8:	79 f0       	breq	.+30     	; 0x18e8 <vfprintf+0x84>
+    18ca:	38 f4       	brcc	.+14     	; 0x18da <vfprintf+0x76>
+    18cc:	80 32       	cpi	r24, 0x20	; 32
+    18ce:	79 f0       	breq	.+30     	; 0x18ee <vfprintf+0x8a>
+    18d0:	83 32       	cpi	r24, 0x23	; 35
+    18d2:	a1 f4       	brne	.+40     	; 0x18fc <vfprintf+0x98>
+    18d4:	23 2d       	mov	r18, r3
+    18d6:	20 61       	ori	r18, 0x10	; 16
+    18d8:	1d c0       	rjmp	.+58     	; 0x1914 <vfprintf+0xb0>
+    18da:	8d 32       	cpi	r24, 0x2D	; 45
+    18dc:	61 f0       	breq	.+24     	; 0x18f6 <vfprintf+0x92>
+    18de:	80 33       	cpi	r24, 0x30	; 48
+    18e0:	69 f4       	brne	.+26     	; 0x18fc <vfprintf+0x98>
+    18e2:	23 2d       	mov	r18, r3
+    18e4:	21 60       	ori	r18, 0x01	; 1
+    18e6:	16 c0       	rjmp	.+44     	; 0x1914 <vfprintf+0xb0>
+    18e8:	83 2d       	mov	r24, r3
+    18ea:	82 60       	ori	r24, 0x02	; 2
+    18ec:	38 2e       	mov	r3, r24
+    18ee:	e3 2d       	mov	r30, r3
+    18f0:	e4 60       	ori	r30, 0x04	; 4
+    18f2:	3e 2e       	mov	r3, r30
+    18f4:	2a c0       	rjmp	.+84     	; 0x194a <vfprintf+0xe6>
+    18f6:	f3 2d       	mov	r31, r3
+    18f8:	f8 60       	ori	r31, 0x08	; 8
+    18fa:	1d c0       	rjmp	.+58     	; 0x1936 <vfprintf+0xd2>
+    18fc:	37 fc       	sbrc	r3, 7
+    18fe:	2d c0       	rjmp	.+90     	; 0x195a <vfprintf+0xf6>
+    1900:	20 ed       	ldi	r18, 0xD0	; 208
+    1902:	28 0f       	add	r18, r24
+    1904:	2a 30       	cpi	r18, 0x0A	; 10
+    1906:	40 f0       	brcs	.+16     	; 0x1918 <vfprintf+0xb4>
+    1908:	8e 32       	cpi	r24, 0x2E	; 46
+    190a:	b9 f4       	brne	.+46     	; 0x193a <vfprintf+0xd6>
+    190c:	36 fc       	sbrc	r3, 6
+    190e:	81 c1       	rjmp	.+770    	; 0x1c12 <vfprintf+0x3ae>
+    1910:	23 2d       	mov	r18, r3
+    1912:	20 64       	ori	r18, 0x40	; 64
+    1914:	32 2e       	mov	r3, r18
+    1916:	19 c0       	rjmp	.+50     	; 0x194a <vfprintf+0xe6>
+    1918:	36 fe       	sbrs	r3, 6
+    191a:	06 c0       	rjmp	.+12     	; 0x1928 <vfprintf+0xc4>
+    191c:	8a e0       	ldi	r24, 0x0A	; 10
+    191e:	98 9e       	mul	r9, r24
+    1920:	20 0d       	add	r18, r0
+    1922:	11 24       	eor	r1, r1
+    1924:	92 2e       	mov	r9, r18
+    1926:	11 c0       	rjmp	.+34     	; 0x194a <vfprintf+0xe6>
+    1928:	ea e0       	ldi	r30, 0x0A	; 10
+    192a:	2e 9e       	mul	r2, r30
+    192c:	20 0d       	add	r18, r0
+    192e:	11 24       	eor	r1, r1
+    1930:	22 2e       	mov	r2, r18
+    1932:	f3 2d       	mov	r31, r3
+    1934:	f0 62       	ori	r31, 0x20	; 32
+    1936:	3f 2e       	mov	r3, r31
+    1938:	08 c0       	rjmp	.+16     	; 0x194a <vfprintf+0xe6>
+    193a:	8c 36       	cpi	r24, 0x6C	; 108
+    193c:	21 f4       	brne	.+8      	; 0x1946 <vfprintf+0xe2>
+    193e:	83 2d       	mov	r24, r3
+    1940:	80 68       	ori	r24, 0x80	; 128
+    1942:	38 2e       	mov	r3, r24
+    1944:	02 c0       	rjmp	.+4      	; 0x194a <vfprintf+0xe6>
+    1946:	88 36       	cpi	r24, 0x68	; 104
+    1948:	41 f4       	brne	.+16     	; 0x195a <vfprintf+0xf6>
+    194a:	f7 01       	movw	r30, r14
+    194c:	93 fd       	sbrc	r25, 3
+    194e:	85 91       	lpm	r24, Z+
+    1950:	93 ff       	sbrs	r25, 3
+    1952:	81 91       	ld	r24, Z+
+    1954:	7f 01       	movw	r14, r30
+    1956:	81 11       	cpse	r24, r1
+    1958:	b3 cf       	rjmp	.-154    	; 0x18c0 <vfprintf+0x5c>
+    195a:	98 2f       	mov	r25, r24
+    195c:	9f 7d       	andi	r25, 0xDF	; 223
+    195e:	95 54       	subi	r25, 0x45	; 69
+    1960:	93 30       	cpi	r25, 0x03	; 3
+    1962:	28 f4       	brcc	.+10     	; 0x196e <vfprintf+0x10a>
+    1964:	0c 5f       	subi	r16, 0xFC	; 252
+    1966:	1f 4f       	sbci	r17, 0xFF	; 255
+    1968:	9f e3       	ldi	r25, 0x3F	; 63
+    196a:	99 83       	std	Y+1, r25	; 0x01
+    196c:	0d c0       	rjmp	.+26     	; 0x1988 <vfprintf+0x124>
+    196e:	83 36       	cpi	r24, 0x63	; 99
+    1970:	31 f0       	breq	.+12     	; 0x197e <vfprintf+0x11a>
+    1972:	83 37       	cpi	r24, 0x73	; 115
+    1974:	71 f0       	breq	.+28     	; 0x1992 <vfprintf+0x12e>
+    1976:	83 35       	cpi	r24, 0x53	; 83
+    1978:	09 f0       	breq	.+2      	; 0x197c <vfprintf+0x118>
+    197a:	59 c0       	rjmp	.+178    	; 0x1a2e <vfprintf+0x1ca>
+    197c:	21 c0       	rjmp	.+66     	; 0x19c0 <vfprintf+0x15c>
+    197e:	f8 01       	movw	r30, r16
+    1980:	80 81       	ld	r24, Z
+    1982:	89 83       	std	Y+1, r24	; 0x01
+    1984:	0e 5f       	subi	r16, 0xFE	; 254
+    1986:	1f 4f       	sbci	r17, 0xFF	; 255
+    1988:	88 24       	eor	r8, r8
+    198a:	83 94       	inc	r8
+    198c:	91 2c       	mov	r9, r1
+    198e:	53 01       	movw	r10, r6
+    1990:	13 c0       	rjmp	.+38     	; 0x19b8 <vfprintf+0x154>
+    1992:	28 01       	movw	r4, r16
+    1994:	f2 e0       	ldi	r31, 0x02	; 2
+    1996:	4f 0e       	add	r4, r31
+    1998:	51 1c       	adc	r5, r1
+    199a:	f8 01       	movw	r30, r16
+    199c:	a0 80       	ld	r10, Z
+    199e:	b1 80       	ldd	r11, Z+1	; 0x01
+    19a0:	36 fe       	sbrs	r3, 6
+    19a2:	03 c0       	rjmp	.+6      	; 0x19aa <vfprintf+0x146>
+    19a4:	69 2d       	mov	r22, r9
+    19a6:	70 e0       	ldi	r23, 0x00	; 0
+    19a8:	02 c0       	rjmp	.+4      	; 0x19ae <vfprintf+0x14a>
+    19aa:	6f ef       	ldi	r22, 0xFF	; 255
+    19ac:	7f ef       	ldi	r23, 0xFF	; 255
+    19ae:	c5 01       	movw	r24, r10
+    19b0:	0e 94 1e 0e 	call	0x1c3c	; 0x1c3c <strnlen>
+    19b4:	4c 01       	movw	r8, r24
+    19b6:	82 01       	movw	r16, r4
+    19b8:	f3 2d       	mov	r31, r3
+    19ba:	ff 77       	andi	r31, 0x7F	; 127
+    19bc:	3f 2e       	mov	r3, r31
+    19be:	16 c0       	rjmp	.+44     	; 0x19ec <vfprintf+0x188>
+    19c0:	28 01       	movw	r4, r16
+    19c2:	22 e0       	ldi	r18, 0x02	; 2
+    19c4:	42 0e       	add	r4, r18
+    19c6:	51 1c       	adc	r5, r1
+    19c8:	f8 01       	movw	r30, r16
+    19ca:	a0 80       	ld	r10, Z
+    19cc:	b1 80       	ldd	r11, Z+1	; 0x01
+    19ce:	36 fe       	sbrs	r3, 6
+    19d0:	03 c0       	rjmp	.+6      	; 0x19d8 <vfprintf+0x174>
+    19d2:	69 2d       	mov	r22, r9
+    19d4:	70 e0       	ldi	r23, 0x00	; 0
+    19d6:	02 c0       	rjmp	.+4      	; 0x19dc <vfprintf+0x178>
+    19d8:	6f ef       	ldi	r22, 0xFF	; 255
+    19da:	7f ef       	ldi	r23, 0xFF	; 255
+    19dc:	c5 01       	movw	r24, r10
+    19de:	0e 94 13 0e 	call	0x1c26	; 0x1c26 <strnlen_P>
+    19e2:	4c 01       	movw	r8, r24
+    19e4:	f3 2d       	mov	r31, r3
+    19e6:	f0 68       	ori	r31, 0x80	; 128
+    19e8:	3f 2e       	mov	r3, r31
+    19ea:	82 01       	movw	r16, r4
+    19ec:	33 fc       	sbrc	r3, 3
+    19ee:	1b c0       	rjmp	.+54     	; 0x1a26 <vfprintf+0x1c2>
+    19f0:	82 2d       	mov	r24, r2
+    19f2:	90 e0       	ldi	r25, 0x00	; 0
+    19f4:	88 16       	cp	r8, r24
+    19f6:	99 06       	cpc	r9, r25
+    19f8:	b0 f4       	brcc	.+44     	; 0x1a26 <vfprintf+0x1c2>
+    19fa:	b6 01       	movw	r22, r12
+    19fc:	80 e2       	ldi	r24, 0x20	; 32
+    19fe:	90 e0       	ldi	r25, 0x00	; 0
+    1a00:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1a04:	2a 94       	dec	r2
+    1a06:	f4 cf       	rjmp	.-24     	; 0x19f0 <vfprintf+0x18c>
+    1a08:	f5 01       	movw	r30, r10
+    1a0a:	37 fc       	sbrc	r3, 7
+    1a0c:	85 91       	lpm	r24, Z+
+    1a0e:	37 fe       	sbrs	r3, 7
+    1a10:	81 91       	ld	r24, Z+
+    1a12:	5f 01       	movw	r10, r30
+    1a14:	b6 01       	movw	r22, r12
+    1a16:	90 e0       	ldi	r25, 0x00	; 0
+    1a18:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1a1c:	21 10       	cpse	r2, r1
+    1a1e:	2a 94       	dec	r2
+    1a20:	21 e0       	ldi	r18, 0x01	; 1
+    1a22:	82 1a       	sub	r8, r18
+    1a24:	91 08       	sbc	r9, r1
+    1a26:	81 14       	cp	r8, r1
+    1a28:	91 04       	cpc	r9, r1
+    1a2a:	71 f7       	brne	.-36     	; 0x1a08 <vfprintf+0x1a4>
+    1a2c:	e8 c0       	rjmp	.+464    	; 0x1bfe <vfprintf+0x39a>
+    1a2e:	84 36       	cpi	r24, 0x64	; 100
+    1a30:	11 f0       	breq	.+4      	; 0x1a36 <vfprintf+0x1d2>
+    1a32:	89 36       	cpi	r24, 0x69	; 105
+    1a34:	41 f5       	brne	.+80     	; 0x1a86 <vfprintf+0x222>
+    1a36:	f8 01       	movw	r30, r16
+    1a38:	37 fe       	sbrs	r3, 7
+    1a3a:	07 c0       	rjmp	.+14     	; 0x1a4a <vfprintf+0x1e6>
+    1a3c:	60 81       	ld	r22, Z
+    1a3e:	71 81       	ldd	r23, Z+1	; 0x01
+    1a40:	82 81       	ldd	r24, Z+2	; 0x02
+    1a42:	93 81       	ldd	r25, Z+3	; 0x03
+    1a44:	0c 5f       	subi	r16, 0xFC	; 252
+    1a46:	1f 4f       	sbci	r17, 0xFF	; 255
+    1a48:	08 c0       	rjmp	.+16     	; 0x1a5a <vfprintf+0x1f6>
+    1a4a:	60 81       	ld	r22, Z
+    1a4c:	71 81       	ldd	r23, Z+1	; 0x01
+    1a4e:	07 2e       	mov	r0, r23
+    1a50:	00 0c       	add	r0, r0
+    1a52:	88 0b       	sbc	r24, r24
+    1a54:	99 0b       	sbc	r25, r25
+    1a56:	0e 5f       	subi	r16, 0xFE	; 254
+    1a58:	1f 4f       	sbci	r17, 0xFF	; 255
+    1a5a:	f3 2d       	mov	r31, r3
+    1a5c:	ff 76       	andi	r31, 0x6F	; 111
+    1a5e:	3f 2e       	mov	r3, r31
+    1a60:	97 ff       	sbrs	r25, 7
+    1a62:	09 c0       	rjmp	.+18     	; 0x1a76 <vfprintf+0x212>
+    1a64:	90 95       	com	r25
+    1a66:	80 95       	com	r24
+    1a68:	70 95       	com	r23
+    1a6a:	61 95       	neg	r22
+    1a6c:	7f 4f       	sbci	r23, 0xFF	; 255
+    1a6e:	8f 4f       	sbci	r24, 0xFF	; 255
+    1a70:	9f 4f       	sbci	r25, 0xFF	; 255
+    1a72:	f0 68       	ori	r31, 0x80	; 128
+    1a74:	3f 2e       	mov	r3, r31
+    1a76:	2a e0       	ldi	r18, 0x0A	; 10
+    1a78:	30 e0       	ldi	r19, 0x00	; 0
+    1a7a:	a3 01       	movw	r20, r6
+    1a7c:	0e 94 65 0e 	call	0x1cca	; 0x1cca <__ultoa_invert>
+    1a80:	88 2e       	mov	r8, r24
+    1a82:	86 18       	sub	r8, r6
+    1a84:	45 c0       	rjmp	.+138    	; 0x1b10 <vfprintf+0x2ac>
+    1a86:	85 37       	cpi	r24, 0x75	; 117
+    1a88:	31 f4       	brne	.+12     	; 0x1a96 <vfprintf+0x232>
+    1a8a:	23 2d       	mov	r18, r3
+    1a8c:	2f 7e       	andi	r18, 0xEF	; 239
+    1a8e:	b2 2e       	mov	r11, r18
+    1a90:	2a e0       	ldi	r18, 0x0A	; 10
+    1a92:	30 e0       	ldi	r19, 0x00	; 0
+    1a94:	25 c0       	rjmp	.+74     	; 0x1ae0 <vfprintf+0x27c>
+    1a96:	93 2d       	mov	r25, r3
+    1a98:	99 7f       	andi	r25, 0xF9	; 249
+    1a9a:	b9 2e       	mov	r11, r25
+    1a9c:	8f 36       	cpi	r24, 0x6F	; 111
+    1a9e:	c1 f0       	breq	.+48     	; 0x1ad0 <vfprintf+0x26c>
+    1aa0:	18 f4       	brcc	.+6      	; 0x1aa8 <vfprintf+0x244>
+    1aa2:	88 35       	cpi	r24, 0x58	; 88
+    1aa4:	79 f0       	breq	.+30     	; 0x1ac4 <vfprintf+0x260>
+    1aa6:	b5 c0       	rjmp	.+362    	; 0x1c12 <vfprintf+0x3ae>
+    1aa8:	80 37       	cpi	r24, 0x70	; 112
+    1aaa:	19 f0       	breq	.+6      	; 0x1ab2 <vfprintf+0x24e>
+    1aac:	88 37       	cpi	r24, 0x78	; 120
+    1aae:	21 f0       	breq	.+8      	; 0x1ab8 <vfprintf+0x254>
+    1ab0:	b0 c0       	rjmp	.+352    	; 0x1c12 <vfprintf+0x3ae>
+    1ab2:	e9 2f       	mov	r30, r25
+    1ab4:	e0 61       	ori	r30, 0x10	; 16
+    1ab6:	be 2e       	mov	r11, r30
+    1ab8:	b4 fe       	sbrs	r11, 4
+    1aba:	0d c0       	rjmp	.+26     	; 0x1ad6 <vfprintf+0x272>
+    1abc:	fb 2d       	mov	r31, r11
+    1abe:	f4 60       	ori	r31, 0x04	; 4
+    1ac0:	bf 2e       	mov	r11, r31
+    1ac2:	09 c0       	rjmp	.+18     	; 0x1ad6 <vfprintf+0x272>
+    1ac4:	34 fe       	sbrs	r3, 4
+    1ac6:	0a c0       	rjmp	.+20     	; 0x1adc <vfprintf+0x278>
+    1ac8:	29 2f       	mov	r18, r25
+    1aca:	26 60       	ori	r18, 0x06	; 6
+    1acc:	b2 2e       	mov	r11, r18
+    1ace:	06 c0       	rjmp	.+12     	; 0x1adc <vfprintf+0x278>
+    1ad0:	28 e0       	ldi	r18, 0x08	; 8
+    1ad2:	30 e0       	ldi	r19, 0x00	; 0
+    1ad4:	05 c0       	rjmp	.+10     	; 0x1ae0 <vfprintf+0x27c>
+    1ad6:	20 e1       	ldi	r18, 0x10	; 16
+    1ad8:	30 e0       	ldi	r19, 0x00	; 0
+    1ada:	02 c0       	rjmp	.+4      	; 0x1ae0 <vfprintf+0x27c>
+    1adc:	20 e1       	ldi	r18, 0x10	; 16
+    1ade:	32 e0       	ldi	r19, 0x02	; 2
+    1ae0:	f8 01       	movw	r30, r16
+    1ae2:	b7 fe       	sbrs	r11, 7
+    1ae4:	07 c0       	rjmp	.+14     	; 0x1af4 <vfprintf+0x290>
+    1ae6:	60 81       	ld	r22, Z
+    1ae8:	71 81       	ldd	r23, Z+1	; 0x01
+    1aea:	82 81       	ldd	r24, Z+2	; 0x02
+    1aec:	93 81       	ldd	r25, Z+3	; 0x03
+    1aee:	0c 5f       	subi	r16, 0xFC	; 252
+    1af0:	1f 4f       	sbci	r17, 0xFF	; 255
+    1af2:	06 c0       	rjmp	.+12     	; 0x1b00 <vfprintf+0x29c>
+    1af4:	60 81       	ld	r22, Z
+    1af6:	71 81       	ldd	r23, Z+1	; 0x01
+    1af8:	80 e0       	ldi	r24, 0x00	; 0
+    1afa:	90 e0       	ldi	r25, 0x00	; 0
+    1afc:	0e 5f       	subi	r16, 0xFE	; 254
+    1afe:	1f 4f       	sbci	r17, 0xFF	; 255
+    1b00:	a3 01       	movw	r20, r6
+    1b02:	0e 94 65 0e 	call	0x1cca	; 0x1cca <__ultoa_invert>
+    1b06:	88 2e       	mov	r8, r24
+    1b08:	86 18       	sub	r8, r6
+    1b0a:	fb 2d       	mov	r31, r11
+    1b0c:	ff 77       	andi	r31, 0x7F	; 127
+    1b0e:	3f 2e       	mov	r3, r31
+    1b10:	36 fe       	sbrs	r3, 6
+    1b12:	0d c0       	rjmp	.+26     	; 0x1b2e <vfprintf+0x2ca>
+    1b14:	23 2d       	mov	r18, r3
+    1b16:	2e 7f       	andi	r18, 0xFE	; 254
+    1b18:	a2 2e       	mov	r10, r18
+    1b1a:	89 14       	cp	r8, r9
+    1b1c:	58 f4       	brcc	.+22     	; 0x1b34 <vfprintf+0x2d0>
+    1b1e:	34 fe       	sbrs	r3, 4
+    1b20:	0b c0       	rjmp	.+22     	; 0x1b38 <vfprintf+0x2d4>
+    1b22:	32 fc       	sbrc	r3, 2
+    1b24:	09 c0       	rjmp	.+18     	; 0x1b38 <vfprintf+0x2d4>
+    1b26:	83 2d       	mov	r24, r3
+    1b28:	8e 7e       	andi	r24, 0xEE	; 238
+    1b2a:	a8 2e       	mov	r10, r24
+    1b2c:	05 c0       	rjmp	.+10     	; 0x1b38 <vfprintf+0x2d4>
+    1b2e:	b8 2c       	mov	r11, r8
+    1b30:	a3 2c       	mov	r10, r3
+    1b32:	03 c0       	rjmp	.+6      	; 0x1b3a <vfprintf+0x2d6>
+    1b34:	b8 2c       	mov	r11, r8
+    1b36:	01 c0       	rjmp	.+2      	; 0x1b3a <vfprintf+0x2d6>
+    1b38:	b9 2c       	mov	r11, r9
+    1b3a:	a4 fe       	sbrs	r10, 4
+    1b3c:	0f c0       	rjmp	.+30     	; 0x1b5c <vfprintf+0x2f8>
+    1b3e:	fe 01       	movw	r30, r28
+    1b40:	e8 0d       	add	r30, r8
+    1b42:	f1 1d       	adc	r31, r1
+    1b44:	80 81       	ld	r24, Z
+    1b46:	80 33       	cpi	r24, 0x30	; 48
+    1b48:	21 f4       	brne	.+8      	; 0x1b52 <vfprintf+0x2ee>
+    1b4a:	9a 2d       	mov	r25, r10
+    1b4c:	99 7e       	andi	r25, 0xE9	; 233
+    1b4e:	a9 2e       	mov	r10, r25
+    1b50:	09 c0       	rjmp	.+18     	; 0x1b64 <vfprintf+0x300>
+    1b52:	a2 fe       	sbrs	r10, 2
+    1b54:	06 c0       	rjmp	.+12     	; 0x1b62 <vfprintf+0x2fe>
+    1b56:	b3 94       	inc	r11
+    1b58:	b3 94       	inc	r11
+    1b5a:	04 c0       	rjmp	.+8      	; 0x1b64 <vfprintf+0x300>
+    1b5c:	8a 2d       	mov	r24, r10
+    1b5e:	86 78       	andi	r24, 0x86	; 134
+    1b60:	09 f0       	breq	.+2      	; 0x1b64 <vfprintf+0x300>
+    1b62:	b3 94       	inc	r11
+    1b64:	a3 fc       	sbrc	r10, 3
+    1b66:	11 c0       	rjmp	.+34     	; 0x1b8a <vfprintf+0x326>
+    1b68:	a0 fe       	sbrs	r10, 0
+    1b6a:	06 c0       	rjmp	.+12     	; 0x1b78 <vfprintf+0x314>
+    1b6c:	b2 14       	cp	r11, r2
+    1b6e:	88 f4       	brcc	.+34     	; 0x1b92 <vfprintf+0x32e>
+    1b70:	28 0c       	add	r2, r8
+    1b72:	92 2c       	mov	r9, r2
+    1b74:	9b 18       	sub	r9, r11
+    1b76:	0e c0       	rjmp	.+28     	; 0x1b94 <vfprintf+0x330>
+    1b78:	b2 14       	cp	r11, r2
+    1b7a:	60 f4       	brcc	.+24     	; 0x1b94 <vfprintf+0x330>
+    1b7c:	b6 01       	movw	r22, r12
+    1b7e:	80 e2       	ldi	r24, 0x20	; 32
+    1b80:	90 e0       	ldi	r25, 0x00	; 0
+    1b82:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1b86:	b3 94       	inc	r11
+    1b88:	f7 cf       	rjmp	.-18     	; 0x1b78 <vfprintf+0x314>
+    1b8a:	b2 14       	cp	r11, r2
+    1b8c:	18 f4       	brcc	.+6      	; 0x1b94 <vfprintf+0x330>
+    1b8e:	2b 18       	sub	r2, r11
+    1b90:	02 c0       	rjmp	.+4      	; 0x1b96 <vfprintf+0x332>
+    1b92:	98 2c       	mov	r9, r8
+    1b94:	21 2c       	mov	r2, r1
+    1b96:	a4 fe       	sbrs	r10, 4
+    1b98:	10 c0       	rjmp	.+32     	; 0x1bba <vfprintf+0x356>
+    1b9a:	b6 01       	movw	r22, r12
+    1b9c:	80 e3       	ldi	r24, 0x30	; 48
+    1b9e:	90 e0       	ldi	r25, 0x00	; 0
+    1ba0:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1ba4:	a2 fe       	sbrs	r10, 2
+    1ba6:	17 c0       	rjmp	.+46     	; 0x1bd6 <vfprintf+0x372>
+    1ba8:	a1 fc       	sbrc	r10, 1
+    1baa:	03 c0       	rjmp	.+6      	; 0x1bb2 <vfprintf+0x34e>
+    1bac:	88 e7       	ldi	r24, 0x78	; 120
+    1bae:	90 e0       	ldi	r25, 0x00	; 0
+    1bb0:	02 c0       	rjmp	.+4      	; 0x1bb6 <vfprintf+0x352>
+    1bb2:	88 e5       	ldi	r24, 0x58	; 88
+    1bb4:	90 e0       	ldi	r25, 0x00	; 0
+    1bb6:	b6 01       	movw	r22, r12
+    1bb8:	0c c0       	rjmp	.+24     	; 0x1bd2 <vfprintf+0x36e>
+    1bba:	8a 2d       	mov	r24, r10
+    1bbc:	86 78       	andi	r24, 0x86	; 134
+    1bbe:	59 f0       	breq	.+22     	; 0x1bd6 <vfprintf+0x372>
+    1bc0:	a1 fe       	sbrs	r10, 1
+    1bc2:	02 c0       	rjmp	.+4      	; 0x1bc8 <vfprintf+0x364>
+    1bc4:	8b e2       	ldi	r24, 0x2B	; 43
+    1bc6:	01 c0       	rjmp	.+2      	; 0x1bca <vfprintf+0x366>
+    1bc8:	80 e2       	ldi	r24, 0x20	; 32
+    1bca:	a7 fc       	sbrc	r10, 7
+    1bcc:	8d e2       	ldi	r24, 0x2D	; 45
+    1bce:	b6 01       	movw	r22, r12
+    1bd0:	90 e0       	ldi	r25, 0x00	; 0
+    1bd2:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1bd6:	89 14       	cp	r8, r9
+    1bd8:	38 f4       	brcc	.+14     	; 0x1be8 <vfprintf+0x384>
+    1bda:	b6 01       	movw	r22, r12
+    1bdc:	80 e3       	ldi	r24, 0x30	; 48
+    1bde:	90 e0       	ldi	r25, 0x00	; 0
+    1be0:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1be4:	9a 94       	dec	r9
+    1be6:	f7 cf       	rjmp	.-18     	; 0x1bd6 <vfprintf+0x372>
+    1be8:	8a 94       	dec	r8
+    1bea:	f3 01       	movw	r30, r6
+    1bec:	e8 0d       	add	r30, r8
+    1bee:	f1 1d       	adc	r31, r1
+    1bf0:	80 81       	ld	r24, Z
+    1bf2:	b6 01       	movw	r22, r12
+    1bf4:	90 e0       	ldi	r25, 0x00	; 0
+    1bf6:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1bfa:	81 10       	cpse	r8, r1
+    1bfc:	f5 cf       	rjmp	.-22     	; 0x1be8 <vfprintf+0x384>
+    1bfe:	22 20       	and	r2, r2
+    1c00:	09 f4       	brne	.+2      	; 0x1c04 <vfprintf+0x3a0>
+    1c02:	42 ce       	rjmp	.-892    	; 0x1888 <vfprintf+0x24>
+    1c04:	b6 01       	movw	r22, r12
+    1c06:	80 e2       	ldi	r24, 0x20	; 32
+    1c08:	90 e0       	ldi	r25, 0x00	; 0
+    1c0a:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <fputc>
+    1c0e:	2a 94       	dec	r2
+    1c10:	f6 cf       	rjmp	.-20     	; 0x1bfe <vfprintf+0x39a>
+    1c12:	f6 01       	movw	r30, r12
+    1c14:	86 81       	ldd	r24, Z+6	; 0x06
+    1c16:	97 81       	ldd	r25, Z+7	; 0x07
+    1c18:	02 c0       	rjmp	.+4      	; 0x1c1e <vfprintf+0x3ba>
+    1c1a:	8f ef       	ldi	r24, 0xFF	; 255
+    1c1c:	9f ef       	ldi	r25, 0xFF	; 255
+    1c1e:	2b 96       	adiw	r28, 0x0b	; 11
+    1c20:	e2 e1       	ldi	r30, 0x12	; 18
+    1c22:	0c 94 2f 0f 	jmp	0x1e5e	; 0x1e5e <__epilogue_restores__>
+
+00001c26 <strnlen_P>:
+    1c26:	fc 01       	movw	r30, r24
+    1c28:	05 90       	lpm	r0, Z+
+    1c2a:	61 50       	subi	r22, 0x01	; 1
+    1c2c:	70 40       	sbci	r23, 0x00	; 0
+    1c2e:	01 10       	cpse	r0, r1
+    1c30:	d8 f7       	brcc	.-10     	; 0x1c28 <strnlen_P+0x2>
+    1c32:	80 95       	com	r24
+    1c34:	90 95       	com	r25
+    1c36:	8e 0f       	add	r24, r30
+    1c38:	9f 1f       	adc	r25, r31
+    1c3a:	08 95       	ret
+
+00001c3c <strnlen>:
+    1c3c:	fc 01       	movw	r30, r24
+    1c3e:	61 50       	subi	r22, 0x01	; 1
+    1c40:	70 40       	sbci	r23, 0x00	; 0
+    1c42:	01 90       	ld	r0, Z+
+    1c44:	01 10       	cpse	r0, r1
+    1c46:	d8 f7       	brcc	.-10     	; 0x1c3e <strnlen+0x2>
+    1c48:	80 95       	com	r24
+    1c4a:	90 95       	com	r25
+    1c4c:	8e 0f       	add	r24, r30
+    1c4e:	9f 1f       	adc	r25, r31
+    1c50:	08 95       	ret
+
+00001c52 <fputc>:
+    1c52:	0f 93       	push	r16
+    1c54:	1f 93       	push	r17
+    1c56:	cf 93       	push	r28
+    1c58:	df 93       	push	r29
+    1c5a:	fb 01       	movw	r30, r22
+    1c5c:	23 81       	ldd	r18, Z+3	; 0x03
+    1c5e:	21 fd       	sbrc	r18, 1
+    1c60:	03 c0       	rjmp	.+6      	; 0x1c68 <fputc+0x16>
+    1c62:	8f ef       	ldi	r24, 0xFF	; 255
+    1c64:	9f ef       	ldi	r25, 0xFF	; 255
+    1c66:	2c c0       	rjmp	.+88     	; 0x1cc0 <fputc+0x6e>
+    1c68:	22 ff       	sbrs	r18, 2
+    1c6a:	16 c0       	rjmp	.+44     	; 0x1c98 <fputc+0x46>
+    1c6c:	46 81       	ldd	r20, Z+6	; 0x06
+    1c6e:	57 81       	ldd	r21, Z+7	; 0x07
+    1c70:	24 81       	ldd	r18, Z+4	; 0x04
+    1c72:	35 81       	ldd	r19, Z+5	; 0x05
+    1c74:	42 17       	cp	r20, r18
+    1c76:	53 07       	cpc	r21, r19
+    1c78:	44 f4       	brge	.+16     	; 0x1c8a <fputc+0x38>
+    1c7a:	a0 81       	ld	r26, Z
+    1c7c:	b1 81       	ldd	r27, Z+1	; 0x01
+    1c7e:	9d 01       	movw	r18, r26
+    1c80:	2f 5f       	subi	r18, 0xFF	; 255
+    1c82:	3f 4f       	sbci	r19, 0xFF	; 255
+    1c84:	31 83       	std	Z+1, r19	; 0x01
+    1c86:	20 83       	st	Z, r18
+    1c88:	8c 93       	st	X, r24
+    1c8a:	26 81       	ldd	r18, Z+6	; 0x06
+    1c8c:	37 81       	ldd	r19, Z+7	; 0x07
+    1c8e:	2f 5f       	subi	r18, 0xFF	; 255
+    1c90:	3f 4f       	sbci	r19, 0xFF	; 255
+    1c92:	37 83       	std	Z+7, r19	; 0x07
+    1c94:	26 83       	std	Z+6, r18	; 0x06
+    1c96:	14 c0       	rjmp	.+40     	; 0x1cc0 <fputc+0x6e>
+    1c98:	8b 01       	movw	r16, r22
+    1c9a:	ec 01       	movw	r28, r24
+    1c9c:	fb 01       	movw	r30, r22
+    1c9e:	00 84       	ldd	r0, Z+8	; 0x08
+    1ca0:	f1 85       	ldd	r31, Z+9	; 0x09
+    1ca2:	e0 2d       	mov	r30, r0
+    1ca4:	09 95       	icall
+    1ca6:	89 2b       	or	r24, r25
+    1ca8:	e1 f6       	brne	.-72     	; 0x1c62 <fputc+0x10>
+    1caa:	d8 01       	movw	r26, r16
+    1cac:	16 96       	adiw	r26, 0x06	; 6
+    1cae:	8d 91       	ld	r24, X+
+    1cb0:	9c 91       	ld	r25, X
+    1cb2:	17 97       	sbiw	r26, 0x07	; 7
+    1cb4:	01 96       	adiw	r24, 0x01	; 1
+    1cb6:	17 96       	adiw	r26, 0x07	; 7
+    1cb8:	9c 93       	st	X, r25
+    1cba:	8e 93       	st	-X, r24
+    1cbc:	16 97       	sbiw	r26, 0x06	; 6
+    1cbe:	ce 01       	movw	r24, r28
+    1cc0:	df 91       	pop	r29
+    1cc2:	cf 91       	pop	r28
+    1cc4:	1f 91       	pop	r17
+    1cc6:	0f 91       	pop	r16
+    1cc8:	08 95       	ret
+
+00001cca <__ultoa_invert>:
+    1cca:	fa 01       	movw	r30, r20
+    1ccc:	aa 27       	eor	r26, r26
+    1cce:	28 30       	cpi	r18, 0x08	; 8
+    1cd0:	51 f1       	breq	.+84     	; 0x1d26 <__ultoa_invert+0x5c>
+    1cd2:	20 31       	cpi	r18, 0x10	; 16
+    1cd4:	81 f1       	breq	.+96     	; 0x1d36 <__ultoa_invert+0x6c>
+    1cd6:	e8 94       	clt
+    1cd8:	6f 93       	push	r22
+    1cda:	6e 7f       	andi	r22, 0xFE	; 254
+    1cdc:	6e 5f       	subi	r22, 0xFE	; 254
+    1cde:	7f 4f       	sbci	r23, 0xFF	; 255
+    1ce0:	8f 4f       	sbci	r24, 0xFF	; 255
+    1ce2:	9f 4f       	sbci	r25, 0xFF	; 255
+    1ce4:	af 4f       	sbci	r26, 0xFF	; 255
+    1ce6:	b1 e0       	ldi	r27, 0x01	; 1
+    1ce8:	3e d0       	rcall	.+124    	; 0x1d66 <__ultoa_invert+0x9c>
+    1cea:	b4 e0       	ldi	r27, 0x04	; 4
+    1cec:	3c d0       	rcall	.+120    	; 0x1d66 <__ultoa_invert+0x9c>
+    1cee:	67 0f       	add	r22, r23
+    1cf0:	78 1f       	adc	r23, r24
+    1cf2:	89 1f       	adc	r24, r25
+    1cf4:	9a 1f       	adc	r25, r26
+    1cf6:	a1 1d       	adc	r26, r1
+    1cf8:	68 0f       	add	r22, r24
+    1cfa:	79 1f       	adc	r23, r25
+    1cfc:	8a 1f       	adc	r24, r26
+    1cfe:	91 1d       	adc	r25, r1
+    1d00:	a1 1d       	adc	r26, r1
+    1d02:	6a 0f       	add	r22, r26
+    1d04:	71 1d       	adc	r23, r1
+    1d06:	81 1d       	adc	r24, r1
+    1d08:	91 1d       	adc	r25, r1
+    1d0a:	a1 1d       	adc	r26, r1
+    1d0c:	20 d0       	rcall	.+64     	; 0x1d4e <__ultoa_invert+0x84>
+    1d0e:	09 f4       	brne	.+2      	; 0x1d12 <__ultoa_invert+0x48>
+    1d10:	68 94       	set
+    1d12:	3f 91       	pop	r19
+    1d14:	2a e0       	ldi	r18, 0x0A	; 10
+    1d16:	26 9f       	mul	r18, r22
+    1d18:	11 24       	eor	r1, r1
+    1d1a:	30 19       	sub	r19, r0
+    1d1c:	30 5d       	subi	r19, 0xD0	; 208
+    1d1e:	31 93       	st	Z+, r19
+    1d20:	de f6       	brtc	.-74     	; 0x1cd8 <__ultoa_invert+0xe>
+    1d22:	cf 01       	movw	r24, r30
+    1d24:	08 95       	ret
+    1d26:	46 2f       	mov	r20, r22
+    1d28:	47 70       	andi	r20, 0x07	; 7
+    1d2a:	40 5d       	subi	r20, 0xD0	; 208
+    1d2c:	41 93       	st	Z+, r20
+    1d2e:	b3 e0       	ldi	r27, 0x03	; 3
+    1d30:	0f d0       	rcall	.+30     	; 0x1d50 <__ultoa_invert+0x86>
+    1d32:	c9 f7       	brne	.-14     	; 0x1d26 <__ultoa_invert+0x5c>
+    1d34:	f6 cf       	rjmp	.-20     	; 0x1d22 <__ultoa_invert+0x58>
+    1d36:	46 2f       	mov	r20, r22
+    1d38:	4f 70       	andi	r20, 0x0F	; 15
+    1d3a:	40 5d       	subi	r20, 0xD0	; 208
+    1d3c:	4a 33       	cpi	r20, 0x3A	; 58
+    1d3e:	18 f0       	brcs	.+6      	; 0x1d46 <__ultoa_invert+0x7c>
+    1d40:	49 5d       	subi	r20, 0xD9	; 217
+    1d42:	31 fd       	sbrc	r19, 1
+    1d44:	40 52       	subi	r20, 0x20	; 32
+    1d46:	41 93       	st	Z+, r20
+    1d48:	02 d0       	rcall	.+4      	; 0x1d4e <__ultoa_invert+0x84>
+    1d4a:	a9 f7       	brne	.-22     	; 0x1d36 <__ultoa_invert+0x6c>
+    1d4c:	ea cf       	rjmp	.-44     	; 0x1d22 <__ultoa_invert+0x58>
+    1d4e:	b4 e0       	ldi	r27, 0x04	; 4
+    1d50:	a6 95       	lsr	r26
+    1d52:	97 95       	ror	r25
+    1d54:	87 95       	ror	r24
+    1d56:	77 95       	ror	r23
+    1d58:	67 95       	ror	r22
+    1d5a:	ba 95       	dec	r27
+    1d5c:	c9 f7       	brne	.-14     	; 0x1d50 <__ultoa_invert+0x86>
+    1d5e:	00 97       	sbiw	r24, 0x00	; 0
+    1d60:	61 05       	cpc	r22, r1
+    1d62:	71 05       	cpc	r23, r1
+    1d64:	08 95       	ret
+    1d66:	9b 01       	movw	r18, r22
+    1d68:	ac 01       	movw	r20, r24
+    1d6a:	0a 2e       	mov	r0, r26
+    1d6c:	06 94       	lsr	r0
+    1d6e:	57 95       	ror	r21
+    1d70:	47 95       	ror	r20
+    1d72:	37 95       	ror	r19
+    1d74:	27 95       	ror	r18
+    1d76:	ba 95       	dec	r27
+    1d78:	c9 f7       	brne	.-14     	; 0x1d6c <__ultoa_invert+0xa2>
+    1d7a:	62 0f       	add	r22, r18
+    1d7c:	73 1f       	adc	r23, r19
+    1d7e:	84 1f       	adc	r24, r20
+    1d80:	95 1f       	adc	r25, r21
+    1d82:	a0 1d       	adc	r26, r0
+    1d84:	08 95       	ret
+
+00001d86 <eeprom_read_block>:
+    1d86:	dc 01       	movw	r26, r24
+    1d88:	cb 01       	movw	r24, r22
+
+00001d8a <eeprom_read_blraw>:
+    1d8a:	fc 01       	movw	r30, r24
+    1d8c:	e1 99       	sbic	0x1c, 1	; 28
+    1d8e:	fe cf       	rjmp	.-4      	; 0x1d8c <eeprom_read_blraw+0x2>
+    1d90:	06 c0       	rjmp	.+12     	; 0x1d9e <eeprom_read_blraw+0x14>
+    1d92:	ff bb       	out	0x1f, r31	; 31
+    1d94:	ee bb       	out	0x1e, r30	; 30
+    1d96:	e0 9a       	sbi	0x1c, 0	; 28
+    1d98:	31 96       	adiw	r30, 0x01	; 1
+    1d9a:	0d b2       	in	r0, 0x1d	; 29
+    1d9c:	0d 92       	st	X+, r0
+    1d9e:	41 50       	subi	r20, 0x01	; 1
+    1da0:	50 40       	sbci	r21, 0x00	; 0
+    1da2:	b8 f7       	brcc	.-18     	; 0x1d92 <eeprom_read_blraw+0x8>
+    1da4:	08 95       	ret
+
+00001da6 <eeprom_read_byte>:
+    1da6:	e1 99       	sbic	0x1c, 1	; 28
+    1da8:	fe cf       	rjmp	.-4      	; 0x1da6 <eeprom_read_byte>
+    1daa:	9f bb       	out	0x1f, r25	; 31
+    1dac:	8e bb       	out	0x1e, r24	; 30
+    1dae:	e0 9a       	sbi	0x1c, 0	; 28
+    1db0:	99 27       	eor	r25, r25
+    1db2:	8d b3       	in	r24, 0x1d	; 29
+    1db4:	08 95       	ret
+
+00001db6 <eeprom_update_block>:
+    1db6:	dc 01       	movw	r26, r24
+    1db8:	a4 0f       	add	r26, r20
+    1dba:	b5 1f       	adc	r27, r21
+    1dbc:	41 50       	subi	r20, 0x01	; 1
+    1dbe:	50 40       	sbci	r21, 0x00	; 0
+    1dc0:	48 f0       	brcs	.+18     	; 0x1dd4 <eeprom_update_block+0x1e>
+    1dc2:	cb 01       	movw	r24, r22
+    1dc4:	84 0f       	add	r24, r20
+    1dc6:	95 1f       	adc	r25, r21
+    1dc8:	2e 91       	ld	r18, -X
+    1dca:	0e 94 ec 0e 	call	0x1dd8	; 0x1dd8 <eeprom_update_r18>
+    1dce:	41 50       	subi	r20, 0x01	; 1
+    1dd0:	50 40       	sbci	r21, 0x00	; 0
+    1dd2:	d0 f7       	brcc	.-12     	; 0x1dc8 <eeprom_update_block+0x12>
+    1dd4:	08 95       	ret
+
+00001dd6 <eeprom_update_byte>:
+    1dd6:	26 2f       	mov	r18, r22
+
+00001dd8 <eeprom_update_r18>:
+    1dd8:	e1 99       	sbic	0x1c, 1	; 28
+    1dda:	fe cf       	rjmp	.-4      	; 0x1dd8 <eeprom_update_r18>
+    1ddc:	9f bb       	out	0x1f, r25	; 31
+    1dde:	8e bb       	out	0x1e, r24	; 30
+    1de0:	e0 9a       	sbi	0x1c, 0	; 28
+    1de2:	01 97       	sbiw	r24, 0x01	; 1
+    1de4:	0d b2       	in	r0, 0x1d	; 29
+    1de6:	02 16       	cp	r0, r18
+    1de8:	31 f0       	breq	.+12     	; 0x1df6 <eeprom_update_r18+0x1e>
+    1dea:	2d bb       	out	0x1d, r18	; 29
+    1dec:	0f b6       	in	r0, 0x3f	; 63
+    1dee:	f8 94       	cli
+    1df0:	e2 9a       	sbi	0x1c, 2	; 28
+    1df2:	e1 9a       	sbi	0x1c, 1	; 28
+    1df4:	0f be       	out	0x3f, r0	; 63
+    1df6:	08 95       	ret
+
+00001df8 <eeprom_write_block>:
+    1df8:	dc 01       	movw	r26, r24
+    1dfa:	cb 01       	movw	r24, r22
+    1dfc:	03 c0       	rjmp	.+6      	; 0x1e04 <eeprom_write_block+0xc>
+    1dfe:	2d 91       	ld	r18, X+
+    1e00:	0e 94 07 0f 	call	0x1e0e	; 0x1e0e <eeprom_write_r18>
+    1e04:	41 50       	subi	r20, 0x01	; 1
+    1e06:	50 40       	sbci	r21, 0x00	; 0
+    1e08:	d0 f7       	brcc	.-12     	; 0x1dfe <eeprom_write_block+0x6>
+    1e0a:	08 95       	ret
+
+00001e0c <eeprom_write_byte>:
+    1e0c:	26 2f       	mov	r18, r22
+
+00001e0e <eeprom_write_r18>:
+    1e0e:	e1 99       	sbic	0x1c, 1	; 28
+    1e10:	fe cf       	rjmp	.-4      	; 0x1e0e <eeprom_write_r18>
+    1e12:	9f bb       	out	0x1f, r25	; 31
+    1e14:	8e bb       	out	0x1e, r24	; 30
+    1e16:	2d bb       	out	0x1d, r18	; 29
+    1e18:	0f b6       	in	r0, 0x3f	; 63
+    1e1a:	f8 94       	cli
+    1e1c:	e2 9a       	sbi	0x1c, 2	; 28
+    1e1e:	e1 9a       	sbi	0x1c, 1	; 28
+    1e20:	0f be       	out	0x3f, r0	; 63
+    1e22:	01 96       	adiw	r24, 0x01	; 1
+    1e24:	08 95       	ret
+
+00001e26 <__prologue_saves__>:
+    1e26:	2f 92       	push	r2
+    1e28:	3f 92       	push	r3
+    1e2a:	4f 92       	push	r4
+    1e2c:	5f 92       	push	r5
+    1e2e:	6f 92       	push	r6
+    1e30:	7f 92       	push	r7
+    1e32:	8f 92       	push	r8
+    1e34:	9f 92       	push	r9
+    1e36:	af 92       	push	r10
+    1e38:	bf 92       	push	r11
+    1e3a:	cf 92       	push	r12
+    1e3c:	df 92       	push	r13
+    1e3e:	ef 92       	push	r14
+    1e40:	ff 92       	push	r15
+    1e42:	0f 93       	push	r16
+    1e44:	1f 93       	push	r17
+    1e46:	cf 93       	push	r28
+    1e48:	df 93       	push	r29
+    1e4a:	cd b7       	in	r28, 0x3d	; 61
+    1e4c:	de b7       	in	r29, 0x3e	; 62
+    1e4e:	ca 1b       	sub	r28, r26
+    1e50:	db 0b       	sbc	r29, r27
+    1e52:	0f b6       	in	r0, 0x3f	; 63
+    1e54:	f8 94       	cli
+    1e56:	de bf       	out	0x3e, r29	; 62
+    1e58:	0f be       	out	0x3f, r0	; 63
+    1e5a:	cd bf       	out	0x3d, r28	; 61
+    1e5c:	09 94       	ijmp
+
+00001e5e <__epilogue_restores__>:
+    1e5e:	2a 88       	ldd	r2, Y+18	; 0x12
+    1e60:	39 88       	ldd	r3, Y+17	; 0x11
+    1e62:	48 88       	ldd	r4, Y+16	; 0x10
+    1e64:	5f 84       	ldd	r5, Y+15	; 0x0f
+    1e66:	6e 84       	ldd	r6, Y+14	; 0x0e
+    1e68:	7d 84       	ldd	r7, Y+13	; 0x0d
+    1e6a:	8c 84       	ldd	r8, Y+12	; 0x0c
+    1e6c:	9b 84       	ldd	r9, Y+11	; 0x0b
+    1e6e:	aa 84       	ldd	r10, Y+10	; 0x0a
+    1e70:	b9 84       	ldd	r11, Y+9	; 0x09
+    1e72:	c8 84       	ldd	r12, Y+8	; 0x08
+    1e74:	df 80       	ldd	r13, Y+7	; 0x07
+    1e76:	ee 80       	ldd	r14, Y+6	; 0x06
+    1e78:	fd 80       	ldd	r15, Y+5	; 0x05
+    1e7a:	0c 81       	ldd	r16, Y+4	; 0x04
+    1e7c:	1b 81       	ldd	r17, Y+3	; 0x03
+    1e7e:	aa 81       	ldd	r26, Y+2	; 0x02
+    1e80:	b9 81       	ldd	r27, Y+1	; 0x01
+    1e82:	ce 0f       	add	r28, r30
+    1e84:	d1 1d       	adc	r29, r1
+    1e86:	0f b6       	in	r0, 0x3f	; 63
+    1e88:	f8 94       	cli
+    1e8a:	de bf       	out	0x3e, r29	; 62
+    1e8c:	0f be       	out	0x3f, r0	; 63
+    1e8e:	cd bf       	out	0x3d, r28	; 61
+    1e90:	ed 01       	movw	r28, r26
+    1e92:	08 95       	ret
+
+00001e94 <_exit>:
+    1e94:	f8 94       	cli
+
+00001e96 <__stop_program>:
+    1e96:	ff cf       	rjmp	.-2      	; 0x1e96 <__stop_program>
