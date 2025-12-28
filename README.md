@@ -17,6 +17,7 @@ The hard ware device is design by using the **Proteus**.
 - PCF8574 PIC *(I2C convert for LCD)*
 - 4x4 Keypad *(hand made with normal button)*
 - ESP8266/ESP32
+- ...
 
 ## 2. PROGRAM CODING
 The software coding include the library base on the ATmega16 MCU (AVR core) for communicate with the peripheral device.
