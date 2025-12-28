@@ -29,7 +29,7 @@ All basic functions for a I2C framework transmit data.
 All init and basic functions for command on the LCD.
 ### PWM
 Init function to the output motor *(a servo for open/close the door)*.
-### RFID
+### RFID_RC522
 All init and functions for SPI communicate on RFID_RC522 for scanning a MIRARE card.
-### UARD
+### UART
 All init and funtions to transmit and receive data between ATmega16 and ESP8266.
